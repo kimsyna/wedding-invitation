@@ -1,0 +1,44 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: #fffbe6;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+.invitation {
+    max-width: 500px;
+    margin: auto;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.names {
+    font-size: 24px;
+    margin: 16px 0;
+}
+
+.date, .location {
+    margin: 8px 0;
+}
+
+button {
+    background-color: #ff5e57;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-top: 16px;
+    cursor: pointer;
+}
+
+.map {
+    margin-top: 16px;
+}
+
+.hidden {
+    display: none;
+}

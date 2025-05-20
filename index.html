@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-	<meta charset="UTF-8">
-	<title>TEST</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>모바일 청첩장</title>
+	<link rel="stylesheet" href="style.css" />
 </head>
 <body>
-TEST
+<div class="invitation">
+	<h1>💍 우리의 결혼식에 초대합니다</h1>
+	<p class="names">홍길동 & 김영희</p>
+	<p class="date">2025년 10월 18일 토요일 오후 2시</p>
+	<p class="location">서울 더라빌 1층 그랜드홀</p>
+
+	<button onclick="showMap()">오시는 길 보기</button>
+	<div id="map" class="map hidden">지도 영역</div>
+
+	<button onclick="copyAccount()">계좌번호 복사</button>
+	<p id="account">국민은행 123456-78-910111 홍길동</p>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
