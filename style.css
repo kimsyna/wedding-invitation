@@ -1,44 +1,66 @@
-body {
-    font-family: 'Arial', sans-serif;
-    background: #fffbe6;
-    margin: 0;
-    padding: 20px;
-    color: #333;
+.container {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    background: #ffe9e9;
+    overflow: hidden;
 }
 
-.invitation {
-    max-width: 500px;
-    margin: auto;
-    background: #ffffff;
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+/* 공통: 모든 요소를 화면 정중앙에 배치 */
+.container > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.8s ease;
     text-align: center;
 }
 
-.names {
-    font-size: 24px;
-    margin: 16px 0;
+/* 💌 초기 상태 */
+.lid-icon {
+    font-size: 64px;
+    opacity: 1;
+    z-index: 3;
 }
 
-.date, .location {
-    margin: 8px 0;
+/* 1단계: 본문 */
+.content {
+    opacity: 0;
+    z-index: 2;
+    pointer-events: none;
 }
 
-button {
-    background-color: #ff5e57;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
+/* 2단계: 결혼합니다 */
+.final-message {
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.container.stage1 .lid-icon {
+    opacity: 0;
+    transform: translate(-50%, -100%); /* 위로 사라짐 */
+}
+
+.container.stage1 .content {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.container.stage2 .content {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -60%);
+}
+
+.container.stage2 .final-message {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.final-message img {
+    width: 240px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     margin-top: 16px;
-    cursor: pointer;
-}
-
-.map {
-    margin-top: 16px;
-}
-
-.hidden {
-    display: none;
 }
