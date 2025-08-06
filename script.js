@@ -9,8 +9,9 @@ window.addEventListener('scroll', () => {
 	} else if (y < vh * 1.5) {
 		container.classList.add('stage1');
 		container.classList.remove('stage2');
-	} else {
-		container.classList.add('stage2');
-	}
+        } else {
+                container.classList.add('stage2');
+                container.classList.remove('stage1');
+        }
 });
 
