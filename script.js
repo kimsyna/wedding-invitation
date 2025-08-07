@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const month = eventDate.getMonth();
     const firstDay = new Date(year, month, 1).getDay();
     const lastDate = new Date(year, month + 1, 0).getDate();
-    let html = `<div class="calendar-header">${year}년 ${month + 1}월</div>`;
+    let html = `<div class="calendar-header">${year}. ${String(month + 1).padStart(2, "0")}</div>`;
     html += "<table><thead><tr>";
     const days = ["일", "월", "화", "수", "목", "금", "토"];
     html += days.map((d) => `<th>${d}</th>`).join("");
@@ -70,8 +70,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (navigator.share) {
         try {
           await navigator.share({
-            title: "이성우♥임상영 청첩장",
-            text: "2026년 5월 17일 메리빌리아더프레스티지",
+            title: "이성우 ♥ 임상영 청첩장",
+            text: "2026년 5월 17일 메리빌리아더프레스티지 가든홀",
             url: window.location.href,
           });
         } catch (e) {
@@ -91,8 +91,8 @@ document.addEventListener("DOMContentLoaded", () => {
         Kakao.Share.sendDefault({
           objectType: "feed",
           content: {
-            title: "이성우♥임상영 청첩장",
-            description: "2026년 5월 17일 일요일 오전 10시 30분 메리빌리아더프레스티지",
+            title: "이성우 ♥ 임상영 청첩장",
+            description: "2026년 5월 17일 일요일 오전 10시 30분 메리빌리아더프레스티지 가든홀",
             imageUrl: "https://www.iwedding.co.kr/center/iweddingb/product/800_17588_1730685980_90793400_3232256098.jpg",
             link: {
               mobileWebUrl: window.location.href,
