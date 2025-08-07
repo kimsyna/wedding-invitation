@@ -18,6 +18,119 @@ const KAKAO_API_KEY =
   (typeof process !== "undefined" && process.env.KAKAO_API_KEY) ||
   (window.env && window.env.KAKAO_API_KEY);
 
+const getTemplate = () => `
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-names">
+        <p class="groom">${GROOM_NAME}</p>
+        <p class="bride">${BRIDE_NAME}</p>
+      </div>
+      <p class="hero-datetime">${EVENT_DATETIME_TEXT}</p>
+      <p class="location">${VENUE_LOCATION}</p>
+      <p class="hall">${VENUE_HALL}</p>
+    </div>
+  </section>
+
+  <section class="invitation-section fade-section">
+    <h2>초대의 글</h2>
+    <p>
+      긴 시간 서로의 마음을 나누어 온 저희 두 사람이
+      <strong>${EVENT_DATE_TEXT}</strong> 새로운 시작을 약속합니다.
+    </p>
+    <p>
+      <span class="highlight">귀한 걸음</span>으로 자리해 주셔서
+      저희의 기쁨을 함께 나눠 주시면 감사하겠습니다.
+    </p>
+  </section>
+
+  <section class="info-section fade-section">
+    <h3>예식 안내</h3>
+    <div class="info-names">
+      <p class="groom">${GROOM_NAME}</p>
+      <p class="bride">${BRIDE_NAME}</p>
+    </div>
+    <p class="datetime">${EVENT_DATETIME_TEXT}</p>
+    <p class="location">${VENUE_LOCATION}</p>
+    <p class="hall">${VENUE_HALL}</p>
+  </section>
+
+  <section class="map-section fade-section">
+    <h3>오시는 길</h3>
+    <div id="map" class="map-container"></div>
+    <div class="map-buttons">
+      <a class="map-btn" href="https://map.naver.com/p/search/%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84%EB%8D%94%ED%94%84%EB%A0%88%EC%8A%A4%ED%8B%B0%EC%A7%80/place/1856237237" target="_blank" rel="noopener noreferrer"><img src="https://play-lh.googleusercontent.com/iqe1hFI03eD6nW3S8fxK_MDvNC8tDtod_gnhF9e8XN-IPmLXJvZVJLm-bQ4U5mKAVK0" alt="네이버맵 아이콘" class="btn-icon" />네이버 지도</a>
+      <a class="map-btn" href="https://map.kakao.com/link/map/%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84%EB%8D%94%ED%94%84%EB%A0%88%EC%8A%A4%ED%8B%B0%EC%A7%80,37.2627302,126.9966484" target="_blank" rel="noopener noreferrer"><img src="https://play-lh.googleusercontent.com/pPTTNz433EYFurg2j__bFU5ONdMoU_bs_-yS2JLZriua3iHrksGP6XBPF5VtDPlpGcW4" alt="카카오맵 아이콘" class="btn-icon" />카카오 지도</a>
+    </div>
+  </section>
+
+  <section class="directions-section fade-section">
+    <h3>오시는 방법</h3>
+    <div class="direction-item walk">
+      <h4 class="method">도보</h4>
+      <p class="detail">${WALK_INFO}</p>
+    </div>
+    <div class="direction-item transit">
+      <h4 class="method">대중교통</h4>
+      <p class="detail">${TRANSIT_INFO}</p>
+    </div>
+    <div class="direction-item parking">
+      <h4 class="method">주차</h4>
+      <p class="detail">${PARKING_INFO}</p>
+    </div>
+  </section>
+
+  <section class="calendar-section fade-section">
+    <h3>달력</h3>
+    <div id="calendar" class="calendar-container"></div>
+  </section>
+
+  <section class="countdown-section fade-section">
+    <h3>남은 시간</h3>
+    <div id="countdown"></div>
+  </section>
+
+  <section class="gallery-section fade-section">
+    <h3>갤러리</h3>
+    <div id="gallery-grid" class="gallery-grid"></div>
+    <button id="gallery-more">더보기</button>
+  </section>
+
+  <div id="image-modal" class="image-modal">
+    <button id="modal-close" class="modal-close">&times;</button>
+    <button id="modal-prev" class="modal-prev">&#10094;</button>
+    <img id="modal-image" alt="gallery" />
+    <button id="modal-next" class="modal-next">&#10095;</button>
+  </div>
+
+  <section class="share-section fade-section">
+    <button id="copy-url">
+      <img
+        src="https://img.icons8.com/ios-glyphs/30/copy.png"
+        alt="복사 아이콘"
+        class="btn-icon"
+      />URL 복사
+    </button>
+    <button id="share-url">
+      <img
+        src="https://img.icons8.com/ios-glyphs/30/share.png"
+        alt="공유 아이콘"
+        class="btn-icon"
+      />URL 공유
+    </button>
+    <button id="share-kakao">
+      <img
+        src="https://play-lh.googleusercontent.com/Ob9Ys8yKMeyKzZvl3cB9JNSTui1lJwjSKD60IVYnlvU2DsahysGENJE-txiRIW9_72Vd"
+        alt="카카오톡 아이콘"
+        class="btn-icon"
+      />카카오톡 공유
+    </button>
+  </section>
+
+  <div id="copy-toast" class="copy-toast"></div>
+
+  <footer class="footer">© 2024 Wedding Invitation</footer>
+`;
+
 const loadScript = (src) =>
   new Promise((resolve, reject) => {
     const s = document.createElement("script");
@@ -28,19 +141,8 @@ const loadScript = (src) =>
   });
 
 document.addEventListener("DOMContentLoaded", async () => {
+  document.body.innerHTML = getTemplate();
   const eventDate = new Date(2026, 4, 17, 10, 30);
-
-  document.querySelectorAll(".groom").forEach((el) => (el.textContent = GROOM_NAME));
-  document.querySelectorAll(".bride").forEach((el) => (el.textContent = BRIDE_NAME));
-  document
-    .querySelectorAll(".hero-datetime, .datetime")
-    .forEach((el) => (el.textContent = EVENT_DATETIME_TEXT));
-  document
-    .querySelectorAll(".location")
-    .forEach((el) => (el.textContent = VENUE_LOCATION));
-  document
-    .querySelectorAll(".hall")
-    .forEach((el) => (el.textContent = VENUE_HALL));
   const setDirectionInfo = (cls, info) => {
     const item = document.querySelector(`.directions-section .${cls}`);
     if (!item) return;
