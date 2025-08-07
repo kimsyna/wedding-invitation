@@ -3,6 +3,7 @@ const GROOM_NAME = "이성우";
 const BRIDE_NAME = "임상영";
 const EVENT_DATE_TEXT = "2026년 5월 17일 (일)";
 const EVENT_TIME_TEXT = "오전 10시 30분";
+const EVENT_DATETIME_TEXT = `${EVENT_DATE_TEXT} ${EVENT_TIME_TEXT}`;
 const VENUE_LOCATION = "메리빌리아더프레스티지";
 const VENUE_HALL = "2F 가든홀";
 const VENUE_LAT = 37.2627302;
@@ -31,8 +32,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   document.querySelectorAll(".groom").forEach((el) => (el.textContent = GROOM_NAME));
   document.querySelectorAll(".bride").forEach((el) => (el.textContent = BRIDE_NAME));
-  document.querySelectorAll(".date").forEach((el) => (el.textContent = EVENT_DATE_TEXT));
-  document.querySelectorAll(".time").forEach((el) => (el.textContent = EVENT_TIME_TEXT));
+  document
+    .querySelectorAll(".hero-datetime, .datetime")
+    .forEach((el) => (el.textContent = EVENT_DATETIME_TEXT));
   document
     .querySelectorAll(".location")
     .forEach((el) => (el.textContent = VENUE_LOCATION));

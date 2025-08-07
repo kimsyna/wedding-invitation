@@ -1,3 +1,13 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --secondary-bg-color: #f9f9f9;
+  --button-bg-color: #ffffff;
+  --button-text-color: #333333;
+  --button-hover-bg-color: #f5f5f5;
+  --highlight-color: #b22222;
+}
+
 body {
   margin: 0;
   font-family: "Noto Sans KR", sans-serif;
@@ -30,6 +40,7 @@ h6 {
 
 .hero-names {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: "Noto Sans KR", sans-serif;
@@ -44,31 +55,20 @@ h6 {
   margin: 0;
 }
 
-.hero-names .groom::after {
-  content: "\2665";
-  margin: 0 8px;
+.hero-content .location {
+  margin: 16px 0 4px;
+  font-size: 1.2rem;
 }
 
-.hero-content .location,
 .hero-content .hall {
   margin: 4px 0;
   font-size: 1.2rem;
 }
 
 .hero-datetime {
-  line-height: 1.2;
   margin: 8px 0;
-}
-
-.hero-datetime .date {
-  margin: 4px 0;
   font-size: 1.6rem;
   font-weight: 700;
-}
-
-.hero-datetime .time {
-  font-size: 1rem;
-  opacity: 0.8;
 }
 
 .invitation-section {
@@ -95,13 +95,7 @@ h6 {
   margin: 0;
 }
 
-.info-names .groom::after {
-  content: "\2665";
-  margin: 0 8px;
-}
-
-.info-section .date,
-.info-section .time,
+.info-section .datetime,
 .info-section .location,
 .info-section .hall {
   margin: 4px 0;
@@ -381,20 +375,3 @@ h6 {
   transform: translateY(0);
 }
 
-.theme-btn {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 20px;
-  background: var(--button-bg-color);
-  color: var(--button-text-color);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  z-index: 1001;
-}
-
-.theme-btn:hover {
-  background: var(--button-hover-bg-color);
-}
