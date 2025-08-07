@@ -7,5 +7,6 @@ test("index.html includes redesigned hero section", () => {
     "utf8",
   );
   expect(html).toMatch(/class="hero-section"/);
-  expect(html).toMatch(/이성우 ♥ 임상영/);
+  expect(html).toMatch(/<p class="groom">이성우<\/p>/);
+  expect(html).toMatch(/<p class="bride">임상영<\/p>/);
 });
