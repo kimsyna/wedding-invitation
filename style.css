@@ -36,6 +36,23 @@ h6 {
   background: url("https://www.iwedding.co.kr/center/iweddingb/product/800_17588_1730685980_90793400_3232256098.jpg")
     center/cover no-repeat;
   color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
 }
 
 .hero-names {
@@ -117,17 +134,25 @@ h6 {
   width: 3em;
 }
 
+.family-contact-section {
+  padding: 40px 20px;
+  text-align: center;
+  background: var(--secondary-bg-color);
+}
+
+.family-contact-section .contact-btn {
+  margin-top: 20px;
+}
+
 .map-section,
 .calendar-section,
 .countdown-section,
 .gallery-section,
-.directions-section,
 .share-section {
   padding: 40px 20px;
   text-align: center;
 }
 
-.directions-section,
 .countdown-section {
   background: var(--secondary-bg-color);
 }
@@ -139,6 +164,14 @@ h6 {
 .direction-item .method {
   margin: 0;
   font-weight: 700;
+}
+
+.map-section .directions {
+  margin-top: 20px;
+}
+
+.map-section .direction-item p {
+  word-break: keep-all;
 }
 
 .direction-item .detail {
@@ -185,6 +218,11 @@ h6 {
   font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 8px;
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  background: var(--highlight-color);
+  color: #fff;
 }
 
 .calendar-container table {
@@ -343,13 +381,6 @@ h6 {
 
 .share-section button:hover {
   background: var(--button-hover-bg-color);
-}
-
-.contact-section {
-  margin-top: 20px;
-  padding: 20px 0;
-  text-align: center;
-  border-top: 1px solid #eee;
 }
 
 .contact-btn {
@@ -526,10 +557,6 @@ h6 {
   font-size: 0.9rem;
   color: var(--text-color);
   background: var(--button-bg-color);
-}
-
-.directions-section p {
-  word-break: keep-all;
 }
 
 .highlight {

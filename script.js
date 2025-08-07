@@ -1,6 +1,8 @@
 // 추가 기능: 달력, 남은 시간, 공유 버튼
 const GROOM_NAME = "이성우";
 const BRIDE_NAME = "임상영";
+const GROOM_FIRST_NAME = GROOM_NAME.slice(1);
+const BRIDE_FIRST_NAME = BRIDE_NAME.slice(1);
 const EVENT_DATE_TEXT = "2026년 5월 17일 일요일";
 const EVENT_TIME_TEXT = "오전 10시 30분";
 const EVENT_DATETIME_TEXT = `${EVENT_DATE_TEXT} ${EVENT_TIME_TEXT}`;
@@ -54,25 +56,24 @@ const getTemplate = () => `
     <p>
       <strong>${EVENT_DATE_TEXT}</strong> 따뜻한 축복의 발걸음으로 함께해 주시면 큰 기쁨이 되겠습니다.
     </p>
+  </section>
+  <section class="family-contact-section fade-section">
     <div class="family-section">
       <p class="info-line">
         <span class="info-name">${GROOM_FATHER}</span>
         <span class="name-dot">·</span>
         <span class="info-name">${GROOM_MOTHER}</span>
         <span class="relation">의 아들</span>
-        <span class="info-name child-name">${GROOM_NAME}</span>
+        <span class="info-name child-name">${GROOM_FIRST_NAME}</span>
       </p>
       <p class="info-line">
         <span class="info-name">${BRIDE_FATHER}</span>
         <span class="name-dot">·</span>
         <span class="info-name">${BRIDE_MOTHER}</span>
         <span class="relation">의 딸</span>
-        <span class="info-name child-name">${BRIDE_NAME}</span>
+        <span class="info-name child-name">${BRIDE_FIRST_NAME}</span>
       </p>
     </div>
-  </section>
-
-  <section class="contact-section fade-section">
     <button id="contact-btn" class="contact-btn">연락하기</button>
   </section>
 
@@ -168,21 +169,19 @@ const getTemplate = () => `
       <a class="map-btn" href="https://map.naver.com/p/search/%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84%EB%8D%94%ED%94%84%EB%A0%88%EC%8A%A4%ED%8B%B0%EC%A7%80/place/1856237237" target="_blank" rel="noopener noreferrer"><img src="https://play-lh.googleusercontent.com/iqe1hFI03eD6nW3S8fxK_MDvNC8tDtod_gnhF9e8XN-IPmLXJvZVJLm-bQ4U5mKAVK0" alt="네이버맵 아이콘" class="btn-icon" />네이버 지도</a>
       <a class="map-btn" href="https://map.kakao.com/link/map/%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84%EB%8D%94%ED%94%84%EB%A0%88%EC%8A%A4%ED%8B%B0%EC%A7%80,37.2627302,126.9966484" target="_blank" rel="noopener noreferrer"><img src="https://play-lh.googleusercontent.com/pPTTNz433EYFurg2j__bFU5ONdMoU_bs_-yS2JLZriua3iHrksGP6XBPF5VtDPlpGcW4" alt="카카오맵 아이콘" class="btn-icon" />카카오 지도</a>
     </div>
-  </section>
-
-  <section class="directions-section fade-section">
-    <h3>오시는 방법</h3>
-    <div class="direction-item walk">
-      <h4 class="method">도보</h4>
-      <p class="detail">${WALK_INFO}</p>
-    </div>
-    <div class="direction-item transit">
-      <h4 class="method">대중교통</h4>
-      <p class="detail">${TRANSIT_INFO}</p>
-    </div>
-    <div class="direction-item parking">
-      <h4 class="method">주차</h4>
-      <p class="detail">${PARKING_INFO}</p>
+    <div class="directions">
+      <div class="direction-item walk">
+        <h4 class="method">도보</h4>
+        <p class="detail">${WALK_INFO}</p>
+      </div>
+      <div class="direction-item transit">
+        <h4 class="method">대중교통</h4>
+        <p class="detail">${TRANSIT_INFO}</p>
+      </div>
+      <div class="direction-item parking">
+        <h4 class="method">주차</h4>
+        <p class="detail">${PARKING_INFO}</p>
+      </div>
     </div>
   </section>
 
@@ -251,7 +250,7 @@ const init = async () => {
   document.body.innerHTML = getTemplate();
   const eventDate = new Date(2026, 4, 17, 10, 30);
   const setDirectionInfo = (cls, info) => {
-    const item = document.querySelector(`.directions-section .${cls}`);
+    const item = document.querySelector(`.map-section .${cls}`);
     if (!item) return;
     const detailEl = item.querySelector(".detail");
     if (info) {
@@ -263,12 +262,12 @@ const init = async () => {
   setDirectionInfo("walk", WALK_INFO);
   setDirectionInfo("transit", TRANSIT_INFO);
   setDirectionInfo("parking", PARKING_INFO);
-  const directionsSection = document.querySelector(".directions-section");
-  if (directionsSection) {
-    const hasInfo = [...directionsSection.querySelectorAll(".direction-item")].some(
+  const directionsContainer = document.querySelector(".map-section .directions");
+  if (directionsContainer) {
+    const hasInfo = [...directionsContainer.querySelectorAll(".direction-item")].some(
       (el) => el.style.display !== "none",
     );
-    if (!hasInfo) directionsSection.style.display = "none";
+    if (!hasInfo) directionsContainer.style.display = "none";
   }
 
   const mapEl = document.getElementById("map");
@@ -299,7 +298,7 @@ const init = async () => {
     const month = eventDate.getMonth();
     const firstDay = new Date(year, month, 1).getDay();
     const lastDate = new Date(year, month + 1, 0).getDate();
-    let html = `<div class="calendar-header">${year}. ${String(month + 1).padStart(2, "0")}. ${String(eventDate.getDate()).padStart(2, "0")}</div>`;
+    let html = `<div class="calendar-header">${year}. ${String(month + 1).padStart(2, "0")}. ${String(eventDate.getDate()).padStart(2, "0")}.</div>`;
     html += "<table><thead><tr>";
     const days = ["일", "월", "화", "수", "목", "금", "토"];
     html += days.map((d) => `<th>${d}</th>`).join("");
