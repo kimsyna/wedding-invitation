@@ -304,7 +304,7 @@ const init = async () => {
     const month = eventDate.getMonth();
     const firstDay = new Date(year, month, 1).getDay();
     const lastDate = new Date(year, month + 1, 0).getDate();
-    let html = `<div class="calendar-header">${year}. ${String(month + 1).padStart(2, "0")}. ${String(eventDate.getDate()).padStart(2, "0")}.</div>`;
+    let html = `<div class="calendar-header">${year} / ${String(month + 1).padStart(2, "0")} / ${String(eventDate.getDate()).padStart(2, "0")}</div>`;
     html += "<table><thead><tr>";
     const days = ["일", "월", "화", "수", "목", "금", "토"];
     html += days.map((d) => `<th>${d}</th>`).join("");
