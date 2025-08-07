@@ -47,7 +47,7 @@ h6 {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .hero-content {
@@ -63,7 +63,7 @@ h6 {
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 400;
   font-size: 3rem;
-  margin: 0 0 16px;
+  margin: 0 0 24px;
   line-height: 1.2;
 }
 
@@ -80,17 +80,17 @@ h6 {
 }
 
 .hero-content .location {
-  margin: 16px 0 2px;
+  margin: 24px 0 4px;
   font-size: 1.2rem;
 }
 
 .hero-content .hall {
-  margin: 2px 0;
+  margin: 4px 0;
   font-size: 1.2rem;
 }
 
 .hero-datetime {
-  margin: 8px 0;
+  margin: 16px 0;
   font-size: 1.2rem;
   font-weight: 300;
 }
@@ -153,6 +153,12 @@ h6 {
   text-align: center;
 }
 
+.share-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .countdown-section {
   background: var(--secondary-bg-color);
 }
@@ -182,6 +188,8 @@ h6 {
   width: 100%;
   height: 300px;
   background: #eaeaea;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .map-buttons {
@@ -221,8 +229,8 @@ h6 {
   display: inline-block;
   padding: 4px 12px;
   border-radius: 12px;
-  background: var(--highlight-color);
-  color: #fff;
+  background: #e0e0e0;
+  color: #333;
 }
 
 .calendar-container table {
@@ -262,7 +270,7 @@ h6 {
 #countdown {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 20px;
   margin-top: 10px;
   font-variant-numeric: tabular-nums;
 }
@@ -377,6 +385,22 @@ h6 {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   cursor: pointer;
   transition: background 0.2s ease;
+  position: relative;
+}
+
+.share-section button + button::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 24px;
+  background: #ddd;
+}
+
+#share-kakao {
+  margin-left: 20px;
 }
 
 .share-section button:hover {
@@ -444,7 +468,7 @@ h6 {
 .contact-content {
   position: relative;
   background: #fff;
-  padding: 28px 32px;
+  padding: 40px 32px;
   border-radius: 8px;
   width: 90%;
   max-width: 560px;
@@ -459,6 +483,7 @@ h6 {
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
+  color: var(--text-color);
 }
 
 .contact-columns {
@@ -471,7 +496,7 @@ h6 {
 }
 
 .contact-column:first-child {
-  border-right: 1px solid #eee;
+  border-right: 1px solid #ddd;
   padding-right: 20px;
 }
 
@@ -537,8 +562,15 @@ h6 {
   align-items: center;
 }
 
-.account-label {
+.account-info {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.account-number {
+  font-size: 0.9em;
 }
 
 .contact-list .account button {
@@ -549,6 +581,11 @@ h6 {
   margin-left: 8px;
   display: flex;
   align-items: center;
+}
+
+.divider-section {
+  height: 8px;
+  background: var(--secondary-bg-color);
 }
 
 .footer {
