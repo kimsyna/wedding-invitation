@@ -457,6 +457,18 @@ const init = async () => {
 
     prevBtn.addEventListener("click", showPrev);
     nextBtn.addEventListener("click", showNext);
+    let startX = 0;
+    modalImg.addEventListener("touchstart", (e) => {
+      startX = e.touches[0].clientX;
+    });
+    modalImg.addEventListener("touchend", (e) => {
+      const endX = e.changedTouches[0].clientX;
+      if (startX - endX > 50) {
+        showNext();
+      } else if (endX - startX > 50) {
+        showPrev();
+      }
+    });
     closeBtn.addEventListener("click", () => modal.classList.remove("open"));
     modal.addEventListener("click", (e) => {
       if (e.target === modal) modal.classList.remove("open");
