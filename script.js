@@ -137,10 +137,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   const copyToast = document.getElementById("copy-toast");
   if (copyUrlBtn && copyToast) {
     copyUrlBtn.addEventListener("click", async () => {
-      await navigator.clipboard.writeText(window.location.href);
-      copyToast.textContent = "URL이 복사되었습니다";
-      copyToast.classList.add("show");
-      setTimeout(() => copyToast.classList.remove("show"), 2000);
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        copyToast.textContent = "URL이 복사되었습니다";
+        copyToast.classList.add("show");
+        setTimeout(() => copyToast.classList.remove("show"), 2000);
+      } catch (e) {
+        alert("URL 복사에 실패했습니다. 다시 시도해주세요.");
+      }
     });
   }
 
