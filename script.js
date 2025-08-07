@@ -19,14 +19,3 @@ window.addEventListener('scroll', () => {
         }
 });
 
-const rsvpForm = document.getElementById('rsvp-form');
-if (rsvpForm) {
-        rsvpForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const name = document.getElementById('rsvp-name').value;
-                const attend = document.getElementById('rsvp-attend').checked ? '참석' : '불참';
-                alert(`${name}님, ${attend}으로 전송되었습니다.`);
-                rsvpForm.reset();
-        });
-}
-
