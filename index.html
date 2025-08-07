@@ -44,8 +44,8 @@
     />
     <link id="main-style" rel="stylesheet" />
     <script>
-      const CACHE_BUSTER = `?v=${Date.now()}`;
-      document.getElementById("main-style").href = `style.css${CACHE_BUSTER}`;
+      window.CACHE_BUSTER = `?v=${Date.now()}`;
+      document.getElementById("main-style").href = `style.css${window.CACHE_BUSTER}`;
     </script>
   </head>
   <body>
@@ -54,15 +54,18 @@
       crossorigin="anonymous"
     ></script>
     <script>
+      const cacheBuster = window.CACHE_BUSTER || "";
       const loadScript = (src) =>
         new Promise((resolve, reject) => {
           const s = document.createElement("script");
-          s.src = `${src}${CACHE_BUSTER}`;
+          s.src = `${src}${cacheBuster}`;
           s.onload = resolve;
           s.onerror = reject;
           document.body.appendChild(s);
         });
-      loadScript("config.js").then(() => loadScript("script.js"));
+      loadScript("config.js")
+        .then(() => loadScript("script.js"))
+        .catch((e) => console.error("Failed to load scripts", e));
     </script>
   </body>
 </html>
