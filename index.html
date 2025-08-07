@@ -43,34 +43,18 @@
 <!-- 오시는 길 -->
 <section class="map-section">
         <h3>오시는 길</h3>
-        <div class="map-container">
-                <iframe
-                        title="location-map"
-                        src="https://www.google.com/maps?q=37.5665,126.9780&hl=ko&z=15&output=embed"
-                        allowfullscreen
-                        loading="lazy"
-                ></iframe>
-        </div>
+        <div id="map" class="map-container"></div>
 </section>
 
-<!-- 참석 여부 확인 -->
-<section class="rsvp-section">
-        <h3>RSVP</h3>
-        <form id="rsvp-form">
-                <label>
-                        이름
-                        <input type="text" id="rsvp-name" required />
-                </label>
-                <label>
-                        전화번호
-                        <input type="tel" id="rsvp-phone" required />
-                </label>
-                <label class="attendance">
-                        <input type="checkbox" id="rsvp-attend" /> 참석합니다
-                </label>
-                <button type="submit">전송</button>
-        </form>
-</section>
+<script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=YOUR_CLIENT_ID"></script>
+<script>
+        const position = new naver.maps.LatLng(37.5665, 126.9780);
+        const map = new naver.maps.Map('map', {
+                center: position,
+                zoom: 15,
+        });
+        new naver.maps.Marker({ position, map });
+</script>
 
 <script src="script.js"></script>
 </body>
