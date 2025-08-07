@@ -32,7 +32,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Nanum+Pen+Script&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
@@ -141,7 +141,8 @@
       });
       const marker = new naver.maps.Marker({ position, map });
       const infoWindow = new naver.maps.InfoWindow({
-        content: '<div style="padding:5px;">메리빌리아더프레스티지</div>',
+        content:
+          '<div style="padding:5px; word-break:break-all;">메리빌리아더프레스티지</div>',
       });
       infoWindow.open(map, marker);
     </script>
