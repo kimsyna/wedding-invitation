@@ -102,6 +102,14 @@ h6 {
   font-size: 1.1em;
 }
 
+.family-section .name-dot {
+  margin: 0 4px;
+}
+
+.family-section .child-name {
+  margin-left: 8px;
+}
+
 .info-line .relation {
   display: flex;
   align-items: center;
@@ -337,8 +345,15 @@ h6 {
   background: var(--button-hover-bg-color);
 }
 
+.contact-section {
+  margin-top: 20px;
+  padding: 20px 0;
+  text-align: center;
+  border-top: 1px solid #eee;
+}
+
 .contact-btn {
-  margin-top: 12px;
+  margin-top: 0;
   padding: 8px 14px;
   border: 1px solid #ddd;
   border-radius: 20px;
@@ -455,6 +470,8 @@ h6 {
 
 .contact-info .role {
   font-weight: 500;
+  width: 2em;
+  text-align: center;
 }
 
 .contact-actions {
@@ -466,6 +483,11 @@ h6 {
 .contact-actions a {
   text-decoration: none;
   color: var(--text-color);
+}
+
+.contact-actions img {
+  width: 18px;
+  height: 18px;
 }
 
 .contact-actions img,

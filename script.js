@@ -57,18 +57,23 @@ const getTemplate = () => `
     <div class="family-section">
       <p class="info-line">
         <span class="info-name">${GROOM_FATHER}</span>
+        <span class="name-dot">·</span>
         <span class="info-name">${GROOM_MOTHER}</span>
         <span class="relation">의 아들</span>
-        <span class="info-name">${GROOM_NAME}</span>
+        <span class="info-name child-name">${GROOM_NAME}</span>
       </p>
       <p class="info-line">
         <span class="info-name">${BRIDE_FATHER}</span>
+        <span class="name-dot">·</span>
         <span class="info-name">${BRIDE_MOTHER}</span>
         <span class="relation">의 딸</span>
-        <span class="info-name">${BRIDE_NAME}</span>
+        <span class="info-name child-name">${BRIDE_NAME}</span>
       </p>
-      <button id="contact-btn" class="contact-btn">연락하기</button>
     </div>
+  </section>
+
+  <section class="contact-section fade-section">
+    <button id="contact-btn" class="contact-btn">연락하기</button>
   </section>
 
   <div id="contact-modal" class="contact-modal">
@@ -470,7 +475,7 @@ const init = async () => {
       try {
         await navigator.clipboard.writeText(btn.dataset.account);
         if (contactToast) {
-          contactToast.textContent = "계좌번호가 복사되었습니다";
+          contactToast.textContent = "복사되었습니다";
           contactToast.classList.add("show");
           setTimeout(() => contactToast.classList.remove("show"), 2000);
         }
