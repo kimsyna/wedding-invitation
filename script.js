@@ -25,25 +25,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const countdownEl = document.getElementById("countdown");
   if (countdownEl) {
+    countdownEl.innerHTML = `
+      <div class="countdown-item"><span class="countdown-num" id="cd-days">00</span><span class="countdown-label">DAYS</span></div>
+      <div class="countdown-item"><span class="countdown-num" id="cd-hours">00</span><span class="countdown-label">HRS</span></div>
+      <div class="countdown-item"><span class="countdown-num" id="cd-minutes">00</span><span class="countdown-label">MIN</span></div>
+      <div class="countdown-item"><span class="countdown-num" id="cd-seconds">00</span><span class="countdown-label">SEC</span></div>
+    `;
+    const daysEl = document.getElementById("cd-days");
+    const hoursEl = document.getElementById("cd-hours");
+    const minutesEl = document.getElementById("cd-minutes");
+    const secondsEl = document.getElementById("cd-seconds");
+
     const updateCountdown = () => {
       const now = new Date();
-      const diff = eventDate - now;
-      if (diff <= 0) {
-        countdownEl.textContent = "예식이 시작되었습니다!";
-        return;
-      }
+      let diff = eventDate - now;
+      if (diff < 0) diff = 0;
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
-      const parts = [];
-      if (days > 0) parts.push(`${days}일`);
-      if (hours > 0) parts.push(`${hours}시간`);
-      if (minutes > 0) parts.push(`${minutes}분`);
-      if (seconds > 0) parts.push(`${seconds}초`);
-      countdownEl.textContent = parts.length
-        ? `${parts.join(" ")} 남았습니다`
-        : "";
+      daysEl.textContent = String(days).padStart(2, "0");
+      hoursEl.textContent = String(hours).padStart(2, "0");
+      minutesEl.textContent = String(minutes).padStart(2, "0");
+      secondsEl.textContent = String(seconds).padStart(2, "0");
     };
     updateCountdown();
     setInterval(updateCountdown, 1000);
