@@ -114,7 +114,10 @@ const getTemplate = () => `
               </span>
             </li>
             <li class="account">
-              <span class="account-label">신랑 측 계좌</span>
+              <div class="account-info">
+                <span class="account-label">신랑 측 계좌</span>
+                <span class="account-number">${GROOM_ACCOUNT_BANK} ${GROOM_ACCOUNT_NUMBER}</span>
+              </div>
               <button class="copy-account" data-account="${GROOM_ACCOUNT_NUMBER} ${GROOM_ACCOUNT_BANK}"><img src="https://img.icons8.com/ios-glyphs/16/copy.png" alt="복사" /></button>
             </li>
           </ul>
@@ -152,7 +155,10 @@ const getTemplate = () => `
               </span>
             </li>
             <li class="account">
-              <span class="account-label">신부 측 계좌</span>
+              <div class="account-info">
+                <span class="account-label">신부 측 계좌</span>
+                <span class="account-number">${BRIDE_ACCOUNT_BANK} ${BRIDE_ACCOUNT_NUMBER}</span>
+              </div>
               <button class="copy-account" data-account="${BRIDE_ACCOUNT_NUMBER} ${BRIDE_ACCOUNT_BANK}"><img src="https://img.icons8.com/ios-glyphs/16/copy.png" alt="복사" /></button>
             </li>
           </ul>
@@ -185,8 +191,9 @@ const getTemplate = () => `
     </div>
   </section>
 
+  <div class="divider-section"></div>
+
   <section class="calendar-section fade-section">
-    <h3>달력</h3>
     <div id="calendar" class="calendar-container"></div>
   </section>
 
@@ -196,7 +203,6 @@ const getTemplate = () => `
   </section>
 
   <section class="gallery-section fade-section">
-    <h3>갤러리</h3>
     <div id="gallery-grid" class="gallery-grid"></div>
     <button id="gallery-more">더보기</button>
   </section>
