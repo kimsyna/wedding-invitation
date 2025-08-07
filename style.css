@@ -84,41 +84,29 @@ h6 {
   line-height: 1.8;
 }
 
-.info-section {
-  padding: 40px 20px;
-  text-align: center;
-  background: var(--secondary-bg-color);
+.family-section {
+  margin-top: 32px;
 }
 
 .info-line {
   margin: 4px 0;
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 4px;
 }
 
-.info-title {
-  display: block;
-  width: 50px;
-  height: 50px;
-  margin: 0 auto 16px;
-}
-
 .info-name {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1.1em;
 }
 
 .info-line .relation {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 3em;
-  text-align: center;
-}
-
-.info-section .datetime,
-.info-section .location,
-.info-section .hall {
-  margin: 4px 0;
 }
 
 .map-section,
@@ -396,6 +384,13 @@ h6 {
   z-index: 1000;
 }
 
+.contact-content .copy-toast {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .contact-modal.open {
   display: flex;
 }
@@ -451,8 +446,24 @@ h6 {
   align-items: center;
 }
 
+.contact-info {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.contact-info .role {
+  font-weight: 500;
+}
+
+.contact-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .contact-actions a {
-  margin-left: 8px;
   text-decoration: none;
   color: var(--text-color);
 }
@@ -468,17 +479,13 @@ h6 {
   opacity: 1;
 }
 
-.contact-actions a:first-child {
-  margin-left: 0;
-}
-
 .contact-list .account {
   margin-top: 16px;
-  align-items: flex-start;
+  align-items: center;
 }
 
-.account-info span {
-  display: block;
+.account-label {
+  flex: 1;
 }
 
 .contact-list .account button {
@@ -487,6 +494,8 @@ h6 {
   padding: 0;
   cursor: pointer;
   margin-left: 8px;
+  display: flex;
+  align-items: center;
 }
 
 .footer {
