@@ -52,12 +52,17 @@ document.addEventListener('DOMContentLoaded', () => {
                                 countdownEl.textContent = '예식이 시작되었습니다!';
                                 return;
                         }
-                        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-                        const minutes = Math.floor((diff / (1000 * 60)) % 60);
-                        const seconds = Math.floor((diff / 1000) % 60);
-                        countdownEl.textContent = `${days}일 ${hours}시간 ${minutes}분 ${seconds}초 남았습니다`;
-                };
+                       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                       const minutes = Math.floor((diff / (1000 * 60)) % 60);
+                       const seconds = Math.floor((diff / 1000) % 60);
+                       const parts = [];
+                       if (days > 0) parts.push(`${days}일`);
+                       if (hours > 0) parts.push(`${hours}시간`);
+                       if (minutes > 0) parts.push(`${minutes}분`);
+                       if (seconds > 0) parts.push(`${seconds}초`);
+                       countdownEl.textContent = parts.length ? `${parts.join(' ')} 남았습니다` : '';
+               };
                 updateCountdown();
                 setInterval(updateCountdown, 1000);
         }

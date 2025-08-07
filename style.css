@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: 'Nanum Myeongjo', serif;
-    background: linear-gradient(135deg, #fff1f5, #ffe6e8);
+    background: linear-gradient(135deg, #fffaf0, #ffe4e1, #fff0f5);
     color: #444;
 }
 
@@ -43,6 +43,8 @@ body {
     padding: 32px 24px;
     border-radius: 20px;
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+    max-width: 90%;
+    word-break: keep-all;
 }
 
 /* 2단계: 결혼합니다 */
@@ -54,6 +56,8 @@ body {
     padding: 32px 24px;
     border-radius: 20px;
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+    max-width: 90%;
+    word-break: keep-all;
 }
 
 .container.stage1 .lid-icon {
@@ -78,7 +82,8 @@ body {
 }
 
 .final-message img {
-    width: 260px;
+    width: 100%;
+    max-width: 260px;
     border-radius: 20px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.2);
     margin-top: 16px;
@@ -94,6 +99,11 @@ body {
 .content p {
     font-size: 1.1rem;
     line-height: 1.6;
+    word-break: keep-all;
+}
+
+.directions-section p {
+    word-break: keep-all;
 }
 
 .final-message h1 {
@@ -150,14 +160,18 @@ body {
 }
 
 /* 추가 섹션 스타일 */
- .map-section,
- .calendar-section,
- .countdown-section,
- .directions-section,
- .share-section {
+.map-section,
+.calendar-section,
+.countdown-section,
+.directions-section,
+.share-section {
     padding: 40px 20px;
     text-align: center;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.9);
+    margin: 20px auto;
+    max-width: 600px;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
 .map-container {
@@ -192,8 +206,15 @@ body {
     margin: 0 10px;
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
-    background: #b75d69;
+    border-radius: 30px;
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4);
     color: #fff;
     font-size: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.share-section button:hover {
+    transform: translateY(-2px);
 }
