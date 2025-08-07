@@ -3,7 +3,7 @@ const GROOM_NAME = "이성우";
 const BRIDE_NAME = "임상영";
 const EVENT_DATE_TEXT = "2026년 5월 17일 (일)";
 const EVENT_TIME_TEXT = "오전 10시 30분";
-const VENUE_LOCATION = "메리빌리아더프레스티지";
+const VENUE_LOCATION = "메리빌리아 더 프레스티지";
 const VENUE_HALL = "가든홀";
 const VENUE_LAT = 37.2627302;
 const VENUE_LNG = 126.9966484;
@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (navigator.share) {
         try {
           await navigator.share({
-            title: `${GROOM_NAME} ♥ ${BRIDE_NAME} 청첩장`,
+            title: `${GROOM_NAME}♥${BRIDE_NAME} 청첩장`,
             text: `${EVENT_DATE_TEXT} ${EVENT_TIME_TEXT} ${VENUE_LOCATION} ${VENUE_HALL}`,
             url: window.location.href,
           });
@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         Kakao.Share.sendDefault({
           objectType: "feed",
           content: {
-            title: `${GROOM_NAME} ♥ ${BRIDE_NAME} 청첩장`,
+            title: `${GROOM_NAME}♥${BRIDE_NAME} 청첩장`,
             description: `${EVENT_DATE_TEXT} ${EVENT_TIME_TEXT} ${VENUE_LOCATION} ${VENUE_HALL}`,
             imageUrl: "https://www.iwedding.co.kr/center/iweddingb/product/800_17588_1730685980_90793400_3232256098.jpg",
             link: {

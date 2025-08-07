@@ -29,6 +29,9 @@ h6 {
 }
 
 .hero-names {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 300;
   font-size: 3rem;
@@ -42,7 +45,8 @@ h6 {
 }
 
 .hero-names .groom::after {
-  content: " \2665";
+  content: "\2665";
+  margin: 0 8px;
 }
 
 .hero-content .date,
@@ -74,8 +78,23 @@ h6 {
   background: var(--secondary-bg-color);
 }
 
-.info-section .groom,
-.info-section .bride,
+.info-names {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.info-names .groom,
+.info-names .bride {
+  margin: 0;
+}
+
+.info-names .groom::after {
+  content: "\2665";
+  margin: 0 8px;
+}
+
 .info-section .date,
 .info-section .time,
 .info-section .location,
@@ -122,7 +141,8 @@ h6 {
 }
 
 .map-btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   margin: 0 5px;
   padding: 8px 14px;
   border: 1px solid #ddd;
@@ -143,6 +163,7 @@ h6 {
   height: 16px;
   margin-right: 4px;
   vertical-align: middle;
+  display: block;
 }
 
 .calendar-header {
@@ -291,6 +312,8 @@ h6 {
 }
 
 .share-section button {
+  display: inline-flex;
+  align-items: center;
   margin: 0 5px;
   padding: 8px 14px;
   border: 1px solid #ddd;
