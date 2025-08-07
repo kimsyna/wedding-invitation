@@ -1,6 +1,82 @@
 // 추가 기능: 달력, 남은 시간, 공유 버튼
-document.addEventListener("DOMContentLoaded", () => {
+const GROOM_NAME = "이성우";
+const BRIDE_NAME = "임상영";
+const EVENT_DATE_TEXT = "2026년 5월 17일 (일)";
+const EVENT_TIME_TEXT = "오전 10시 30분";
+const VENUE_LOCATION = "메리빌리아더프레스티지";
+const VENUE_HALL = "가든홀";
+const VENUE_LAT = 37.2627302;
+const VENUE_LNG = 126.9966484;
+const WALK_INFO = "수원역 9번 출구에서 도보 10분";
+const TRANSIT_INFO = "";
+const PARKING_INFO = "예식장 내 주차장 이용 가능 (2시간 무료)";
+const NAVER_MAP_API_KEY = "yp02tw24ay";
+const KAKAO_API_KEY = "ad9882a7a0abfaffbde309e333d2e43e";
+
+const loadScript = (src) =>
+  new Promise((resolve, reject) => {
+    const s = document.createElement("script");
+    s.src = src;
+    s.onload = resolve;
+    s.onerror = reject;
+    document.head.appendChild(s);
+  });
+
+document.addEventListener("DOMContentLoaded", async () => {
   const eventDate = new Date(2026, 4, 17, 10, 30);
+
+  document.querySelectorAll(".groom").forEach((el) => (el.textContent = GROOM_NAME));
+  document.querySelectorAll(".bride").forEach((el) => (el.textContent = BRIDE_NAME));
+  document.querySelectorAll(".date").forEach((el) => (el.textContent = EVENT_DATE_TEXT));
+  document.querySelectorAll(".time").forEach((el) => (el.textContent = EVENT_TIME_TEXT));
+  document
+    .querySelectorAll(".location")
+    .forEach((el) => (el.textContent = VENUE_LOCATION));
+  document
+    .querySelectorAll(".hall")
+    .forEach((el) => (el.textContent = VENUE_HALL));
+  const setDirectionInfo = (cls, info) => {
+    const item = document.querySelector(`.directions-section .${cls}`);
+    if (!item) return;
+    const detailEl = item.querySelector(".detail");
+    if (info) {
+      detailEl.textContent = info;
+    } else {
+      item.style.display = "none";
+    }
+  };
+  setDirectionInfo("walk", WALK_INFO);
+  setDirectionInfo("transit", TRANSIT_INFO);
+  setDirectionInfo("parking", PARKING_INFO);
+  const directionsSection = document.querySelector(".directions-section");
+  if (directionsSection) {
+    const hasInfo = [...directionsSection.querySelectorAll(".direction-item")].some(
+      (el) => el.style.display !== "none",
+    );
+    if (!hasInfo) directionsSection.style.display = "none";
+  }
+
+  const mapEl = document.getElementById("map");
+  if (mapEl) {
+    try {
+      await loadScript(
+        `https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${NAVER_MAP_API_KEY}`,
+      );
+      const position = new naver.maps.LatLng(VENUE_LAT, VENUE_LNG);
+      const map = new naver.maps.Map("map", {
+        center: position,
+        zoom: 15,
+      });
+      const marker = new naver.maps.Marker({ position, map });
+      const infoWindow = new naver.maps.InfoWindow({
+        content:
+          `<div style="padding:5px; word-break:break-all;"><div>${VENUE_LOCATION}</div><div>${VENUE_HALL}</div></div>`,
+      });
+      infoWindow.open(map, marker);
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   const calendarEl = document.getElementById("calendar");
   if (calendarEl) {
@@ -70,8 +146,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (navigator.share) {
         try {
           await navigator.share({
-            title: "이성우 ♥ 임상영 청첩장",
-            text: "2026년 5월 17일 메리빌리아더프레스티지\n가든홀",
+            title: `${GROOM_NAME} ♥ ${BRIDE_NAME} 청첩장`,
+            text: `${EVENT_DATE_TEXT} ${EVENT_TIME_TEXT} ${VENUE_LOCATION} ${VENUE_HALL}`,
             url: window.location.href,
           });
         } catch (e) {
@@ -86,14 +162,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const shareKakaoBtn = document.getElementById("share-kakao");
   if (shareKakaoBtn && window.Kakao) {
     try {
-      Kakao.init("ad9882a7a0abfaffbde309e333d2e43e");
+      Kakao.init(KAKAO_API_KEY);
       shareKakaoBtn.addEventListener("click", () => {
         Kakao.Share.sendDefault({
           objectType: "feed",
           content: {
-            title: "이성우 ♥ 임상영 청첩장",
-            description:
-              "2026년 5월 17일 일요일 오전 10시 30분 메리빌리아더프레스티지\n가든홀",
+            title: `${GROOM_NAME} ♥ ${BRIDE_NAME} 청첩장`,
+            description: `${EVENT_DATE_TEXT} ${EVENT_TIME_TEXT} ${VENUE_LOCATION} ${VENUE_HALL}`,
             imageUrl: "https://www.iwedding.co.kr/center/iweddingb/product/800_17588_1730685980_90793400_3232256098.jpg",
             link: {
               mobileWebUrl: window.location.href,

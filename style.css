@@ -28,15 +28,26 @@ h6 {
   color: #fff;
 }
 
-.hero-content h1 {
+.hero-names {
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 300;
   font-size: 3rem;
   margin: 0 0 16px;
+  line-height: 1.2;
+}
+
+.hero-names .groom,
+.hero-names .bride {
+  margin: 0;
+}
+
+.hero-names .groom::after {
+  content: " \2665";
 }
 
 .hero-content .date,
-.hero-content .location {
+.hero-content .location,
+.hero-content .hall {
   margin: 4px 0;
   font-size: 1.2rem;
 }
@@ -63,6 +74,15 @@ h6 {
   background: #f9f9f9;
 }
 
+.info-section .groom,
+.info-section .bride,
+.info-section .date,
+.info-section .time,
+.info-section .location,
+.info-section .hall {
+  margin: 4px 0;
+}
+
 .map-section,
 .calendar-section,
 .countdown-section,
@@ -76,6 +96,19 @@ h6 {
 .directions-section,
 .countdown-section {
   background: #f9f9f9;
+}
+
+.direction-item {
+  margin-bottom: 12px;
+}
+
+.direction-item .method {
+  margin: 0;
+  font-weight: 700;
+}
+
+.direction-item .detail {
+  margin: 4px 0 0;
 }
 
 .map-container {

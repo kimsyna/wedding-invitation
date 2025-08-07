@@ -6,15 +6,13 @@
     <title>모바일 청첩장</title>
     <meta
       name="description"
-      content="이성우 ♥ 임상영의 모바일 청첩장 - 2026년 5월 17일 메리빌리아더프레스티지
-가든홀"
+      content="이성우 ♥ 임상영의 모바일 청첩장 - 2026년 5월 17일 메리빌리아더프레스티지 가든홀"
     />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="모바일 청첩장" />
     <meta
       property="og:description"
-      content="이성우 ♥ 임상영의 모바일 청첩장 - 2026년 5월 17일 메리빌리아더프레스티지
-가든홀"
+      content="이성우 ♥ 임상영의 모바일 청첩장 - 2026년 5월 17일 메리빌리아더프레스티지 가든홀"
     />
     <meta
       property="og:image"
@@ -25,8 +23,7 @@
     <meta name="twitter:title" content="모바일 청첩장" />
     <meta
       name="twitter:description"
-      content="이성우 ♥ 임상영의 모바일 청첩장 - 2026년 5월 17일 메리빌리아더프레스티지
-가든홀"
+      content="이성우 ♥ 임상영의 모바일 청첩장 - 2026년 5월 17일 메리빌리아더프레스티지 가든홀"
     />
     <meta
       name="twitter:image"
@@ -43,12 +40,16 @@
   <body>
     <section class="hero-section">
       <div class="hero-content">
-        <h1>이성우 ♥ 임상영</h1>
+        <div class="hero-names">
+          <p class="groom">이성우</p>
+          <p class="bride">임상영</p>
+        </div>
         <div class="hero-datetime">
           <p class="date">2026년 5월 17일 (일)</p>
           <p class="time">오전 10시 30분</p>
         </div>
-        <p class="location">메리빌리아더프레스티지<br />가든홀</p>
+        <p class="location">메리빌리아더프레스티지</p>
+        <p class="hall">가든홀</p>
       </div>
     </section>
 
@@ -66,8 +67,12 @@
 
     <section class="info-section fade-section">
       <h3>예식 안내</h3>
-      <p>2026년 5월 17일 (일) 오전 10시 30분</p>
-      <p>메리빌리아더프레스티지<br />가든홀</p>
+      <p class="groom">이성우</p>
+      <p class="bride">임상영</p>
+      <p class="date">2026년 5월 17일 (일)</p>
+      <p class="time">오전 10시 30분</p>
+      <p class="location">메리빌리아더프레스티지</p>
+      <p class="hall">가든홀</p>
     </section>
 
     <!-- 오시는 길 -->
@@ -81,7 +86,7 @@
           target="_blank"
           rel="noopener"
           ><img
-            src="https://img.icons8.com/color/48/naver.png"
+            src="https://play-lh.googleusercontent.com/iqe1hFI03eD6nW3S8fxK_MDvNC8tDtod_gnhF9e8XN-IPmLXJvZVJLm-bQ4U5mKAVK0"
             alt="네이버맵 아이콘"
             class="btn-icon"
           />네이버 지도</a
@@ -92,7 +97,7 @@
           target="_blank"
           rel="noopener"
           ><img
-            src="https://img.icons8.com/color/48/kakaomap.png"
+            src="https://play-lh.googleusercontent.com/pPTTNz433EYFurg2j__bFU5ONdMoU_bs_-yS2JLZriua3iHrksGP6XBPF5VtDPlpGcW4"
             alt="카카오맵 아이콘"
             class="btn-icon"
           />카카오 지도</a
@@ -102,10 +107,18 @@
 
     <section class="directions-section fade-section">
       <h3>오시는 방법</h3>
-      <h4>도보</h4>
-      <p>수원역 9번 출구에서 도보 10분</p>
-      <h4>주차</h4>
-      <p>예식장 내 주차장 이용 가능 (2시간 무료)</p>
+      <div class="direction-item walk">
+        <h4 class="method">도보</h4>
+        <p class="detail">수원역 9번 출구에서 도보 10분</p>
+      </div>
+      <div class="direction-item transit">
+        <h4 class="method">대중교통</h4>
+        <p class="detail"></p>
+      </div>
+      <div class="direction-item parking">
+        <h4 class="method">주차</h4>
+        <p class="detail">예식장 내 주차장 이용 가능 (2시간 무료)</p>
+      </div>
     </section>
 
     <section class="calendar-section fade-section">
@@ -135,21 +148,21 @@
       <button id="copy-url">
         <img
           src="https://img.icons8.com/ios-glyphs/30/copy.png"
-          alt=""
+          alt="복사 아이콘"
           class="btn-icon"
         />URL 복사
       </button>
       <button id="share-url">
         <img
           src="https://img.icons8.com/ios-glyphs/30/share.png"
-          alt=""
+          alt="공유 아이콘"
           class="btn-icon"
         />URL 공유
       </button>
       <button id="share-kakao">
         <img
-          src="https://img.icons8.com/color/48/kakao-talk--v1.png"
-          alt=""
+          src="https://play-lh.googleusercontent.com/Ob9Ys8yKMeyKzZvl3cB9JNSTui1lJwjSKD60IVYnlvU2DsahysGENJE-txiRIW9_72Vd"
+          alt="카카오톡 아이콘"
           class="btn-icon"
         />카카오톡 공유
       </button>
@@ -158,24 +171,6 @@
     <div id="copy-toast" class="copy-toast"></div>
 
     <footer class="footer">© 2024 Wedding Invitation</footer>
-
-    <script
-      type="text/javascript"
-      src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=yp02tw24ay"
-    ></script>
-    <script>
-      const position = new naver.maps.LatLng(37.2627302, 126.9966484);
-      const map = new naver.maps.Map("map", {
-        center: position,
-        zoom: 15,
-      });
-      const marker = new naver.maps.Marker({ position, map });
-      const infoWindow = new naver.maps.InfoWindow({
-        content:
-          '<div style="padding:5px; word-break:break-all;">메리빌리아더프레스티지<br/>가든홀</div>',
-      });
-      infoWindow.open(map, marker);
-    </script>
 
     <script
       src="https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js"
