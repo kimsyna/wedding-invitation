@@ -1,6 +1,6 @@
 # Wedding Invitation
 
-This project uses API keys for Naver Map and Kakao services. The keys are not committed to version control.
+This project uses API keys for Naver Map and Kakao services. Example keys are provided in the repository.
 
 ## API keys
 
@@ -8,17 +8,18 @@ This project uses API keys for Naver Map and Kakao services. The keys are not co
    ```bash
    cp config.example.js config.js
    ```
-2. Edit `config.js` and replace the placeholders with your real keys:
+2. The configuration includes ready-to-use keys:
    ```js
    window.env = {
-     NAVER_MAP_API_KEY: "your-naver-map-api-key",
-     KAKAO_API_KEY: "your-kakao-api-key",
+     NAVER_MAP_API_KEY: "yp02tw24ay",
+     KAKAO_API_KEY: "ad9882a7a0abfaffbde309e333d2e43e",
    };
    ```
+   If you need to use different keys, edit `config.js` accordingly.
 3. For automated tests or local development, you can also supply the keys via environment variables:
    ```bash
-   export NAVER_MAP_API_KEY=your-naver-map-api-key
-   export KAKAO_API_KEY=your-kakao-api-key
+   export NAVER_MAP_API_KEY=yp02tw24ay
+   export KAKAO_API_KEY=ad9882a7a0abfaffbde309e333d2e43e
    ```
 
 The application reads the keys from `window.env` or from the environment variables when running under Node.
