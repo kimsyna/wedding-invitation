@@ -44,7 +44,7 @@ h6 {
   justify-content: center;
   align-items: center;
   font-family: "Noto Sans KR", sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 3rem;
   margin: 0 0 16px;
   line-height: 1.2;
@@ -63,12 +63,12 @@ h6 {
 }
 
 .hero-content .location {
-  margin: 16px 0 4px;
+  margin: 16px 0 2px;
   font-size: 1.2rem;
 }
 
 .hero-content .hall {
-  margin: 4px 0;
+  margin: 2px 0;
   font-size: 1.2rem;
 }
 
@@ -384,8 +384,8 @@ h6 {
   background: #fff;
   padding: 20px;
   border-radius: 8px;
-  width: 80%;
-  max-width: 320px;
+  width: 90%;
+  max-width: 480px;
   text-align: left;
 }
 
@@ -399,10 +399,19 @@ h6 {
   cursor: pointer;
 }
 
+.contact-columns {
+  display: flex;
+}
+
+.contact-column {
+  flex: 1;
+  padding: 0 10px;
+}
+
 .contact-list {
   list-style: none;
   padding: 0;
-  margin: 0 0 16px;
+  margin: 0;
 }
 
 .contact-list li {
@@ -412,20 +421,29 @@ h6 {
   align-items: center;
 }
 
-.contact-list a {
+.contact-actions a {
+  margin-left: 8px;
   text-decoration: none;
   color: var(--text-color);
-  display: flex;
-  align-items: center;
 }
 
-.call-icon {
-  margin-right: 4px;
+.contact-actions a:first-child {
+  margin-left: 0;
 }
 
-.account-info {
-  font-size: 0.9rem;
-  line-height: 1.4;
+.contact-list .account {
+  margin-top: 16px;
+}
+
+.contact-list .account button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.contact-list .account img {
+  margin-left: 8px;
 }
 
 .footer {
