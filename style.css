@@ -2,8 +2,8 @@ body {
   margin: 0;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 300;
-  background: #ffffff;
-  color: #333;
+  background: var(--bg-color);
+  color: var(--text-color);
   word-break: keep-all;
   letter-spacing: -0.02em;
   line-height: 1.8;
@@ -71,7 +71,7 @@ h6 {
 .info-section {
   padding: 40px 20px;
   text-align: center;
-  background: #f9f9f9;
+  background: var(--secondary-bg-color);
 }
 
 .info-section .groom,
@@ -95,7 +95,7 @@ h6 {
 
 .directions-section,
 .countdown-section {
-  background: #f9f9f9;
+  background: var(--secondary-bg-color);
 }
 
 .direction-item {
@@ -127,15 +127,15 @@ h6 {
   padding: 8px 14px;
   border: 1px solid #ddd;
   border-radius: 20px;
-  background: #fff;
-  color: #333;
+  background: var(--button-bg-color);
+  color: var(--button-text-color);
   text-decoration: none;
   font-size: 0.9rem;
   transition: background 0.2s ease;
 }
 
 .map-btn:hover {
-  background: #f5f5f5;
+  background: var(--button-hover-bg-color);
 }
 
 .btn-icon {
@@ -229,14 +229,14 @@ h6 {
   padding: 8px 20px;
   border: 1px solid #ddd;
   border-radius: 20px;
-  background: #fff;
-  color: #333;
+  background: var(--button-bg-color);
+  color: var(--button-text-color);
   cursor: pointer;
   transition: background 0.2s ease;
 }
 
 #gallery-more:hover {
-  background: #f5f5f5;
+  background: var(--button-hover-bg-color);
 }
 
 .image-modal {
@@ -295,8 +295,8 @@ h6 {
   padding: 8px 14px;
   border: 1px solid #ddd;
   border-radius: 20px;
-  background: #fff;
-  color: #333;
+  background: var(--button-bg-color);
+  color: var(--button-text-color);
   font-size: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   cursor: pointer;
@@ -304,7 +304,7 @@ h6 {
 }
 
 .share-section button:hover {
-  background: #f5f5f5;
+  background: var(--button-hover-bg-color);
 }
 
 .copy-toast {
@@ -329,8 +329,8 @@ h6 {
   text-align: center;
   padding: 20px;
   font-size: 0.9rem;
-  color: #999;
-  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-color);
+  background: var(--button-bg-color);
 }
 
 .directions-section p {
@@ -338,7 +338,7 @@ h6 {
 }
 
 .highlight {
-  color: #b22222;
+  color: var(--highlight-color);
   font-weight: 700;
 }
 
@@ -351,4 +351,22 @@ h6 {
 .fade-section.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.theme-btn {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 20px;
+  background: var(--button-bg-color);
+  color: var(--button-text-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.theme-btn:hover {
+  background: var(--button-hover-bg-color);
 }
