@@ -54,29 +54,21 @@ const getTemplate = () => `
     <p>
       <strong>${EVENT_DATE_TEXT}</strong> 따뜻한 축복의 발걸음으로 함께해 주시면 큰 기쁨이 되겠습니다.
     </p>
-  </section>
-
-  <section class="info-section fade-section">
-    <img src="https://img.icons8.com/ios-filled/50/wedding-rings.png" alt="마음 전하는 곳" class="info-title" />
-    <p class="info-line">
-      <span>아버지</span>
-      <span class="info-name">${GROOM_FATHER}</span>
-      <span>|</span>
-      <span>어머니</span>
-      <span class="info-name">${GROOM_MOTHER}</span>
-      <span class="relation">의 아들</span>
-      <span class="info-name">${GROOM_NAME}</span>
-    </p>
-    <p class="info-line">
-      <span>아버지</span>
-      <span class="info-name">${BRIDE_FATHER}</span>
-      <span>|</span>
-      <span>어머니</span>
-      <span class="info-name">${BRIDE_MOTHER}</span>
-      <span class="relation">의 딸</span>
-      <span class="info-name">${BRIDE_NAME}</span>
-    </p>
-    <button id="contact-btn" class="contact-btn">연락하기</button>
+    <div class="family-section">
+      <p class="info-line">
+        <span class="info-name">${GROOM_FATHER}</span>
+        <span class="info-name">${GROOM_MOTHER}</span>
+        <span class="relation">의 아들</span>
+        <span class="info-name">${GROOM_NAME}</span>
+      </p>
+      <p class="info-line">
+        <span class="info-name">${BRIDE_FATHER}</span>
+        <span class="info-name">${BRIDE_MOTHER}</span>
+        <span class="relation">의 딸</span>
+        <span class="info-name">${BRIDE_NAME}</span>
+      </p>
+      <button id="contact-btn" class="contact-btn">연락하기</button>
+    </div>
   </section>
 
   <div id="contact-modal" class="contact-modal">
@@ -86,68 +78,81 @@ const getTemplate = () => `
         <div class="contact-column">
           <ul class="contact-list">
             <li>
-              <span>신랑 ${GROOM_NAME}</span>
+              <span class="contact-info">
+                <span class="role">신랑</span>
+                <span>${GROOM_NAME}</span>
+              </span>
               <span class="contact-actions">
                 <a href="tel:${GROOM_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/phone.png" alt="전화" /></a>
                 <a href="sms:${GROOM_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/sms.png" alt="문자" /></a>
               </span>
             </li>
             <li>
-              <span>父 ${GROOM_FATHER}</span>
+              <span class="contact-info">
+                <span class="role">父</span>
+                <span>${GROOM_FATHER}</span>
+              </span>
               <span class="contact-actions">
                 <a href="tel:${GROOM_FATHER_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/phone.png" alt="전화" /></a>
                 <a href="sms:${GROOM_FATHER_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/sms.png" alt="문자" /></a>
               </span>
             </li>
             <li>
-              <span>母 ${GROOM_MOTHER}</span>
+              <span class="contact-info">
+                <span class="role">母</span>
+                <span>${GROOM_MOTHER}</span>
+              </span>
               <span class="contact-actions">
                 <a href="tel:${GROOM_MOTHER_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/phone.png" alt="전화" /></a>
                 <a href="sms:${GROOM_MOTHER_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/sms.png" alt="문자" /></a>
               </span>
             </li>
             <li class="account">
-              <div class="account-info">
-                <span class="bank">${GROOM_ACCOUNT_BANK}</span>
-                <span class="account-number">${GROOM_ACCOUNT_NUMBER}</span>
-              </div>
-              <button class="copy-account" data-account="${GROOM_ACCOUNT_BANK} ${GROOM_ACCOUNT_NUMBER}"><img src="https://img.icons8.com/ios-glyphs/16/copy.png" alt="복사" /></button>
+              <span class="account-label">신랑 측 계좌</span>
+              <button class="copy-account" data-account="${GROOM_ACCOUNT_NUMBER} ${GROOM_ACCOUNT_BANK}"><img src="https://img.icons8.com/ios-glyphs/16/copy.png" alt="복사" /></button>
             </li>
           </ul>
         </div>
         <div class="contact-column">
           <ul class="contact-list">
             <li>
-              <span>신부 ${BRIDE_NAME}</span>
+              <span class="contact-info">
+                <span class="role">신부</span>
+                <span>${BRIDE_NAME}</span>
+              </span>
               <span class="contact-actions">
                 <a href="tel:${BRIDE_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/phone.png" alt="전화" /></a>
                 <a href="sms:${BRIDE_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/sms.png" alt="문자" /></a>
               </span>
             </li>
             <li>
-              <span>父 ${BRIDE_FATHER}</span>
+              <span class="contact-info">
+                <span class="role">父</span>
+                <span>${BRIDE_FATHER}</span>
+              </span>
               <span class="contact-actions">
                 <a href="tel:${BRIDE_FATHER_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/phone.png" alt="전화" /></a>
                 <a href="sms:${BRIDE_FATHER_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/sms.png" alt="문자" /></a>
               </span>
             </li>
             <li>
-              <span>母 ${BRIDE_MOTHER}</span>
+              <span class="contact-info">
+                <span class="role">母</span>
+                <span>${BRIDE_MOTHER}</span>
+              </span>
               <span class="contact-actions">
                 <a href="tel:${BRIDE_MOTHER_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/phone.png" alt="전화" /></a>
                 <a href="sms:${BRIDE_MOTHER_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/sms.png" alt="문자" /></a>
               </span>
             </li>
             <li class="account">
-              <div class="account-info">
-                <span class="bank">${BRIDE_ACCOUNT_BANK}</span>
-                <span class="account-number">${BRIDE_ACCOUNT_NUMBER}</span>
-              </div>
-              <button class="copy-account" data-account="${BRIDE_ACCOUNT_BANK} ${BRIDE_ACCOUNT_NUMBER}"><img src="https://img.icons8.com/ios-glyphs/16/copy.png" alt="복사" /></button>
+              <span class="account-label">신부 측 계좌</span>
+              <button class="copy-account" data-account="${BRIDE_ACCOUNT_NUMBER} ${BRIDE_ACCOUNT_BANK}"><img src="https://img.icons8.com/ios-glyphs/16/copy.png" alt="복사" /></button>
             </li>
           </ul>
         </div>
       </div>
+      <div id="contact-toast" class="copy-toast"></div>
     </div>
   </div>
 
@@ -336,6 +341,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const copyUrlBtn = document.getElementById("copy-url");
   const copyToast = document.getElementById("copy-toast");
+  const contactToast = document.getElementById("contact-toast");
   if (copyUrlBtn && copyToast) {
     copyUrlBtn.addEventListener("click", async () => {
       try {
@@ -463,10 +469,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     btn.addEventListener("click", async () => {
       try {
         await navigator.clipboard.writeText(btn.dataset.account);
-        if (copyToast) {
-          copyToast.textContent = "계좌번호가 복사되었습니다";
-          copyToast.classList.add("show");
-          setTimeout(() => copyToast.classList.remove("show"), 2000);
+        if (contactToast) {
+          contactToast.textContent = "계좌번호가 복사되었습니다";
+          contactToast.classList.add("show");
+          setTimeout(() => contactToast.classList.remove("show"), 2000);
         }
       } catch (e) {
         console.log(e);
