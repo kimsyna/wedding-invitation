@@ -74,13 +74,13 @@ const getTemplate = () => `
         <span class="info-name child-name">${BRIDE_FIRST_NAME}</span>
       </p>
     </div>
+    <img src="https://picsum.photos/seed/wed0/600/400" alt="contact photo" class="contact-image" />
     <button id="contact-btn" class="contact-btn">연락하기</button>
   </section>
 
   <div id="contact-modal" class="contact-modal">
     <div class="contact-content">
       <button id="contact-close" class="modal-close">&times;</button>
-      <img src="https://picsum.photos/seed/wed0/600/400" alt="contact photo" class="contact-image" />
       <div class="contact-columns">
         <div class="contact-column">
           <ul class="contact-list">
@@ -428,6 +428,8 @@ const init = async () => {
       currentIndex = idx;
       modalImg.src = images[idx];
       modal.classList.add("open");
+      document.body.classList.add("no-scroll");
+      modalImg.style.transform = "translateX(0)";
     };
 
     const showPrev = () => {
@@ -462,18 +464,56 @@ const init = async () => {
     let startX = 0;
     modalImg.addEventListener("touchstart", (e) => {
       startX = e.touches[0].clientX;
+      modalImg.style.transition = "none";
+    });
+    modalImg.addEventListener("touchmove", (e) => {
+      const diff = e.touches[0].clientX - startX;
+      modalImg.style.transform = `translateX(${diff}px)`;
     });
     modalImg.addEventListener("touchend", (e) => {
-      const endX = e.changedTouches[0].clientX;
-      if (startX - endX > 50) {
-        showNext();
-      } else if (endX - startX > 50) {
-        showPrev();
+      const diff = e.changedTouches[0].clientX - startX;
+      modalImg.style.transition = "transform 0.3s";
+      if (diff < -50) {
+        modalImg.style.transform = "translateX(-100%)";
+        modalImg.addEventListener(
+          "transitionend",
+          () => {
+            showNext();
+            modalImg.style.transition = "none";
+            modalImg.style.transform = "translateX(100%)";
+            requestAnimationFrame(() => {
+              modalImg.style.transition = "transform 0.3s";
+              modalImg.style.transform = "translateX(0)";
+            });
+          },
+          { once: true },
+        );
+      } else if (diff > 50) {
+        modalImg.style.transform = "translateX(100%)";
+        modalImg.addEventListener(
+          "transitionend",
+          () => {
+            showPrev();
+            modalImg.style.transition = "none";
+            modalImg.style.transform = "translateX(-100%)";
+            requestAnimationFrame(() => {
+              modalImg.style.transition = "transform 0.3s";
+              modalImg.style.transform = "translateX(0)";
+            });
+          },
+          { once: true },
+        );
+      } else {
+        modalImg.style.transform = "translateX(0)";
       }
     });
-    closeBtn.addEventListener("click", () => modal.classList.remove("open"));
+    const closeGallery = () => {
+      modal.classList.remove("open");
+      document.body.classList.remove("no-scroll");
+    };
+    closeBtn.addEventListener("click", closeGallery);
     modal.addEventListener("click", (e) => {
-      if (e.target === modal) modal.classList.remove("open");
+      if (e.target === modal) closeGallery();
     });
   }
 
@@ -481,10 +521,18 @@ const init = async () => {
   const contactModal = document.getElementById("contact-modal");
   const contactClose = document.getElementById("contact-close");
   if (contactBtn && contactModal && contactClose) {
-    contactBtn.addEventListener("click", () => contactModal.classList.add("open"));
-    contactClose.addEventListener("click", () => contactModal.classList.remove("open"));
+    const openContact = () => {
+      contactModal.classList.add("open");
+      document.body.classList.add("no-scroll");
+    };
+    const closeContact = () => {
+      contactModal.classList.remove("open");
+      document.body.classList.remove("no-scroll");
+    };
+    contactBtn.addEventListener("click", openContact);
+    contactClose.addEventListener("click", closeContact);
     contactModal.addEventListener("click", (e) => {
-      if (e.target === contactModal) contactModal.classList.remove("open");
+      if (e.target === contactModal) closeContact();
     });
   }
 
