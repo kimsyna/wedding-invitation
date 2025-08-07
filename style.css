@@ -92,6 +92,27 @@ h6 {
 
 .info-line {
   margin: 4px 0;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
+.info-title {
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 16px;
+}
+
+.info-name {
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+.info-line .relation {
+  display: inline-block;
+  width: 3em;
+  text-align: center;
 }
 
 .info-section .datetime,
@@ -382,10 +403,10 @@ h6 {
 .contact-content {
   position: relative;
   background: #fff;
-  padding: 20px;
+  padding: 28px 32px;
   border-radius: 8px;
   width: 90%;
-  max-width: 480px;
+  max-width: 560px;
   text-align: left;
 }
 
@@ -408,6 +429,15 @@ h6 {
   padding: 0 10px;
 }
 
+.contact-column:first-child {
+  border-right: 1px solid #eee;
+  padding-right: 20px;
+}
+
+.contact-column:last-child {
+  padding-left: 20px;
+}
+
 .contact-list {
   list-style: none;
   padding: 0;
@@ -415,7 +445,7 @@ h6 {
 }
 
 .contact-list li {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -427,12 +457,28 @@ h6 {
   color: var(--text-color);
 }
 
+.contact-actions img,
+.copy-account img {
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.contact-actions img:hover,
+.copy-account img:hover {
+  opacity: 1;
+}
+
 .contact-actions a:first-child {
   margin-left: 0;
 }
 
 .contact-list .account {
   margin-top: 16px;
+  align-items: flex-start;
+}
+
+.account-info span {
+  display: block;
 }
 
 .contact-list .account button {
@@ -440,9 +486,6 @@ h6 {
   border: none;
   padding: 0;
   cursor: pointer;
-}
-
-.contact-list .account img {
   margin-left: 8px;
 }
 

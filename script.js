@@ -21,8 +21,10 @@ const GROOM_FATHER_PHONE = "010-1111-2222";
 const GROOM_MOTHER_PHONE = "010-3333-4444";
 const BRIDE_FATHER_PHONE = "010-5555-6666";
 const BRIDE_MOTHER_PHONE = "010-7777-8888";
-const GROOM_ACCOUNT = "국민은행 123456-78-901234";
-const BRIDE_ACCOUNT = "신한은행 987654-32-109876";
+const GROOM_ACCOUNT_BANK = "국민은행";
+const GROOM_ACCOUNT_NUMBER = "123456-78-901234";
+const BRIDE_ACCOUNT_BANK = "신한은행";
+const BRIDE_ACCOUNT_NUMBER = "987654-32-109876";
 const NAVER_MAP_API_KEY =
   (typeof process !== "undefined" && process.env.NAVER_MAP_API_KEY) ||
   (window.env && window.env.NAVER_MAP_API_KEY);
@@ -55,9 +57,25 @@ const getTemplate = () => `
   </section>
 
   <section class="info-section fade-section">
-    <h3>마음 전하는 곳</h3>
-    <p class="info-line">父 ${GROOM_FATHER} | 母 ${GROOM_MOTHER}의 아들 ${GROOM_NAME}</p>
-    <p class="info-line">父 ${BRIDE_FATHER} | 母 ${BRIDE_MOTHER}의 딸 ${BRIDE_NAME}</p>
+    <img src="https://img.icons8.com/ios-filled/50/wedding-rings.png" alt="마음 전하는 곳" class="info-title" />
+    <p class="info-line">
+      <span>아버지</span>
+      <span class="info-name">${GROOM_FATHER}</span>
+      <span>|</span>
+      <span>어머니</span>
+      <span class="info-name">${GROOM_MOTHER}</span>
+      <span class="relation">의 아들</span>
+      <span class="info-name">${GROOM_NAME}</span>
+    </p>
+    <p class="info-line">
+      <span>아버지</span>
+      <span class="info-name">${BRIDE_FATHER}</span>
+      <span>|</span>
+      <span>어머니</span>
+      <span class="info-name">${BRIDE_MOTHER}</span>
+      <span class="relation">의 딸</span>
+      <span class="info-name">${BRIDE_NAME}</span>
+    </p>
     <button id="contact-btn" class="contact-btn">연락하기</button>
   </section>
 
@@ -68,7 +86,7 @@ const getTemplate = () => `
         <div class="contact-column">
           <ul class="contact-list">
             <li>
-              <span>${GROOM_NAME}</span>
+              <span>신랑 ${GROOM_NAME}</span>
               <span class="contact-actions">
                 <a href="tel:${GROOM_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/phone.png" alt="전화" /></a>
                 <a href="sms:${GROOM_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/sms.png" alt="문자" /></a>
@@ -89,15 +107,18 @@ const getTemplate = () => `
               </span>
             </li>
             <li class="account">
-              <span>${GROOM_ACCOUNT}</span>
-              <button class="copy-account" data-account="${GROOM_ACCOUNT}"><img src="https://img.icons8.com/ios-glyphs/16/copy.png" alt="복사" /></button>
+              <div class="account-info">
+                <span class="bank">${GROOM_ACCOUNT_BANK}</span>
+                <span class="account-number">${GROOM_ACCOUNT_NUMBER}</span>
+              </div>
+              <button class="copy-account" data-account="${GROOM_ACCOUNT_BANK} ${GROOM_ACCOUNT_NUMBER}"><img src="https://img.icons8.com/ios-glyphs/16/copy.png" alt="복사" /></button>
             </li>
           </ul>
         </div>
         <div class="contact-column">
           <ul class="contact-list">
             <li>
-              <span>${BRIDE_NAME}</span>
+              <span>신부 ${BRIDE_NAME}</span>
               <span class="contact-actions">
                 <a href="tel:${BRIDE_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/phone.png" alt="전화" /></a>
                 <a href="sms:${BRIDE_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/sms.png" alt="문자" /></a>
@@ -118,8 +139,11 @@ const getTemplate = () => `
               </span>
             </li>
             <li class="account">
-              <span>${BRIDE_ACCOUNT}</span>
-              <button class="copy-account" data-account="${BRIDE_ACCOUNT}"><img src="https://img.icons8.com/ios-glyphs/16/copy.png" alt="복사" /></button>
+              <div class="account-info">
+                <span class="bank">${BRIDE_ACCOUNT_BANK}</span>
+                <span class="account-number">${BRIDE_ACCOUNT_NUMBER}</span>
+              </div>
+              <button class="copy-account" data-account="${BRIDE_ACCOUNT_BANK} ${BRIDE_ACCOUNT_NUMBER}"><img src="https://img.icons8.com/ios-glyphs/16/copy.png" alt="복사" /></button>
             </li>
           </ul>
         </div>
