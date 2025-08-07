@@ -55,29 +55,74 @@ const getTemplate = () => `
   </section>
 
   <section class="info-section fade-section">
-    <h3>예식 안내</h3>
-    <p class="info-line">${GROOM_FATHER} | ${GROOM_MOTHER}의 아들 ${GROOM_NAME}</p>
-    <p class="info-line">${BRIDE_FATHER} | ${BRIDE_MOTHER}의 딸 ${BRIDE_NAME}</p>
-    <p class="datetime">${EVENT_DATETIME_TEXT}</p>
-    <p class="location">${VENUE_LOCATION}</p>
-    <p class="hall">${VENUE_HALL}</p>
+    <h3>마음 전하는 곳</h3>
+    <p class="info-line">父 ${GROOM_FATHER} | 母 ${GROOM_MOTHER}의 아들 ${GROOM_NAME}</p>
+    <p class="info-line">父 ${BRIDE_FATHER} | 母 ${BRIDE_MOTHER}의 딸 ${BRIDE_NAME}</p>
     <button id="contact-btn" class="contact-btn">연락하기</button>
   </section>
 
   <div id="contact-modal" class="contact-modal">
     <div class="contact-content">
       <button id="contact-close" class="modal-close">&times;</button>
-      <ul class="contact-list">
-        <li>신랑 ${GROOM_NAME}<a href="tel:${GROOM_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/phone.png" alt="전화" class="call-icon" />${GROOM_PHONE}</a></li>
-        <li>신랑 아버지 ${GROOM_FATHER}<a href="tel:${GROOM_FATHER_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/phone.png" alt="전화" class="call-icon" />${GROOM_FATHER_PHONE}</a></li>
-        <li>신랑 어머니 ${GROOM_MOTHER}<a href="tel:${GROOM_MOTHER_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/phone.png" alt="전화" class="call-icon" />${GROOM_MOTHER_PHONE}</a></li>
-        <li>신부 ${BRIDE_NAME}<a href="tel:${BRIDE_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/phone.png" alt="전화" class="call-icon" />${BRIDE_PHONE}</a></li>
-        <li>신부 아버지 ${BRIDE_FATHER}<a href="tel:${BRIDE_FATHER_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/phone.png" alt="전화" class="call-icon" />${BRIDE_FATHER_PHONE}</a></li>
-        <li>신부 어머니 ${BRIDE_MOTHER}<a href="tel:${BRIDE_MOTHER_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/phone.png" alt="전화" class="call-icon" />${BRIDE_MOTHER_PHONE}</a></li>
-      </ul>
-      <div class="account-info">
-        신랑: ${GROOM_ACCOUNT}<br />
-        신부: ${BRIDE_ACCOUNT}
+      <div class="contact-columns">
+        <div class="contact-column">
+          <ul class="contact-list">
+            <li>
+              <span>${GROOM_NAME}</span>
+              <span class="contact-actions">
+                <a href="tel:${GROOM_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/phone.png" alt="전화" /></a>
+                <a href="sms:${GROOM_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/sms.png" alt="문자" /></a>
+              </span>
+            </li>
+            <li>
+              <span>父 ${GROOM_FATHER}</span>
+              <span class="contact-actions">
+                <a href="tel:${GROOM_FATHER_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/phone.png" alt="전화" /></a>
+                <a href="sms:${GROOM_FATHER_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/sms.png" alt="문자" /></a>
+              </span>
+            </li>
+            <li>
+              <span>母 ${GROOM_MOTHER}</span>
+              <span class="contact-actions">
+                <a href="tel:${GROOM_MOTHER_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/phone.png" alt="전화" /></a>
+                <a href="sms:${GROOM_MOTHER_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/sms.png" alt="문자" /></a>
+              </span>
+            </li>
+            <li class="account">
+              <span>${GROOM_ACCOUNT}</span>
+              <button class="copy-account" data-account="${GROOM_ACCOUNT}"><img src="https://img.icons8.com/ios-glyphs/16/copy.png" alt="복사" /></button>
+            </li>
+          </ul>
+        </div>
+        <div class="contact-column">
+          <ul class="contact-list">
+            <li>
+              <span>${BRIDE_NAME}</span>
+              <span class="contact-actions">
+                <a href="tel:${BRIDE_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/phone.png" alt="전화" /></a>
+                <a href="sms:${BRIDE_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/sms.png" alt="문자" /></a>
+              </span>
+            </li>
+            <li>
+              <span>父 ${BRIDE_FATHER}</span>
+              <span class="contact-actions">
+                <a href="tel:${BRIDE_FATHER_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/phone.png" alt="전화" /></a>
+                <a href="sms:${BRIDE_FATHER_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/sms.png" alt="문자" /></a>
+              </span>
+            </li>
+            <li>
+              <span>母 ${BRIDE_MOTHER}</span>
+              <span class="contact-actions">
+                <a href="tel:${BRIDE_MOTHER_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/phone.png" alt="전화" /></a>
+                <a href="sms:${BRIDE_MOTHER_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/sms.png" alt="문자" /></a>
+              </span>
+            </li>
+            <li class="account">
+              <span>${BRIDE_ACCOUNT}</span>
+              <button class="copy-account" data-account="${BRIDE_ACCOUNT}"><img src="https://img.icons8.com/ios-glyphs/16/copy.png" alt="복사" /></button>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -388,6 +433,22 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (e.target === contactModal) contactModal.classList.remove("open");
     });
   }
+
+  const accountCopyBtns = document.querySelectorAll(".copy-account");
+  accountCopyBtns.forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.account);
+        if (copyToast) {
+          copyToast.textContent = "계좌번호가 복사되었습니다";
+          copyToast.classList.add("show");
+          setTimeout(() => copyToast.classList.remove("show"), 2000);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    });
+  });
 
   const shareSection = document.querySelector(".share-section");
   const isMobile = /Mobi|Android/i.test(navigator.userAgent);
