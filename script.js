@@ -233,7 +233,7 @@ const getTemplate = () => `
   <footer class="footer">© 2024 Wedding Invitation</footer>
 `;
 
-const loadScript = (src) =>
+const loadExternalScript = (src) =>
   new Promise((resolve, reject) => {
     const s = document.createElement("script");
     s.src = src;
@@ -269,7 +269,7 @@ const init = async () => {
   const mapEl = document.getElementById("map");
   if (mapEl) {
     try {
-      await loadScript(
+      await loadExternalScript(
         `https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${NAVER_MAP_API_KEY}`,
       );
       const position = new naver.maps.LatLng(VENUE_LAT, VENUE_LNG);
