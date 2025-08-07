@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < firstDay; i++) html += "<td></td>";
     for (let d = 1; d <= lastDate; d++) {
       const isEvent = d === eventDate.getDate();
-      html += `<td${isEvent ? ' class="event-day"' : ""}>${d}</td>`;
+      html += `<td>${isEvent ? '<span class="event-day">' + d + '</span>' : d}</td>`;
       if ((firstDay + d) % 7 === 0 && d !== lastDate) html += "</tr><tr>";
     }
     html += "</tr></tbody></table>";
@@ -49,19 +49,25 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(updateCountdown, 1000);
   }
 
+  const copyUrlBtn = document.getElementById("copy-url");
+  if (copyUrlBtn) {
+    copyUrlBtn.addEventListener("click", async () => {
+      await navigator.clipboard.writeText(window.location.href);
+      alert("URL이 복사되었습니다");
+    });
+  }
+
   const shareUrlBtn = document.getElementById("share-url");
   if (shareUrlBtn) {
     shareUrlBtn.addEventListener("click", async () => {
-      const url = window.location.href;
       if (navigator.share) {
         try {
-          await navigator.share({ title: "청첩장", url });
+          await navigator.share({ title: "청첩장", url: window.location.href });
         } catch (e) {
           console.log(e);
         }
       } else {
-        await navigator.clipboard.writeText(url);
-        alert("URL이 복사되었습니다");
+        alert("공유를 지원하지 않는 브라우저입니다");
       }
     });
   }
@@ -143,4 +149,24 @@ document.addEventListener("DOMContentLoaded", () => {
       if (e.target === modal) modal.classList.remove("open");
     });
   }
+
+  const shareSection = document.querySelector(".share-section");
+  const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+  if (shareSection && !isMobile) {
+    shareSection.style.display = "none";
+  }
+
+  const fadeSections = document.querySelectorAll(".fade-section");
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 },
+  );
+  fadeSections.forEach((sec) => observer.observe(sec));
 });
