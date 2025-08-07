@@ -29,6 +29,9 @@
       name="twitter:image"
       content="https://www.iwedding.co.kr/center/iweddingb/product/800_17588_1730685980_90793400_3232256098.jpg"
     />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -39,14 +42,27 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link id="main-style" rel="stylesheet" />
+    <script>
+      const CACHE_BUSTER = `?v=${Date.now()}`;
+      document.getElementById("main-style").href = `style.css${CACHE_BUSTER}`;
+    </script>
   </head>
   <body>
     <script
       src="https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js"
       crossorigin="anonymous"
     ></script>
-    <script src="config.js"></script>
-    <script src="script.js"></script>
+    <script>
+      const loadScript = (src) =>
+        new Promise((resolve, reject) => {
+          const s = document.createElement("script");
+          s.src = `${src}${CACHE_BUSTER}`;
+          s.onload = resolve;
+          s.onerror = reject;
+          document.body.appendChild(s);
+        });
+      loadScript("config.js").then(() => loadScript("script.js"));
+    </script>
   </body>
 </html>
