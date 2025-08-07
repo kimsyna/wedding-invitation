@@ -94,6 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                         content: {
                                                 title: '이성우♥임상영 청첩장',
                                                 description: '2026년 5월 17일 일요일 오전 10시 30분',
+                                                imageUrl: 'https://via.placeholder.com/300',
                                                 link: {
                                                         mobileWebUrl: window.location.href,
                                                         webUrl: window.location.href,
