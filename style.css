@@ -1,8 +1,8 @@
 body {
     margin: 0;
     font-family: 'Nanum Myeongjo', serif;
-    background: linear-gradient(135deg, #fffaf0, #ffe4e1, #fff0f5);
-    color: #444;
+    background: #ffffff;
+    color: #333;
 }
 
 .container {
@@ -31,7 +31,7 @@ body {
     font-size: 72px;
     opacity: 1;
     z-index: 3;
-    color: #b75d69;
+    color: #888;
 }
 
 /* 1단계: 본문 */
@@ -39,7 +39,7 @@ body {
     opacity: 0;
     z-index: 2;
     pointer-events: none;
-    background: rgba(255, 255, 255, 0.95);
+    background: #ffffff;
     padding: 32px 24px;
     border-radius: 20px;
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
@@ -52,7 +52,7 @@ body {
     opacity: 0;
     z-index: 1;
     pointer-events: none;
-    background: rgba(255, 255, 255, 0.95);
+    background: #ffffff;
     padding: 32px 24px;
     border-radius: 20px;
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
@@ -92,7 +92,7 @@ body {
 .content h2 {
     font-family: 'Nanum Pen Script', cursive;
     font-size: 2.5rem;
-    color: #b75d69;
+    color: #555;
     margin-bottom: 16px;
 }
 
@@ -109,7 +109,7 @@ body {
 .final-message h1 {
     font-family: 'Nanum Pen Script', cursive;
     font-size: 2rem;
-    color: #b75d69;
+    color: #555;
     margin-bottom: 16px;
 }
 
@@ -121,7 +121,7 @@ body {
     text-align: center;
     font-size: 18px;
     font-weight: bold;
-    color: rgba(183, 93, 105, 0.7);
+    color: #666;
     z-index: 2;
     opacity: 1;
     transition: opacity 0.8s ease;
@@ -131,7 +131,7 @@ body {
     font-size: 24px;
     margin-top: 8px;
     animation: bounce 1.5s infinite;
-    color: #b75d69;
+    color: #888;
 }
 
 /* 화살표 아래로 부드럽게 튀는 애니메이션 */
@@ -164,7 +164,8 @@ body {
 .calendar-section,
 .countdown-section,
 .directions-section,
-.share-section {
+.share-section,
+.gallery-section {
     padding: 40px 20px;
     text-align: center;
     background: rgba(255, 255, 255, 0.9);
@@ -180,6 +181,11 @@ body {
     border-radius: 12px;
 }
 
+.calendar-header {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
 .calendar-container table {
     width: 100%;
     border-collapse: collapse;
@@ -188,33 +194,152 @@ body {
 .calendar-container th,
 .calendar-container td {
     padding: 8px;
+    border: 1px solid #eee;
+    text-align: center;
 }
 
 .calendar-container .event-day {
-    background: #b75d69;
+    background: #333;
     color: #fff;
     border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
 }
 
 #countdown {
     font-size: 1.5rem;
-    color: #b75d69;
+    color: #555;
     margin-top: 10px;
 }
 
 .share-section button {
     margin: 0 10px;
     padding: 10px 20px;
-    border: none;
+    border: 1px solid #ddd;
     border-radius: 30px;
-    background: linear-gradient(45deg, #ff9a9e, #fad0c4);
-    color: #fff;
+    background: #fff;
+    color: #333;
     font-size: 1rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition: background 0.2s ease;
 }
 
 .share-section button:hover {
-    transform: translateY(-2px);
+    background: #f5f5f5;
+}
+
+.map-buttons {
+    margin-top: 10px;
+}
+
+.map-btn {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 8px 14px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    background: #fff;
+    color: #333;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background 0.2s ease;
+}
+
+.map-btn:hover {
+    background: #f5f5f5;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.gallery-grid img.hidden {
+    display: none;
+}
+
+#gallery-more {
+    padding: 8px 20px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    background: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+#gallery-more:hover {
+    background: #f5f5f5;
+}
+
+.image-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.image-modal.open {
+    display: flex;
+}
+
+.image-modal img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 8px;
+}
+
+.image-modal button {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    border-radius: 4px;
+}
+
+.modal-prev {
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.modal-next {
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.modal-close {
+    top: 10px;
+    right: 10px;
+    font-size: 2rem;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    color: #999;
+    background: rgba(255, 255, 255, 0.9);
 }
