@@ -10,8 +10,12 @@ const VENUE_LNG = 126.9966484;
 const WALK_INFO = "수원역 9번 출구에서 도보 10분";
 const TRANSIT_INFO = "";
 const PARKING_INFO = "예식장 내 주차장 이용 가능 (2시간 무료)";
-const NAVER_MAP_API_KEY = "yp02tw24ay";
-const KAKAO_API_KEY = "ad9882a7a0abfaffbde309e333d2e43e";
+const NAVER_MAP_API_KEY =
+  (typeof process !== "undefined" && process.env.NAVER_MAP_API_KEY) ||
+  (window.env && window.env.NAVER_MAP_API_KEY);
+const KAKAO_API_KEY =
+  (typeof process !== "undefined" && process.env.KAKAO_API_KEY) ||
+  (window.env && window.env.KAKAO_API_KEY);
 
 const loadScript = (src) =>
   new Promise((resolve, reject) => {
