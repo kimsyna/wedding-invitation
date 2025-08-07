@@ -29,7 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const month = eventDate.getMonth();
                 const firstDay = new Date(year, month, 1).getDay();
                 const lastDate = new Date(year, month + 1, 0).getDate();
-                let html = '<table><thead><tr>';
+                let html = `<div class="calendar-header">${year}년 ${month + 1}월</div>`;
+                html += '<table><thead><tr>';
                 const days = ['일', '월', '화', '수', '목', '금', '토'];
                 html += days.map((d) => `<th>${d}</th>`).join('');
                 html += '</tr></thead><tbody><tr>';
@@ -105,6 +106,56 @@ document.addEventListener('DOMContentLoaded', () => {
                 } catch (e) {
                         console.log(e);
                 }
+        }
+
+        // 갤러리
+        const galleryGrid = document.getElementById('gallery-grid');
+        if (galleryGrid) {
+                const images = Array.from({ length: 15 }, (_, i) => `https://picsum.photos/seed/wed${i}/600/400`);
+                const moreBtn = document.getElementById('gallery-more');
+                const modal = document.getElementById('image-modal');
+                const modalImg = document.getElementById('modal-image');
+                const prevBtn = document.getElementById('modal-prev');
+                const nextBtn = document.getElementById('modal-next');
+                const closeBtn = document.getElementById('modal-close');
+                let currentIndex = 0;
+
+                const openModal = (idx) => {
+                        currentIndex = idx;
+                        modalImg.src = images[idx];
+                        modal.classList.add('open');
+                };
+
+                const showPrev = () => {
+                        currentIndex = (currentIndex + images.length - 1) % images.length;
+                        modalImg.src = images[currentIndex];
+                };
+
+                const showNext = () => {
+                        currentIndex = (currentIndex + 1) % images.length;
+                        modalImg.src = images[currentIndex];
+                };
+
+                images.forEach((src, idx) => {
+                        const img = document.createElement('img');
+                        img.src = src;
+                        img.className = 'gallery-image';
+                        if (idx >= 9) img.classList.add('hidden');
+                        img.addEventListener('click', () => openModal(idx));
+                        galleryGrid.appendChild(img);
+                });
+
+                moreBtn.addEventListener('click', () => {
+                        galleryGrid.querySelectorAll('.hidden').forEach((el) => el.classList.remove('hidden'));
+                        moreBtn.style.display = 'none';
+                });
+
+                prevBtn.addEventListener('click', showPrev);
+                nextBtn.addEventListener('click', showNext);
+                closeBtn.addEventListener('click', () => modal.classList.remove('open'));
+                modal.addEventListener('click', (e) => {
+                        if (e.target === modal) modal.classList.remove('open');
+                });
         }
 });
 
