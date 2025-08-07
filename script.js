@@ -242,7 +242,7 @@ const loadScript = (src) =>
     document.head.appendChild(s);
   });
 
-document.addEventListener("DOMContentLoaded", async () => {
+const init = async () => {
   document.body.innerHTML = getTemplate();
   const eventDate = new Date(2026, 4, 17, 10, 30);
   const setDirectionInfo = (cls, info) => {
@@ -499,4 +499,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     { threshold: 0.1 },
   );
   fadeSections.forEach((sec) => observer.observe(sec));
-});
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
+} else {
+  init();
+}
