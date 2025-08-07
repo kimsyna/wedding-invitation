@@ -10,7 +10,7 @@ window.addEventListener('scroll', () => {
 		container.classList.add('stage1');
 		container.classList.remove('stage2');
         } else {
-                container.classList.remove('stage1');
+                container.classList.add('stage1');
                 container.classList.add('stage2');
         }
 });
