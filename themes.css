@@ -1,0 +1,49 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --secondary-bg-color: #f9f9f9;
+  --button-bg-color: #ffffff;
+  --button-text-color: #333333;
+  --button-hover-bg-color: #f5f5f5;
+  --highlight-color: #b22222;
+}
+
+body.theme-dark {
+  --bg-color: #000000;
+  --text-color: #ffffff;
+  --secondary-bg-color: #333333;
+  --button-bg-color: #444444;
+  --button-text-color: #ffffff;
+  --button-hover-bg-color: #555555;
+  --highlight-color: #ff69b4;
+}
+
+body.theme-pastel-pink {
+  --bg-color: #ffe4e1;
+  --text-color: #5a5a5a;
+  --secondary-bg-color: #ffd5d2;
+  --button-bg-color: #ffffff;
+  --button-text-color: #5a5a5a;
+  --button-hover-bg-color: #f2cfcf;
+  --highlight-color: #ff1493;
+}
+
+body.theme-pastel-blue {
+  --bg-color: #e0f7fa;
+  --text-color: #5a5a5a;
+  --secondary-bg-color: #d0eff5;
+  --button-bg-color: #ffffff;
+  --button-text-color: #5a5a5a;
+  --button-hover-bg-color: #c8e9ef;
+  --highlight-color: #0077be;
+}
+
+body.theme-pastel-green {
+  --bg-color: #e6f4ea;
+  --text-color: #5a5a5a;
+  --secondary-bg-color: #d8eadb;
+  --button-bg-color: #ffffff;
+  --button-text-color: #5a5a5a;
+  --button-hover-bg-color: #d0e3d4;
+  --highlight-color: #2e8b57;
+}
