@@ -1,16 +1,28 @@
 // 추가 기능: 달력, 남은 시간, 공유 버튼
 const GROOM_NAME = "이성우";
 const BRIDE_NAME = "임상영";
-const EVENT_DATE_TEXT = "2026년 5월 17일 (일)";
+const EVENT_DATE_TEXT = "2026년 5월 17일 일요일";
 const EVENT_TIME_TEXT = "오전 10시 30분";
 const EVENT_DATETIME_TEXT = `${EVENT_DATE_TEXT} ${EVENT_TIME_TEXT}`;
 const VENUE_LOCATION = "메리빌리아더프레스티지";
-const VENUE_HALL = "2F 가든홀";
+const VENUE_HALL = "2층 가든홀";
 const VENUE_LAT = 37.2627302;
 const VENUE_LNG = 126.9966484;
 const WALK_INFO = "수원역 9번 출구에서 도보 10분";
 const TRANSIT_INFO = "";
 const PARKING_INFO = "예식장 내 주차장 이용 가능 (2시간 무료)";
+const GROOM_FATHER = "이강호";
+const GROOM_MOTHER = "박지연";
+const BRIDE_FATHER = "김성훈";
+const BRIDE_MOTHER = "최은지";
+const GROOM_PHONE = "010-1234-5678";
+const BRIDE_PHONE = "010-8765-4321";
+const GROOM_FATHER_PHONE = "010-1111-2222";
+const GROOM_MOTHER_PHONE = "010-3333-4444";
+const BRIDE_FATHER_PHONE = "010-5555-6666";
+const BRIDE_MOTHER_PHONE = "010-7777-8888";
+const GROOM_ACCOUNT = "국민은행 123456-78-901234";
+const BRIDE_ACCOUNT = "신한은행 987654-32-109876";
 const NAVER_MAP_API_KEY =
   (typeof process !== "undefined" && process.env.NAVER_MAP_API_KEY) ||
   (window.env && window.env.NAVER_MAP_API_KEY);
@@ -23,6 +35,7 @@ const getTemplate = () => `
     <div class="hero-content">
       <div class="hero-names">
         <p class="groom">${GROOM_NAME}</p>
+        <div class="name-separator"></div>
         <p class="bride">${BRIDE_NAME}</p>
       </div>
       <p class="hero-datetime">${EVENT_DATETIME_TEXT}</p>
@@ -34,25 +47,40 @@ const getTemplate = () => `
   <section class="invitation-section fade-section">
     <h2>초대의 글</h2>
     <p>
-      긴 시간 서로의 마음을 나누어 온 저희 두 사람이
-      <strong>${EVENT_DATE_TEXT}</strong> 새로운 시작을 약속합니다.
+      꽃 향기 가득한 봄날, 서로를 존중하며 걸어온 두 사람이 한 자리에 서려 합니다.
     </p>
     <p>
-      <span class="highlight">귀한 걸음</span>으로 자리해 주셔서
-      저희의 기쁨을 함께 나눠 주시면 감사하겠습니다.
+      <strong>${EVENT_DATE_TEXT}</strong> 따뜻한 축복의 발걸음으로 함께해 주시면 큰 기쁨이 되겠습니다.
     </p>
   </section>
 
   <section class="info-section fade-section">
     <h3>예식 안내</h3>
-    <div class="info-names">
-      <p class="groom">${GROOM_NAME}</p>
-      <p class="bride">${BRIDE_NAME}</p>
-    </div>
+    <p class="info-line">${GROOM_FATHER} | ${GROOM_MOTHER}의 아들 ${GROOM_NAME}</p>
+    <p class="info-line">${BRIDE_FATHER} | ${BRIDE_MOTHER}의 딸 ${BRIDE_NAME}</p>
     <p class="datetime">${EVENT_DATETIME_TEXT}</p>
     <p class="location">${VENUE_LOCATION}</p>
     <p class="hall">${VENUE_HALL}</p>
+    <button id="contact-btn" class="contact-btn">연락하기</button>
   </section>
+
+  <div id="contact-modal" class="contact-modal">
+    <div class="contact-content">
+      <button id="contact-close" class="modal-close">&times;</button>
+      <ul class="contact-list">
+        <li>신랑 ${GROOM_NAME}<a href="tel:${GROOM_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/phone.png" alt="전화" class="call-icon" />${GROOM_PHONE}</a></li>
+        <li>신랑 아버지 ${GROOM_FATHER}<a href="tel:${GROOM_FATHER_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/phone.png" alt="전화" class="call-icon" />${GROOM_FATHER_PHONE}</a></li>
+        <li>신랑 어머니 ${GROOM_MOTHER}<a href="tel:${GROOM_MOTHER_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/phone.png" alt="전화" class="call-icon" />${GROOM_MOTHER_PHONE}</a></li>
+        <li>신부 ${BRIDE_NAME}<a href="tel:${BRIDE_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/phone.png" alt="전화" class="call-icon" />${BRIDE_PHONE}</a></li>
+        <li>신부 아버지 ${BRIDE_FATHER}<a href="tel:${BRIDE_FATHER_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/phone.png" alt="전화" class="call-icon" />${BRIDE_FATHER_PHONE}</a></li>
+        <li>신부 어머니 ${BRIDE_MOTHER}<a href="tel:${BRIDE_MOTHER_PHONE.replace(/-/g, "")}"><img src="https://img.icons8.com/ios-glyphs/20/phone.png" alt="전화" class="call-icon" />${BRIDE_MOTHER_PHONE}</a></li>
+      </ul>
+      <div class="account-info">
+        신랑: ${GROOM_ACCOUNT}<br />
+        신부: ${BRIDE_ACCOUNT}
+      </div>
+    </div>
+  </div>
 
   <section class="map-section fade-section">
     <h3>오시는 길</h3>
@@ -347,6 +375,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     closeBtn.addEventListener("click", () => modal.classList.remove("open"));
     modal.addEventListener("click", (e) => {
       if (e.target === modal) modal.classList.remove("open");
+    });
+  }
+
+  const contactBtn = document.getElementById("contact-btn");
+  const contactModal = document.getElementById("contact-modal");
+  const contactClose = document.getElementById("contact-close");
+  if (contactBtn && contactModal && contactClose) {
+    contactBtn.addEventListener("click", () => contactModal.classList.add("open"));
+    contactClose.addEventListener("click", () => contactModal.classList.remove("open"));
+    contactModal.addEventListener("click", (e) => {
+      if (e.target === contactModal) contactModal.classList.remove("open");
     });
   }
 
