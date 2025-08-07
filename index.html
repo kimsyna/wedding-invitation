@@ -46,14 +46,18 @@
         <div id="map" class="map-container"></div>
 </section>
 
-<script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=YOUR_CLIENT_ID"></script>
+<script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=yp02tw24ay"></script>
 <script>
-        const position = new naver.maps.LatLng(37.5665, 126.9780);
+        const position = new naver.maps.LatLng(37.2627302, 126.9966484);
         const map = new naver.maps.Map('map', {
                 center: position,
                 zoom: 15,
         });
-        new naver.maps.Marker({ position, map });
+        const marker = new naver.maps.Marker({ position, map });
+        const infoWindow = new naver.maps.InfoWindow({
+                content: '<div style="padding:5px;">메리빌리아더프레스티지</div>',
+        });
+        infoWindow.open(map, marker);
 </script>
 
 <script src="script.js"></script>
