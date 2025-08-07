@@ -19,6 +19,10 @@ body {
   line-height: 1.8;
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+
 h2,
 h3,
 h4,
@@ -346,6 +350,7 @@ h6 {
   max-width: 90%;
   max-height: 80%;
   border-radius: 8px;
+  transition: transform 0.3s ease;
 }
 
 .image-modal button {
@@ -492,8 +497,10 @@ h6 {
 
 .contact-image {
   width: 100%;
-  margin-bottom: 20px;
+  max-width: 400px;
+  margin: 20px auto;
   border-radius: 8px;
+  display: block;
 }
 
 .contact-columns {
