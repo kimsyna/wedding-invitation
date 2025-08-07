@@ -80,6 +80,7 @@ const getTemplate = () => `
   <div id="contact-modal" class="contact-modal">
     <div class="contact-content">
       <button id="contact-close" class="modal-close">&times;</button>
+      <img src="https://picsum.photos/seed/wed0/600/400" alt="contact photo" class="contact-image" />
       <div class="contact-columns">
         <div class="contact-column">
           <ul class="contact-list">
@@ -170,6 +171,7 @@ const getTemplate = () => `
 
   <section class="map-section fade-section">
     <h3>오시는 길</h3>
+    <p class="map-address">${VENUE_LOCATION}</p>
     <div id="map" class="map-container"></div>
     <div class="map-buttons">
       <a class="map-btn" href="https://map.naver.com/p/search/%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84%EB%8D%94%ED%94%84%EB%A0%88%EC%8A%A4%ED%8B%B0%EC%A7%80/place/1856237237" target="_blank" rel="noopener noreferrer"><img src="https://play-lh.googleusercontent.com/iqe1hFI03eD6nW3S8fxK_MDvNC8tDtod_gnhF9e8XN-IPmLXJvZVJLm-bQ4U5mKAVK0" alt="네이버맵 아이콘" class="btn-icon" />네이버 지도</a>
@@ -290,7 +292,7 @@ const init = async () => {
       const marker = new naver.maps.Marker({ position, map });
       const infoWindow = new naver.maps.InfoWindow({
         content:
-          `<div style="padding:5px; word-break:break-all;"><div>${VENUE_LOCATION}</div><div>${VENUE_HALL}</div></div>`,
+          `<div style="padding:5px; word-break:break-all; font-size:12px;"><div>${VENUE_LOCATION}</div><div>${VENUE_HALL}</div></div>`,
       });
       infoWindow.open(map, marker);
     } catch (e) {
