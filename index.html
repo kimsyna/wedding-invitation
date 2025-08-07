@@ -21,11 +21,11 @@
 	</div>
 
 
-	<div class="content">
-		<h2>홍길동 & 김영희</h2>
-		<p>2025년 10월 18일 (토) 오후 2시</p>
-		<p>서울 더라빌 그랜드홀</p>
-	</div>
+        <div class="content">
+                <h2>이성우 & 임상영</h2>
+                <p>2026년 5월 17일 (일) 오전 10시 30분</p>
+                <p>서울 더라빌 그랜드홀</p>
+        </div>
 	<div class="final-message">
 		<h1>저희 결혼합니다 💍</h1>
 <img src="https://www.iwedding.co.kr/center/iweddingb/product/800_17588_1730685980_90793400_3232256098.jpg" alt="신랑 신부 사진" />
@@ -46,6 +46,31 @@
         <div id="map" class="map-container"></div>
 </section>
 
+<section class="calendar-section">
+        <h3>달력</h3>
+        <div id="calendar" class="calendar-container"></div>
+</section>
+
+<section class="countdown-section">
+        <h3>남은 시간</h3>
+        <div id="countdown"></div>
+</section>
+
+<section class="directions-section">
+        <h3>오시는 방법</h3>
+        <h4>대중교통</h4>
+        <p>지하철 1호선 수원역 9번 출구에서 버스 7번 환승 후 메리빌리아더프레스티지 하차</p>
+        <h4>도보</h4>
+        <p>수원역 9번 출구에서 도보 15분</p>
+        <h4>주차</h4>
+        <p>예식장 지하 주차장 이용 가능 (3시간 무료)</p>
+</section>
+
+<section class="share-section">
+        <button id="share-url">URL 공유</button>
+        <button id="share-kakao">카카오톡 공유</button>
+</section>
+
 <script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=yp02tw24ay"></script>
 <script>
         const position = new naver.maps.LatLng(37.2627302, 126.9966484);
@@ -60,6 +85,7 @@
         infoWindow.open(map, marker);
 </script>
 
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js" crossorigin="anonymous"></script>
 <script src="script.js"></script>
 </body>
 </html>
