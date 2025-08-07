@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const shareKakaoBtn = document.getElementById('share-kakao');
         if (shareKakaoBtn && window.Kakao) {
                 try {
-                        Kakao.init('YOUR_APP_KEY');
+                        Kakao.init('ad9882a7a0abfaffbde309e333d2e43e');
                         shareKakaoBtn.addEventListener('click', () => {
                                 Kakao.Share.sendDefault({
                                         objectType: 'feed',
