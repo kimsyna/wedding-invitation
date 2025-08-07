@@ -1,124 +1,123 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>모바일 청첩장</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-                href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Nanum+Pen+Script&display=swap"
-                rel="stylesheet"
-        />
-        <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-<section class="container" id="container">
-	<div class="lid-icon">💌</div>
-        <div class="envelope-guide">
-                <p>저희의 결혼 소식이 도착했어요<br />아래 봉투를 열어주세요</p>
-                <div class="arrow">⬇</div>
-        </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>모바일 청첩장</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Nanum+Pen+Script&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1>이성우 & 임상영</h1>
+        <p class="date">2026년 5월 17일 (일) 오전 10시 30분</p>
+        <p class="location">메리빌리아더프레스티지</p>
+      </div>
+    </section>
 
+    <section class="invitation-section">
+      <h2>초대의 글</h2>
+      <p>저희의 시작을 함께 축복해 주세요.</p>
+    </section>
 
-        <div class="content">
-                <h2>이성우 & 임상영</h2>
-                <p>2026년 5월 17일 (일) 오전 10시 30분</p>
-               <p>메리빌리아더프레스티지</p>
-        </div>
-	<div class="final-message">
-		<h1>저희 결혼합니다 💍</h1>
-<img src="https://www.iwedding.co.kr/center/iweddingb/product/800_17588_1730685980_90793400_3232256098.jpg" alt="신랑 신부 사진" />
-	</div>
-</section>
+    <section class="info-section">
+      <h3>예식 안내</h3>
+      <p>2026년 5월 17일 (일) 오전 10시 30분</p>
+      <p>메리빌리아더프레스티지</p>
+    </section>
 
-<!-- 스크롤 유도용 공간 -->
-<div style="height: 300vh;"></div>
+    <!-- 오시는 길 -->
+    <section class="map-section">
+      <h3>오시는 길</h3>
+      <div id="map" class="map-container"></div>
+      <div class="map-buttons">
+        <a
+          class="map-btn"
+          href="https://map.naver.com/v5/search/%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84%EB%8D%94%ED%94%84%EB%A0%88%EC%8A%A4%ED%8B%B0%EC%A7%80"
+          target="_blank"
+          rel="noopener"
+          >네이버 지도</a
+        >
+        <a
+          class="map-btn"
+          href="https://map.kakao.com/link/map/%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84%EB%8D%94%ED%94%84%EB%A0%88%EC%8A%A4%ED%8B%B0%EC%A7%80,37.2627302,126.9966484"
+          target="_blank"
+          rel="noopener"
+          >카카오 지도</a
+        >
+      </div>
+    </section>
 
-<!-- index.html 가장 아래에 추가 -->
-<div id="scroll-stage-0" style="height: 100vh;"></div>
-<div id="scroll-stage-1" style="height: 100vh;"></div>
-<div id="scroll-stage-2" style="height: 100vh;"></div>
+    <section class="calendar-section">
+      <h3>달력</h3>
+      <div id="calendar" class="calendar-container"></div>
+    </section>
 
-<!-- 오시는 길 -->
-<section class="map-section">
-        <h3>오시는 길</h3>
-        <div id="map" class="map-container"></div>
-        <div class="map-buttons">
-                <a
-                        class="map-btn"
-                        href="https://map.naver.com/v5/search/%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84%EB%8D%94%ED%94%84%EB%A0%88%EC%8A%A4%ED%8B%B0%EC%A7%80"
-                        target="_blank"
-                        rel="noopener"
-                        >네이버 지도</a
-                >
-                <a
-                        class="map-btn"
-                        href="https://map.kakao.com/link/map/%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84%EB%8D%94%ED%94%84%EB%A0%88%EC%8A%A4%ED%8B%B0%EC%A7%80,37.2627302,126.9966484"
-                        target="_blank"
-                        rel="noopener"
-                        >카카오 지도</a
-                >
-        </div>
-</section>
+    <section class="countdown-section">
+      <h3>남은 시간</h3>
+      <div id="countdown"></div>
+    </section>
 
-<section class="calendar-section">
-        <h3>달력</h3>
-        <div id="calendar" class="calendar-container"></div>
-</section>
+    <section class="gallery-section">
+      <h3>갤러리</h3>
+      <div id="gallery-grid" class="gallery-grid"></div>
+      <button id="gallery-more">더보기</button>
+    </section>
 
-<section class="countdown-section">
-        <h3>남은 시간</h3>
-        <div id="countdown"></div>
-</section>
+    <div id="image-modal" class="image-modal">
+      <button id="modal-close" class="modal-close">&times;</button>
+      <button id="modal-prev" class="modal-prev">&#10094;</button>
+      <img id="modal-image" alt="gallery" />
+      <button id="modal-next" class="modal-next">&#10095;</button>
+    </div>
 
-<section class="gallery-section">
-        <h3>갤러리</h3>
-        <div id="gallery-grid" class="gallery-grid"></div>
-        <button id="gallery-more">더보기</button>
-</section>
+    <section class="directions-section">
+      <h3>오시는 방법</h3>
+      <h4>대중교통</h4>
+      <p>
+        지하철 1호선 수원역 9번 출구에서 버스 7번 환승 후 메리빌리아더프레스티지
+        하차
+      </p>
+      <h4>도보</h4>
+      <p>수원역 9번 출구에서 도보 15분</p>
+      <h4>주차</h4>
+      <p>예식장 지하 주차장 이용 가능 (3시간 무료)</p>
+    </section>
 
-<div id="image-modal" class="image-modal">
-        <button id="modal-close" class="modal-close">&times;</button>
-        <button id="modal-prev" class="modal-prev">&#10094;</button>
-        <img id="modal-image" alt="gallery" />
-        <button id="modal-next" class="modal-next">&#10095;</button>
-</div>
+    <section class="share-section">
+      <button id="share-url">URL 공유</button>
+      <button id="share-kakao">카카오톡 공유</button>
+    </section>
 
-<section class="directions-section">
-        <h3>오시는 방법</h3>
-        <h4>대중교통</h4>
-        <p>지하철 1호선 수원역 9번 출구에서 버스 7번 환승 후 메리빌리아더프레스티지 하차</p>
-        <h4>도보</h4>
-        <p>수원역 9번 출구에서 도보 15분</p>
-        <h4>주차</h4>
-        <p>예식장 지하 주차장 이용 가능 (3시간 무료)</p>
-</section>
+    <footer class="footer">© 2024 Wedding Invitation</footer>
 
-<section class="share-section">
-        <button id="share-url">URL 공유</button>
-        <button id="share-kakao">카카오톡 공유</button>
-</section>
+    <script
+      type="text/javascript"
+      src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=yp02tw24ay"
+    ></script>
+    <script>
+      const position = new naver.maps.LatLng(37.2627302, 126.9966484);
+      const map = new naver.maps.Map("map", {
+        center: position,
+        zoom: 15,
+      });
+      const marker = new naver.maps.Marker({ position, map });
+      const infoWindow = new naver.maps.InfoWindow({
+        content: '<div style="padding:5px;">메리빌리아더프레스티지</div>',
+      });
+      infoWindow.open(map, marker);
+    </script>
 
-<footer class="footer">
-        © 2024 Wedding Invitation
-</footer>
-
-<script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=yp02tw24ay"></script>
-<script>
-        const position = new naver.maps.LatLng(37.2627302, 126.9966484);
-        const map = new naver.maps.Map('map', {
-                center: position,
-                zoom: 15,
-        });
-        const marker = new naver.maps.Marker({ position, map });
-        const infoWindow = new naver.maps.InfoWindow({
-                content: '<div style="padding:5px;">메리빌리아더프레스티지</div>',
-        });
-        infoWindow.open(map, marker);
-</script>
-
-<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js" crossorigin="anonymous"></script>
-<script src="script.js"></script>
-</body>
+    <script
+      src="https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js"></script>
+  </body>
 </html>
