@@ -6,13 +6,15 @@
     <title>모바일 청첩장</title>
     <meta
       name="description"
-      content="이성우 ♥ 임상영의 모바일 청첩장 - 2026년 5월 17일 메리빌리아더프레스티지 가든홀"
+      content="이성우 ♥ 임상영의 모바일 청첩장 - 2026년 5월 17일 메리빌리아더프레스티지
+가든홀"
     />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="모바일 청첩장" />
     <meta
       property="og:description"
-      content="이성우 ♥ 임상영의 모바일 청첩장 - 2026년 5월 17일 메리빌리아더프레스티지 가든홀"
+      content="이성우 ♥ 임상영의 모바일 청첩장 - 2026년 5월 17일 메리빌리아더프레스티지
+가든홀"
     />
     <meta
       property="og:image"
@@ -23,7 +25,8 @@
     <meta name="twitter:title" content="모바일 청첩장" />
     <meta
       name="twitter:description"
-      content="이성우 ♥ 임상영의 모바일 청첩장 - 2026년 5월 17일 메리빌리아더프레스티지 가든홀"
+      content="이성우 ♥ 임상영의 모바일 청첩장 - 2026년 5월 17일 메리빌리아더프레스티지
+가든홀"
     />
     <meta
       name="twitter:image"
@@ -41,29 +44,30 @@
     <section class="hero-section">
       <div class="hero-content">
         <h1>이성우 ♥ 임상영</h1>
-        <p class="date">2026년 5월 17일 (일) 오전 10시 30분</p>
-        <p class="location">메리빌리아더프레스티지 가든홀</p>
+        <div class="hero-datetime">
+          <p class="date">2026년 5월 17일 (일)</p>
+          <p class="time">오전 10시 30분</p>
+        </div>
+        <p class="location">메리빌리아더프레스티지<br />가든홀</p>
       </div>
     </section>
 
     <section class="invitation-section fade-section">
       <h2>초대의 글</h2>
       <p>
-        서로를 만나 하나의 인연이 된 저희 두 사람이
-        <strong>2026년 5월 17일</strong> 가족과 친지 여러분 앞에서
-        백년가약을 맺으려 합니다. 그동안 아껴 주시고 지켜봐 주신
-        사랑에 보답하고자 진심을 다해 준비했습니다.
+        긴 시간 서로의 마음을 나누어 온 저희 두 사람이
+        <strong>2026년 5월 17일</strong> 새로운 시작을 약속합니다.
       </p>
       <p>
-        <span class="highlight">따뜻한 격려와 축복</span>으로 저희의 새로운
-        출발을 빛내 주시면 감사하겠습니다.
+        <span class="highlight">귀한 걸음</span>으로 자리해 주셔서
+        저희의 기쁨을 함께 나눠 주시면 감사하겠습니다.
       </p>
     </section>
 
     <section class="info-section fade-section">
       <h3>예식 안내</h3>
       <p>2026년 5월 17일 (일) 오전 10시 30분</p>
-      <p>메리빌리아더프레스티지 가든홀</p>
+      <p>메리빌리아더프레스티지<br />가든홀</p>
     </section>
 
     <!-- 오시는 길 -->
@@ -76,14 +80,22 @@
           href="https://map.naver.com/v5/search/%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84%EB%8D%94%ED%94%84%EB%A0%88%EC%8A%A4%ED%8B%B0%EC%A7%80"
           target="_blank"
           rel="noopener"
-          >네이버 지도</a
+          ><img
+            src="https://img.icons8.com/color/48/naver.png"
+            alt="네이버맵 아이콘"
+            class="btn-icon"
+          />네이버 지도</a
         >
         <a
           class="map-btn"
           href="https://map.kakao.com/link/map/%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84%EB%8D%94%ED%94%84%EB%A0%88%EC%8A%A4%ED%8B%B0%EC%A7%80,37.2627302,126.9966484"
           target="_blank"
           rel="noopener"
-          >카카오 지도</a
+          ><img
+            src="https://img.icons8.com/color/48/kakaomap.png"
+            alt="카카오맵 아이콘"
+            class="btn-icon"
+          />카카오 지도</a
         >
       </div>
     </section>
@@ -120,9 +132,27 @@
     </div>
 
     <section class="share-section fade-section">
-      <button id="copy-url">URL 복사</button>
-      <button id="share-url">URL 공유</button>
-      <button id="share-kakao">카카오톡 공유</button>
+      <button id="copy-url">
+        <img
+          src="https://img.icons8.com/ios-glyphs/30/copy.png"
+          alt=""
+          class="btn-icon"
+        />URL 복사
+      </button>
+      <button id="share-url">
+        <img
+          src="https://img.icons8.com/ios-glyphs/30/share.png"
+          alt=""
+          class="btn-icon"
+        />URL 공유
+      </button>
+      <button id="share-kakao">
+        <img
+          src="https://img.icons8.com/color/48/kakao-talk--v1.png"
+          alt=""
+          class="btn-icon"
+        />카카오톡 공유
+      </button>
     </section>
 
     <div id="copy-toast" class="copy-toast"></div>
@@ -142,7 +172,7 @@
       const marker = new naver.maps.Marker({ position, map });
       const infoWindow = new naver.maps.InfoWindow({
         content:
-          '<div style="padding:5px; word-break:break-all;">메리빌리아더프레스티지 가든홀</div>',
+          '<div style="padding:5px; word-break:break-all;">메리빌리아더프레스티지<br/>가든홀</div>',
       });
       infoWindow.open(map, marker);
     </script>

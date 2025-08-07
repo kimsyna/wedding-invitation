@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
           await navigator.share({
             title: "이성우 ♥ 임상영 청첩장",
-            text: "2026년 5월 17일 메리빌리아더프레스티지 가든홀",
+            text: "2026년 5월 17일 메리빌리아더프레스티지\n가든홀",
             url: window.location.href,
           });
         } catch (e) {
@@ -92,7 +92,8 @@ document.addEventListener("DOMContentLoaded", () => {
           objectType: "feed",
           content: {
             title: "이성우 ♥ 임상영 청첩장",
-            description: "2026년 5월 17일 일요일 오전 10시 30분 메리빌리아더프레스티지 가든홀",
+            description:
+              "2026년 5월 17일 일요일 오전 10시 30분 메리빌리아더프레스티지\n가든홀",
             imageUrl: "https://www.iwedding.co.kr/center/iweddingb/product/800_17588_1730685980_90793400_3232256098.jpg",
             link: {
               mobileWebUrl: window.location.href,
