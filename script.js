@@ -266,6 +266,16 @@ const init = async () => {
   const heroSection = document.querySelector(".hero-section");
   if (heroSection) {
     requestAnimationFrame(() => heroSection.classList.add("loaded"));
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const createPetal = () => {
+        const petal = document.createElement("span");
+        petal.className = "petal";
+        petal.style.left = `${Math.random() * 100}%`;
+        heroSection.appendChild(petal);
+        petal.addEventListener("animationend", () => petal.remove());
+      };
+      setInterval(createPetal, 1000);
+    }
   }
   const eventDate = new Date(2026, 4, 17, 10, 30);
   const setDirectionInfo = (cls, info) => {
