@@ -60,7 +60,7 @@ const getTemplate = () => `
     </p>
   </section>
   <section class="family-contact-section fade-section">
-    <img src="https://picsum.photos/seed/wed0/600/400" alt="contact photo" class="contact-image" width="600" height="400" loading="eager" />
+    <img src="https://picsum.photos/seed/wed0/600/400" alt="contact photo" class="contact-image" loading="eager" />
     <div class="family-section">
         <p class="info-line">
           <span class="info-name parent-name">${GROOM_FATHER}</span>
@@ -203,6 +203,7 @@ const getTemplate = () => `
   </section>
 
   <section class="countdown-section fade-section">
+    <p class="countdown-intro">${GROOM_NAME} & ${BRIDE_NAME}의 결혼식까지</p>
     <h3>남은 시간</h3>
     <div id="countdown"></div>
   </section>
@@ -449,10 +450,10 @@ const init = async () => {
     };
 
     const openModal = (idx) => {
-      currentIndex = idx;
-      updateSlides();
       modal.classList.add("open");
       document.body.classList.add("no-scroll");
+      currentIndex = idx;
+      updateSlides();
     };
 
     const slideTo = (dir) => {
@@ -576,7 +577,7 @@ const init = async () => {
         }
       });
     },
-    { threshold: 0.1 },
+    { threshold: 0.5 },
   );
   fadeSections.forEach((sec) => observer.observe(sec));
 };
