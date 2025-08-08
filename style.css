@@ -159,8 +159,19 @@ h6 {
 
 .share-section {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: var(--button-bg-color);
+}
+
+.share-row {
+  display: flex;
+  justify-content: center;
+}
+
+.share-row + .share-row {
+  margin-top: 10px;
 }
 
 .countdown-section {
@@ -346,39 +357,63 @@ h6 {
   display: flex;
 }
 
-.image-modal img {
-  max-width: 90%;
-  max-height: 80%;
-  border-radius: 8px;
+.modal-window {
+  width: 90%;
+  max-width: 600px;
+  overflow: hidden;
+}
+
+.modal-track {
+  display: flex;
+  width: 300%;
+  transform: translateX(-100%);
   transition: transform 0.3s ease;
 }
 
-.image-modal button {
+.modal-track img {
+  width: 80%;
+  margin: 0 10%;
+  flex-shrink: 0;
+  border-radius: 8px;
+}
+
+.modal-prev,
+.modal-next {
   position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.7);
   border: none;
   padding: 8px 12px;
   cursor: pointer;
   font-size: 1.5rem;
   border-radius: 4px;
+  z-index: 10;
 }
 
 .modal-prev {
   left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 .modal-next {
   right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 .modal-close {
-  top: 10px;
-  right: 10px;
-  font-size: 2rem;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .share-section button {
@@ -408,9 +443,6 @@ h6 {
   background: #ddd;
 }
 
-#share-kakao {
-  margin-left: 20px;
-}
 
 .share-section button:hover {
   background: var(--button-hover-bg-color);
@@ -598,11 +630,6 @@ h6 {
   margin-left: 8px;
   display: flex;
   align-items: center;
-}
-
-.divider-section {
-  height: 8px;
-  background: var(--secondary-bg-color);
 }
 
 .footer {

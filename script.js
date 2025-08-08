@@ -8,6 +8,8 @@ const EVENT_TIME_TEXT = "오전 10시 30분";
 const EVENT_DATETIME_TEXT = `${EVENT_DATE_TEXT} ${EVENT_TIME_TEXT}`;
 const VENUE_LOCATION = "메리빌리아더프레스티지";
 const VENUE_HALL = "2층 가든홀";
+const VENUE_ADDRESS =
+  "경기도 수원시 권선구 세화로 116 메리빌리아더프레스티지 웨딩홀 (서둔동 389)";
 const VENUE_LAT = 37.2627302;
 const VENUE_LNG = 126.9966484;
 const WALK_INFO = "수원역 9번 출구에서 도보 10분";
@@ -58,6 +60,7 @@ const getTemplate = () => `
     </p>
   </section>
   <section class="family-contact-section fade-section">
+    <img src="https://picsum.photos/seed/wed0/600/400" alt="contact photo" class="contact-image" />
     <div class="family-section">
       <p class="info-line">
         <span class="info-name">${GROOM_FATHER}</span>
@@ -74,7 +77,6 @@ const getTemplate = () => `
         <span class="info-name child-name">${BRIDE_FIRST_NAME}</span>
       </p>
     </div>
-    <img src="https://picsum.photos/seed/wed0/600/400" alt="contact photo" class="contact-image" />
     <button id="contact-btn" class="contact-btn">연락하기</button>
   </section>
 
@@ -171,7 +173,7 @@ const getTemplate = () => `
 
   <section class="map-section fade-section">
     <h3>오시는 길</h3>
-    <p class="map-address">${VENUE_LOCATION}</p>
+    <p class="map-address">${VENUE_ADDRESS}</p>
     <div id="map" class="map-container"></div>
     <div class="map-buttons">
       <a class="map-btn" href="https://map.naver.com/p/search/%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84%EB%8D%94%ED%94%84%EB%A0%88%EC%8A%A4%ED%8B%B0%EC%A7%80/place/1856237237" target="_blank" rel="noopener noreferrer"><img src="https://play-lh.googleusercontent.com/iqe1hFI03eD6nW3S8fxK_MDvNC8tDtod_gnhF9e8XN-IPmLXJvZVJLm-bQ4U5mKAVK0" alt="네이버맵 아이콘" class="btn-icon" />네이버 지도</a>
@@ -193,8 +195,6 @@ const getTemplate = () => `
     </div>
   </section>
 
-  <div class="divider-section"></div>
-
   <section class="calendar-section fade-section">
     <div id="calendar" class="calendar-container"></div>
   </section>
@@ -210,34 +210,44 @@ const getTemplate = () => `
   </section>
 
   <div id="image-modal" class="image-modal">
-    <button id="modal-close" class="modal-close">&times;</button>
     <button id="modal-prev" class="modal-prev">&#10094;</button>
-    <img id="modal-image" alt="gallery" />
+    <div class="modal-window">
+      <div id="modal-track" class="modal-track">
+        <img alt="gallery prev" />
+        <img alt="gallery current" />
+        <img alt="gallery next" />
+      </div>
+    </div>
     <button id="modal-next" class="modal-next">&#10095;</button>
+    <button id="modal-close" class="modal-close">&times;</button>
   </div>
 
   <section class="share-section fade-section">
-    <button id="copy-url">
-      <img
-        src="https://img.icons8.com/ios-glyphs/30/copy.png"
-        alt="복사 아이콘"
-        class="btn-icon"
-      />URL 복사
-    </button>
-    <button id="share-url">
-      <img
-        src="https://img.icons8.com/ios-glyphs/30/share.png"
-        alt="공유 아이콘"
-        class="btn-icon"
-      />URL 공유
-    </button>
-    <button id="share-kakao">
-      <img
-        src="https://play-lh.googleusercontent.com/Ob9Ys8yKMeyKzZvl3cB9JNSTui1lJwjSKD60IVYnlvU2DsahysGENJE-txiRIW9_72Vd"
-        alt="카카오톡 아이콘"
-        class="btn-icon"
-      />카카오톡 공유
-    </button>
+    <div class="share-row">
+      <button id="copy-url">
+        <img
+          src="https://img.icons8.com/ios-glyphs/30/copy.png"
+          alt="복사 아이콘"
+          class="btn-icon"
+        />URL 복사
+      </button>
+      <button id="share-url">
+        <img
+          src="https://img.icons8.com/ios-glyphs/30/share.png"
+          alt="공유 아이콘"
+          class="btn-icon"
+        />URL 공유
+      </button>
+    </div>
+    <div class="share-row">
+      <button id="share-kakao">
+        <img
+          src="https://play-lh.googleusercontent.com/Ob9Ys8yKMeyKzZvl3cB9JNSTui1lJwjSKD60IVYnlvU2DsahysGENJE-txiRIW9_72Vd"
+          alt="카카오톡 아이콘"
+          class="btn-icon"
+        />카카오톡 공유
+      </button>
+    </div>
   </section>
 
   <div id="copy-toast" class="copy-toast"></div>
@@ -292,7 +302,7 @@ const init = async () => {
       const marker = new naver.maps.Marker({ position, map });
       const infoWindow = new naver.maps.InfoWindow({
         content:
-          `<div style="padding:5px; word-break:break-all; font-size:12px;"><div>${VENUE_LOCATION}</div><div>${VENUE_HALL}</div></div>`,
+          `<div style="padding:5px; word-break:break-all; font-size:12px;"><div>${VENUE_ADDRESS}</div><div>${VENUE_HALL}</div></div>`,
       });
       infoWindow.open(map, marker);
     } catch (e) {
@@ -418,28 +428,43 @@ const init = async () => {
     );
     const moreBtn = document.getElementById("gallery-more");
     const modal = document.getElementById("image-modal");
-    const modalImg = document.getElementById("modal-image");
+    const modalTrack = document.getElementById("modal-track");
+    const trackImgs = modalTrack.querySelectorAll("img");
     const prevBtn = document.getElementById("modal-prev");
     const nextBtn = document.getElementById("modal-next");
     const closeBtn = document.getElementById("modal-close");
     let currentIndex = 0;
 
+    const updateSlides = () => {
+      const prevIndex = (currentIndex + images.length - 1) % images.length;
+      const nextIndex = (currentIndex + 1) % images.length;
+      trackImgs[0].src = images[prevIndex];
+      trackImgs[1].src = images[currentIndex];
+      trackImgs[2].src = images[nextIndex];
+      modalTrack.style.transform = "translateX(-100%)";
+    };
+
     const openModal = (idx) => {
       currentIndex = idx;
-      modalImg.src = images[idx];
+      updateSlides();
       modal.classList.add("open");
       document.body.classList.add("no-scroll");
-      modalImg.style.transform = "translateX(0)";
     };
 
-    const showPrev = () => {
-      currentIndex = (currentIndex + images.length - 1) % images.length;
-      modalImg.src = images[currentIndex];
-    };
-
-    const showNext = () => {
-      currentIndex = (currentIndex + 1) % images.length;
-      modalImg.src = images[currentIndex];
+    const slideTo = (dir) => {
+      modalTrack.style.transition = "transform 0.3s";
+      modalTrack.style.transform = `translateX(${dir === "next" ? -200 : 0}%)`;
+      modalTrack.addEventListener(
+        "transitionend",
+        () => {
+          currentIndex =
+            (currentIndex + (dir === "next" ? 1 : -1) + images.length) %
+            images.length;
+          updateSlides();
+          modalTrack.style.transition = "none";
+        },
+        { once: true },
+      );
     };
 
     images.forEach((src, idx) => {
@@ -459,57 +484,33 @@ const init = async () => {
       moreBtn.style.display = "none";
     });
 
-    prevBtn.addEventListener("click", showPrev);
-    nextBtn.addEventListener("click", showNext);
+    prevBtn.addEventListener("click", () => slideTo("prev"));
+    nextBtn.addEventListener("click", () => slideTo("next"));
     let startX = 0;
-    modalImg.addEventListener("touchstart", (e) => {
+    modalTrack.addEventListener("touchstart", (e) => {
       startX = e.touches[0].clientX;
-      modalImg.style.transition = "none";
+      modalTrack.style.transition = "none";
     });
-    modalImg.addEventListener("touchmove", (e) => {
+    modalTrack.addEventListener("touchmove", (e) => {
       const diff = e.touches[0].clientX - startX;
-      modalImg.style.transform = `translateX(${diff}px)`;
+      modalTrack.style.transform = `translateX(calc(-100% + ${diff}px))`;
     });
-    modalImg.addEventListener("touchend", (e) => {
+    modalTrack.addEventListener("touchend", (e) => {
       const diff = e.changedTouches[0].clientX - startX;
-      modalImg.style.transition = "transform 0.3s";
       if (diff < -50) {
-        modalImg.style.transform = "translateX(-100%)";
-        modalImg.addEventListener(
-          "transitionend",
-          () => {
-            showNext();
-            modalImg.style.transition = "none";
-            modalImg.style.transform = "translateX(100%)";
-            requestAnimationFrame(() => {
-              modalImg.style.transition = "transform 0.3s";
-              modalImg.style.transform = "translateX(0)";
-            });
-          },
-          { once: true },
-        );
+        slideTo("next");
       } else if (diff > 50) {
-        modalImg.style.transform = "translateX(100%)";
-        modalImg.addEventListener(
-          "transitionend",
-          () => {
-            showPrev();
-            modalImg.style.transition = "none";
-            modalImg.style.transform = "translateX(-100%)";
-            requestAnimationFrame(() => {
-              modalImg.style.transition = "transform 0.3s";
-              modalImg.style.transform = "translateX(0)";
-            });
-          },
-          { once: true },
-        );
+        slideTo("prev");
       } else {
-        modalImg.style.transform = "translateX(0)";
+        modalTrack.style.transition = "transform 0.3s";
+        modalTrack.style.transform = "translateX(-100%)";
       }
     });
     const closeGallery = () => {
       modal.classList.remove("open");
       document.body.classList.remove("no-scroll");
+      modalTrack.style.transition = "none";
+      modalTrack.style.transform = "translateX(-100%)";
     };
     closeBtn.addEventListener("click", closeGallery);
     modal.addEventListener("click", (e) => {
