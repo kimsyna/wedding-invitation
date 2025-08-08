@@ -107,6 +107,9 @@ h6 {
 
 .family-section {
   margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .info-line {
@@ -116,6 +119,8 @@ h6 {
   align-items: center;
   flex-wrap: wrap;
   gap: 4px;
+  width: 100%;
+  max-width: 360px;
 }
 
 .info-name {
@@ -127,8 +132,16 @@ h6 {
   margin: 0 4px;
 }
 
+.info-line .parent-name {
+  display: inline-block;
+  width: 4em;
+  text-align: center;
+}
+
 .family-section .child-name {
-  margin-left: 8px;
+  display: inline-block;
+  width: 4em;
+  text-align: center;
 }
 
 .info-line .relation {
@@ -175,10 +188,12 @@ h6 {
 
 .calendar-section {
   background: var(--secondary-bg-color);
+  padding: 40px 30px 20px;
 }
 
 .countdown-section {
   background: var(--secondary-bg-color);
+  padding: 20px 20px 40px;
 }
 
 .map-section h3,
@@ -206,6 +221,11 @@ h6 {
 
 .map-section .map-address {
   margin: 8px 0 12px;
+  font-weight: 300;
+}
+
+.map-section .map-hall {
+  margin: -4px 0 12px;
   font-weight: 300;
 }
 
@@ -255,7 +275,10 @@ h6 {
   background: #fff;
   padding: 20px;
   border-radius: 12px;
-  display: inline-block;
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .calendar-header {
@@ -292,14 +315,22 @@ h6 {
 
 
 .calendar-container .event-day {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 32px;
   height: 32px;
   margin: 0 auto;
-  background: #f0e6f6;
-  border-radius: 50%;
+  color: var(--highlight-color);
+  font-weight: 700;
+}
+
+.calendar-container .event-day::before {
+  content: "❤";
+  position: absolute;
+  font-size: 32px;
+  color: #f0e6f6;
 }
 
 #countdown {
@@ -652,12 +683,12 @@ h6 {
 
 .fade-section {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
+  transform: translateY(40px) scale(0.95);
+  transition: opacity 1.5s ease-out, transform 1.5s ease-out;
 }
 
 .fade-section.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 

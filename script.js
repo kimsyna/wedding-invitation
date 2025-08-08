@@ -63,17 +63,17 @@ const getTemplate = () => `
     <img src="https://picsum.photos/seed/wed0/600/400" alt="contact photo" class="contact-image" />
     <div class="family-section">
         <p class="info-line">
-          <span class="info-name">${GROOM_FATHER}</span>
+          <span class="info-name parent-name">${GROOM_FATHER}</span>
           <span class="name-dot">·</span>
-          <span class="info-name">${GROOM_MOTHER}</span>
+          <span class="info-name parent-name">${GROOM_MOTHER}</span>
           <span class="relation">의</span>
           <span class="relation-child">아들</span>
           <span class="info-name child-name">${GROOM_FIRST_NAME}</span>
         </p>
         <p class="info-line">
-          <span class="info-name">${BRIDE_FATHER}</span>
+          <span class="info-name parent-name">${BRIDE_FATHER}</span>
           <span class="name-dot">·</span>
-          <span class="info-name">${BRIDE_MOTHER}</span>
+          <span class="info-name parent-name">${BRIDE_MOTHER}</span>
           <span class="relation">의</span>
           <span class="relation-child">딸</span>
           <span class="info-name child-name">${BRIDE_FIRST_NAME}</span>
@@ -176,6 +176,7 @@ const getTemplate = () => `
   <section class="map-section fade-section">
     <h3>오시는 길</h3>
     <p class="map-address">${VENUE_ADDRESS}</p>
+    <p class="map-hall">${VENUE_LOCATION} ${VENUE_HALL}</p>
     <div id="map" class="map-container"></div>
     <div class="map-buttons">
       <a class="map-btn" href="https://map.naver.com/p/search/%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84%EB%8D%94%ED%94%84%EB%A0%88%EC%8A%A4%ED%8B%B0%EC%A7%80/place/1856237237" target="_blank" rel="noopener noreferrer"><img src="https://play-lh.googleusercontent.com/iqe1hFI03eD6nW3S8fxK_MDvNC8tDtod_gnhF9e8XN-IPmLXJvZVJLm-bQ4U5mKAVK0" alt="네이버맵 아이콘" class="btn-icon" />네이버 지도</a>
@@ -563,11 +564,12 @@ const init = async () => {
 
   const fadeSections = document.querySelectorAll(".fade-section");
   const observer = new IntersectionObserver(
-    (entries, obs) => {
+    (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
-          obs.unobserve(entry.target);
+        } else {
+          entry.target.classList.remove("visible");
         }
       });
     },
