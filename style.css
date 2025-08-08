@@ -18,6 +18,8 @@ body {
   font-weight: 300;
   background: var(--bg-color);
   color: var(--text-color);
+  overflow-x: hidden;
+  touch-action: pan-y;
   word-break: keep-all;
   letter-spacing: -0.02em;
   line-height: 1.8;
