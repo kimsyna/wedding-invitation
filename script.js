@@ -60,7 +60,7 @@ const getTemplate = () => `
     </p>
   </section>
   <section class="family-contact-section fade-section">
-    <img src="https://picsum.photos/seed/wed0/600/400" alt="contact photo" class="contact-image" />
+    <img src="https://picsum.photos/seed/wed0/600/400" alt="contact photo" class="contact-image" width="600" height="400" loading="eager" />
     <div class="family-section">
         <p class="info-line">
           <span class="info-name parent-name">${GROOM_FATHER}</span>
@@ -432,6 +432,7 @@ const init = async () => {
     const moreBtn = document.getElementById("gallery-more");
     const modal = document.getElementById("image-modal");
     const modalTrack = document.getElementById("modal-track");
+    const modalWindow = document.querySelector(".modal-window");
     const trackImgs = modalTrack.querySelectorAll("img");
     const prevBtn = document.getElementById("modal-prev");
     const nextBtn = document.getElementById("modal-next");
@@ -444,7 +445,7 @@ const init = async () => {
       trackImgs[0].src = images[prevIndex];
       trackImgs[1].src = images[currentIndex];
       trackImgs[2].src = images[nextIndex];
-      modalTrack.style.transform = "translateX(-100%)";
+      modalTrack.style.transform = `translateX(-${modalWindow.clientWidth}px)`;
     };
 
     const openModal = (idx) => {
@@ -456,7 +457,9 @@ const init = async () => {
 
     const slideTo = (dir) => {
       modalTrack.style.transition = "transform 0.3s";
-      modalTrack.style.transform = `translateX(${dir === "next" ? -200 : 0}%)`;
+      modalTrack.style.transform = `translateX(-${
+        dir === "next" ? modalWindow.clientWidth * 2 : 0
+      }px)`;
       modalTrack.addEventListener(
         "transitionend",
         () => {
@@ -496,7 +499,7 @@ const init = async () => {
     });
     modalTrack.addEventListener("touchmove", (e) => {
       const diff = e.touches[0].clientX - startX;
-      modalTrack.style.transform = `translateX(calc(-100% + ${diff}px))`;
+      modalTrack.style.transform = `translateX(${-modalWindow.clientWidth + diff}px)`;
     });
     modalTrack.addEventListener("touchend", (e) => {
       const diff = e.changedTouches[0].clientX - startX;
@@ -506,14 +509,14 @@ const init = async () => {
         slideTo("prev");
       } else {
         modalTrack.style.transition = "transform 0.3s";
-        modalTrack.style.transform = "translateX(-100%)";
+        modalTrack.style.transform = `translateX(-${modalWindow.clientWidth}px)`;
       }
     });
     const closeGallery = () => {
       modal.classList.remove("open");
       document.body.classList.remove("no-scroll");
       modalTrack.style.transition = "none";
-      modalTrack.style.transform = "translateX(-100%)";
+      modalTrack.style.transform = `translateX(-${modalWindow.clientWidth}px)`;
     };
     closeBtn.addEventListener("click", closeGallery);
     modal.addEventListener("click", (e) => {
