@@ -8,6 +8,16 @@
   --highlight-color: #b22222;
 }
 
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --text-color: #f5f5f5;
+  --secondary-bg-color: #2a2a2a;
+  --button-bg-color: #333333;
+  --button-text-color: #f5f5f5;
+  --button-hover-bg-color: #444444;
+  --highlight-color: #ff7f7f;
+}
+
 body {
   margin: 0;
   font-family: "Noto Sans KR", sans-serif;
@@ -488,6 +498,24 @@ h6 {
 }
 
 .contact-btn:hover {
+  background: var(--button-hover-bg-color);
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 8px 14px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background: var(--button-bg-color);
+  color: var(--button-text-color);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.theme-toggle:hover {
   background: var(--button-hover-bg-color);
 }
 

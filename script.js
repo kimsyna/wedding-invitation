@@ -37,6 +37,7 @@ const KAKAO_API_KEY =
   (window.env && window.env.KAKAO_API_KEY);
 
 const getTemplate = () => `
+  <button id="theme-toggle" class="theme-toggle">다크 모드</button>
   <section class="hero-section">
     <div class="hero-content">
       <div class="hero-names">
@@ -263,6 +264,26 @@ const loadExternalScript = (src) =>
 
 const init = async () => {
   document.body.innerHTML = getTemplate();
+  const savedTheme =
+    localStorage.getItem("theme") ||
+    (window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light");
+  document.documentElement.dataset.theme = savedTheme;
+  const themeToggle = document.getElementById("theme-toggle");
+  if (themeToggle) {
+    const updateToggle = (theme) => {
+      themeToggle.textContent = theme === "dark" ? "라이트 모드" : "다크 모드";
+    };
+    updateToggle(savedTheme);
+    themeToggle.addEventListener("click", () => {
+      const newTheme =
+        document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+      document.documentElement.dataset.theme = newTheme;
+      localStorage.setItem("theme", newTheme);
+      updateToggle(newTheme);
+    });
+  }
   const eventDate = new Date(2026, 4, 17, 10, 30);
   const setDirectionInfo = (cls, info) => {
     const item = document.querySelector(`.map-section .${cls}`);
