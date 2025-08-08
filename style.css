@@ -69,6 +69,13 @@ h6 {
   overflow: hidden;
 }
 
+@media screen and (min-aspect-ratio: 3/2) {
+  .hero-section {
+    background-size: contain;
+    background-position: center;
+  }
+}
+
 .hero-section::before {
   content: "";
   position: absolute;
@@ -296,6 +303,8 @@ h6 {
   background: #eaeaea;
   border-radius: 16px;
   overflow: hidden;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .map-buttons {
