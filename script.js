@@ -338,6 +338,7 @@ const init = async () => {
         maxZoom: 16,
         zoomControl: false,
         scrollWheel: false,
+        draggable: false,
         disableDoubleTapZoom: true,
         disableDoubleClickZoom: true,
         disableTwoFingerTapZoom: true,
