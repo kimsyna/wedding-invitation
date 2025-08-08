@@ -289,6 +289,12 @@ const applySequentialAnimation = (containerSelector) => {
 
 const init = async () => {
   document.body.innerHTML = getTemplate();
+  document.querySelectorAll("img").forEach((img) => {
+    if (!img.hasAttribute("loading")) {
+      img.loading = "lazy";
+      img.decoding = "async";
+    }
+  });
   const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
   ).matches;
@@ -475,10 +481,6 @@ const init = async () => {
       { length: 15 },
       (_, i) => `https://picsum.photos/seed/wed${i}/600/400`,
     );
-    images.forEach((src) => {
-      const img = new Image();
-      img.src = src;
-    });
     const moreBtn = document.getElementById("gallery-more");
     const modal = document.getElementById("image-modal");
     const swiperWrapper = document.getElementById("modal-swiper-wrapper");
@@ -517,6 +519,10 @@ const init = async () => {
       img.src = src;
       img.alt = `gallery image ${idx + 1}`;
       img.className = "gallery-image floating";
+      img.loading = "lazy";
+      img.decoding = "async";
+      img.width = 600;
+      img.height = 400;
       if (idx >= initialVisible) img.classList.add("hidden");
       img.addEventListener("click", () => openModal(idx));
       galleryGrid.appendChild(img);
@@ -526,6 +532,10 @@ const init = async () => {
       const slideImg = document.createElement("img");
       slideImg.src = src;
       slideImg.alt = `gallery slide ${idx + 1}`;
+      slideImg.loading = "lazy";
+      slideImg.decoding = "async";
+      slideImg.width = 600;
+      slideImg.height = 400;
       slide.appendChild(slideImg);
       swiperWrapper.appendChild(slide);
     });
