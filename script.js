@@ -62,7 +62,7 @@ const getTemplate = () => `
   </section>
   <section class="family-contact-section fade-section">
     <img
-      src="https://picsum.photos/seed/wed0/600/400"
+      src="images/wedding1.jpg"
       alt="contact photo"
       class="contact-image floating sequential-item"
       loading="eager"
@@ -512,8 +512,8 @@ const init = async () => {
       console.error("Failed to load Swiper", e);
     }
     const images = Array.from(
-      { length: 15 },
-      (_, i) => `https://picsum.photos/seed/wed${i}/600/400`,
+      { length: 18 },
+      (_, i) => `images/wedding${i + 1}.jpg`,
     );
     const moreBtn = document.getElementById("gallery-more");
     const modal = document.getElementById("image-modal");
