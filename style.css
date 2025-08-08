@@ -134,7 +134,6 @@ h6 {
 
 .info-line .parent-name {
   display: inline-block;
-  width: 4em;
   text-align: left;
 }
 
@@ -150,19 +149,10 @@ h6 {
   text-align: center;
 }
 
-.info-line .relation-son,
-.info-line .relation-daughter {
+.info-line .relation-child {
   display: inline-block;
   width: 2em;
   text-align: left;
-}
-
-.info-line .relation-son {
-  margin-right: 8px;
-}
-
-.info-line .relation-daughter {
-  margin-right: 12px;
 }
 
 .family-contact-section {
@@ -221,6 +211,10 @@ h6 {
   font-size: 1rem;
   font-weight: 400;
   color: #666;
+}
+
+.count-thin {
+  font-weight: 300;
 }
 
 .direction-item {
@@ -569,7 +563,7 @@ h6 {
 .contact-content {
   position: relative;
   background: #fff;
-  padding: 60px 32px;
+  padding: 60px 32px 40px;
   border-radius: 8px;
   width: 90%;
   max-width: 560px;

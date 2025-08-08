@@ -67,7 +67,7 @@ const getTemplate = () => `
           <span class="name-dot">·</span>
           <span class="info-name parent-name">${GROOM_MOTHER}</span>
           <span class="relation">의</span>
-          <span class="relation-son">아들</span>
+          <span class="relation-child">아들</span>
           <span class="info-name child-name">${GROOM_FIRST_NAME}</span>
         </p>
         <p class="info-line">
@@ -75,7 +75,7 @@ const getTemplate = () => `
           <span class="name-dot">·</span>
           <span class="info-name parent-name">${BRIDE_MOTHER}</span>
           <span class="relation">의</span>
-          <span class="relation-daughter">딸</span>
+          <span class="relation-child">딸</span>
           <span class="info-name child-name">${BRIDE_FIRST_NAME}</span>
         </p>
     </div>
@@ -200,7 +200,7 @@ const getTemplate = () => `
 
   <section class="schedule-section fade-section">
     <div id="calendar" class="calendar-container"></div>
-    <p class="countdown-intro">${GROOM_NAME} & ${BRIDE_NAME}의 결혼식까지</p>
+    <p class="countdown-intro">${GROOM_NAME} & ${BRIDE_NAME}<span class="count-thin">의</span> 결혼식<span class="count-thin">까지</span></p>
     <h3>남은 시간</h3>
     <div id="countdown"></div>
   </section>
@@ -462,17 +462,21 @@ const init = async () => {
     const slideTo = (dir) => {
       if (isSliding) return;
       isSliding = true;
-      modalTrack.style.transition = "transform 0.3s ease";
+      currentIndex =
+        (currentIndex + (dir === "next" ? 1 : -1) + images.length) %
+        images.length;
+      updateSlides();
+      modalTrack.style.transition = "none";
       modalTrack.style.transform = `translateX(-${
         dir === "next" ? modalWindow.clientWidth * 2 : 0
       }px)`;
+      requestAnimationFrame(() => {
+        modalTrack.style.transition = "transform 0.3s ease";
+        modalTrack.style.transform = `translateX(-${modalWindow.clientWidth}px)`;
+      });
       modalTrack.addEventListener(
         "transitionend",
         () => {
-          currentIndex =
-            (currentIndex + (dir === "next" ? 1 : -1) + images.length) %
-            images.length;
-          updateSlides();
           modalTrack.style.transition = "none";
           isSliding = false;
         },
