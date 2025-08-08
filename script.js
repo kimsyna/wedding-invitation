@@ -61,7 +61,12 @@ const getTemplate = () => `
     </p>
   </section>
   <section class="family-contact-section fade-section">
-    <img src="https://picsum.photos/seed/wed0/600/400" alt="contact photo" class="contact-image floating sequential-item" loading="eager" />
+    <img
+      src="https://picsum.photos/seed/wed0/600/400"
+      alt="contact photo"
+      class="contact-image floating sequential-item"
+      loading="eager"
+    />
     <div class="family-section">
         <p class="info-line sequential-item">
           <span class="info-name parent-name">${GROOM_FATHER}</span>
@@ -550,7 +555,7 @@ const init = async () => {
       img.src = src;
       img.alt = `gallery image ${idx + 1}`;
       img.className = "gallery-image floating";
-      img.loading = "lazy";
+      img.loading = idx < initialVisible ? "eager" : "lazy";
       img.decoding = "async";
       img.width = 600;
       img.height = 400;
