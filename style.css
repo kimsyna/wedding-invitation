@@ -80,7 +80,7 @@ h6 {
 }
 
 .hero-section.hero-zoom {
-  animation: hero-zoom 10s ease-out forwards;
+  animation: hero-zoom 5s ease-out forwards;
 }
 
 @keyframes hero-zoom {

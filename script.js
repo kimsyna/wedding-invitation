@@ -328,8 +328,20 @@ const init = async () => {
       );
       const position = new naver.maps.LatLng(VENUE_LAT, VENUE_LNG);
       const map = new naver.maps.Map("map", {
-        center: position,
-        zoom: 15,
+        center: new naver.maps.LatLng(
+          VENUE_LAT + 0.0025,
+          VENUE_LNG + 0.003,
+        ),
+        zoom: 17,
+        minZoom: 17,
+        maxZoom: 17,
+        zoomControl: false,
+        scrollWheel: false,
+        disableDoubleTapZoom: true,
+        disableDoubleClickZoom: true,
+        disableTwoFingerTapZoom: true,
+        pinchZoom: false,
+        keyboardShortcuts: false,
       });
       const marker = new naver.maps.Marker({ position, map });
       const infoWindow = new naver.maps.InfoWindow({
