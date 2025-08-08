@@ -504,7 +504,7 @@ const init = async () => {
     const cols = getComputedStyle(galleryGrid)
       .getPropertyValue("grid-template-columns")
       .split(" ").length;
-    const initialVisible = cols === 2 ? 8 : 9; // 필요한 경우 다른 규칙 적용
+    const initialVisible = Math.min(cols * 4, images.length);
 
     images.forEach((src, idx) => {
       const img = document.createElement("img");
@@ -523,6 +523,10 @@ const init = async () => {
       slide.appendChild(slideImg);
       swiperWrapper.appendChild(slide);
     });
+
+    if (images.length <= initialVisible) {
+      moreBtn.style.display = "none";
+    }
 
     const closeGallery = () => {
       modal.classList.remove("open");
