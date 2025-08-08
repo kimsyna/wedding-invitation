@@ -263,6 +263,10 @@ const loadExternalScript = (src) =>
 
 const init = async () => {
   document.body.innerHTML = getTemplate();
+  const heroSection = document.querySelector(".hero-section");
+  if (heroSection) {
+    requestAnimationFrame(() => heroSection.classList.add("loaded"));
+  }
   const eventDate = new Date(2026, 4, 17, 10, 30);
   const setDirectionInfo = (cls, info) => {
     const item = document.querySelector(`.map-section .${cls}`);
