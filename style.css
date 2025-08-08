@@ -66,6 +66,7 @@ h6 {
   text-align: center;
   background: url("https://www.iwedding.co.kr/center/iweddingb/product/800_17588_1730685980_90793400_3232256098.jpg")
     center/cover no-repeat;
+  background-color: #fff;
   color: #fff;
   position: relative;
   overflow: hidden;
@@ -305,6 +306,12 @@ h6 {
   overflow: hidden;
   max-width: 600px;
   margin: 0 auto;
+}
+
+@media (orientation: landscape) {
+  .map-container {
+    max-width: 400px;
+  }
 }
 
 .map-buttons {
@@ -604,7 +611,7 @@ h6 {
 .contact-content {
   position: relative;
   background: #fff;
-  padding: 32px 32px 40px;
+  padding: 24px 32px 40px;
   border-radius: 8px;
   width: calc(100% - 32px);
   max-width: 560px;

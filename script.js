@@ -506,7 +506,11 @@ const init = async () => {
     const cols = getComputedStyle(galleryGrid)
       .getPropertyValue("grid-template-columns")
       .split(" ").length;
-    const initialVisible = Math.min(cols * 4, images.length);
+    const visibleMap = { 2: 8, 3: 9, 4: 8 };
+    const initialVisible = Math.min(
+      visibleMap[cols] ?? 8,
+      images.length
+    );
 
     images.forEach((src, idx) => {
       const img = document.createElement("img");
