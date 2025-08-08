@@ -499,9 +499,13 @@ const init = async () => {
   // 갤러리
   const galleryGrid = document.getElementById("gallery-grid");
   if (galleryGrid) {
-    await loadExternalScript(
-      "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js",
-    );
+    try {
+      await loadExternalScript(
+        "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js",
+      );
+    } catch (e) {
+      console.error("Failed to load Swiper", e);
+    }
     const images = Array.from(
       { length: 15 },
       (_, i) => `https://picsum.photos/seed/wed${i}/600/400`,
@@ -513,7 +517,7 @@ const init = async () => {
     let swiper;
 
     const initSwiper = () => {
-      if (!swiper) {
+      if (typeof Swiper !== "undefined" && !swiper) {
         swiper = new Swiper("#modal-swiper", {
           navigation: {
             nextEl: ".swiper-button-next",
@@ -527,7 +531,9 @@ const init = async () => {
       modal.classList.add("open");
       document.body.classList.add("no-scroll");
       initSwiper();
-      swiper.slideTo(idx, 0);
+      if (swiper) {
+        swiper.slideTo(idx, 0);
+      }
     };
 
     const cols = getComputedStyle(galleryGrid)
