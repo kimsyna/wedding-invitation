@@ -123,13 +123,13 @@ h6 {
   max-width: 360px;
 }
 
+.info-line > span {
+  margin: 0 4px;
+}
+
 .info-name {
   font-weight: 500;
   font-size: 1.1em;
-}
-
-.family-section .name-dot {
-  margin: 0 4px;
 }
 
 .info-line .parent-name {
@@ -148,6 +148,21 @@ h6 {
   display: inline-block;
   width: 1em;
   text-align: center;
+}
+
+.info-line .relation-son,
+.info-line .relation-daughter {
+  display: inline-block;
+  width: 2em;
+  text-align: left;
+}
+
+.info-line .relation-son {
+  margin-right: 8px;
+}
+
+.info-line .relation-daughter {
+  margin-right: 12px;
 }
 
 .family-contact-section {
@@ -203,8 +218,8 @@ h6 {
 
 .countdown-intro {
   margin: 0 0 8px;
-  font-size: 0.9rem;
-  font-weight: 300;
+  font-size: 1rem;
+  font-weight: 400;
   color: #666;
 }
 
@@ -284,7 +299,7 @@ h6 {
   display: block;
   width: 100%;
   max-width: 400px;
-  margin: 0 auto;
+  margin: 0 auto 20px;
   box-sizing: border-box;
 }
 
@@ -426,7 +441,7 @@ h6 {
 .modal-track {
   display: flex;
   transform: translateX(-100%);
-  transition: transform 0.3s ease;
+  transition: none;
 }
 
 .modal-track img {
