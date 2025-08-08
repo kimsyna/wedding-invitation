@@ -80,16 +80,16 @@ h6 {
 }
 
 .hero-section.hero-zoom {
-  animation: hero-zoom 5s ease-out forwards;
+  animation: hero-zoom 3s ease-out forwards;
 }
 
 @keyframes hero-zoom {
   from {
     transform: scale(1);
-    opacity: 0.8;
+    opacity: 0.7;
   }
   to {
-    transform: scale(1.05);
+    transform: scale(1.1);
     opacity: 1;
   }
 }
@@ -589,7 +589,7 @@ h6 {
 .contact-content {
   position: relative;
   background: #fff;
-  padding: 40px 32px;
+  padding: 32px 32px 40px;
   border-radius: 8px;
   width: calc(100% - 32px);
   max-width: 560px;
