@@ -62,20 +62,22 @@ const getTemplate = () => `
   <section class="family-contact-section fade-section">
     <img src="https://picsum.photos/seed/wed0/600/400" alt="contact photo" class="contact-image" />
     <div class="family-section">
-      <p class="info-line">
-        <span class="info-name">${GROOM_FATHER}</span>
-        <span class="name-dot">·</span>
-        <span class="info-name">${GROOM_MOTHER}</span>
-        <span class="relation">의 아들</span>
-        <span class="info-name child-name">${GROOM_FIRST_NAME}</span>
-      </p>
-      <p class="info-line">
-        <span class="info-name">${BRIDE_FATHER}</span>
-        <span class="name-dot">·</span>
-        <span class="info-name">${BRIDE_MOTHER}</span>
-        <span class="relation">의 딸</span>
-        <span class="info-name child-name">${BRIDE_FIRST_NAME}</span>
-      </p>
+        <p class="info-line">
+          <span class="info-name">${GROOM_FATHER}</span>
+          <span class="name-dot">·</span>
+          <span class="info-name">${GROOM_MOTHER}</span>
+          <span class="relation">의</span>
+          <span class="relation-child">아들</span>
+          <span class="info-name child-name">${GROOM_FIRST_NAME}</span>
+        </p>
+        <p class="info-line">
+          <span class="info-name">${BRIDE_FATHER}</span>
+          <span class="name-dot">·</span>
+          <span class="info-name">${BRIDE_MOTHER}</span>
+          <span class="relation">의</span>
+          <span class="relation-child">딸</span>
+          <span class="info-name child-name">${BRIDE_FIRST_NAME}</span>
+        </p>
     </div>
     <button id="contact-btn" class="contact-btn">연락하기</button>
   </section>
@@ -302,7 +304,7 @@ const init = async () => {
       const marker = new naver.maps.Marker({ position, map });
       const infoWindow = new naver.maps.InfoWindow({
         content:
-          `<div style="padding:5px; word-break:break-all; font-size:12px;"><div>${VENUE_ADDRESS}</div><div>${VENUE_HALL}</div></div>`,
+          `<div style="padding:5px; word-break:break-all; font-size:12px;"><div>${VENUE_LOCATION}</div><div>${VENUE_HALL}</div></div>`,
       });
       infoWindow.open(map, marker);
     } catch (e) {
