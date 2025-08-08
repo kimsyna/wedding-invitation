@@ -56,7 +56,7 @@ const getTemplate = () => `
       꽃 향기 가득한 봄날, 서로를 존중하며 걸어온 두 사람이 한 자리에 서려 합니다.
     </p>
     <p class="sequential-item">
-      <strong class="liquid-glass">${EVENT_DATE_TEXT}</strong>
+      <strong>${EVENT_DATE_TEXT}</strong>
       따뜻한 축복의 발걸음으로 함께해 주시면 큰 기쁨이 되겠습니다.
     </p>
   </section>

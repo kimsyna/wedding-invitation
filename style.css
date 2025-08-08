@@ -76,7 +76,9 @@ h6 {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.2);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
 }
 
 .hero-section.hero-zoom {
@@ -720,22 +722,6 @@ h6 {
   font-weight: 700;
 }
 
-.liquid-glass {
-  color: var(--highlight-color);
-  font-weight: 700;
-}
-
-@supports ((-webkit-background-clip: text) or (background-clip: text)) {
-  .liquid-glass {
-    background: linear-gradient(90deg, var(--highlight-color), #ff7f7f);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
-  }
-}
 
 .fade-section {
   opacity: 0;
