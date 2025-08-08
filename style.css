@@ -121,6 +121,7 @@ h6 {
   height: 3px;
   background: #fff;
   margin: 12px 0;
+  border-radius: 3px;
 }
 
 .hero-content .location {
