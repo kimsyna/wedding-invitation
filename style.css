@@ -80,7 +80,7 @@ h6 {
   width: 60px;
   height: 1px;
   background: #fff;
-  margin: 8px 0;
+  margin: 12px 0;
 }
 
 .hero-content .location {
@@ -140,12 +140,6 @@ h6 {
 .family-section .child-name {
   display: inline-block;
   width: 4em;
-  text-align: center;
-}
-
-.info-line .relation {
-  display: inline-block;
-  width: 1em;
   text-align: center;
 }
 
@@ -426,45 +420,19 @@ h6 {
   display: flex;
 }
 
-.modal-window {
+.image-modal .swiper {
   width: 90%;
   max-width: 600px;
-  overflow: hidden;
 }
 
-.modal-track {
-  display: flex;
-  transform: translateX(-100%);
-  transition: none;
-}
-
-.modal-track img {
+.image-modal .swiper-slide img {
   width: 100%;
-  margin: 0;
-  flex-shrink: 0;
   border-radius: 8px;
 }
 
-.modal-prev,
-.modal-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.7);
-  border: none;
-  padding: 8px 12px;
-  cursor: pointer;
-  font-size: 1.5rem;
-  border-radius: 4px;
-  z-index: 10;
-}
-
-.modal-prev {
-  left: 10px;
-}
-
-.modal-next {
-  right: 10px;
+.image-modal .swiper-button-prev,
+.image-modal .swiper-button-next {
+  color: #333;
 }
 
 .modal-close {
@@ -563,7 +531,7 @@ h6 {
 .contact-content {
   position: relative;
   background: #fff;
-  padding: 60px 32px 40px;
+  padding: 0 32px 40px;
   border-radius: 8px;
   width: 90%;
   max-width: 560px;
@@ -593,6 +561,7 @@ h6 {
 }
 
 .contact-columns {
+  margin-top: 32px;
   display: flex;
 }
 
@@ -669,6 +638,10 @@ h6 {
   display: flex;
   flex-direction: column;
   gap: 2px;
+}
+
+.account-label {
+  font-weight: 500;
 }
 
 .account-number {

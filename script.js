@@ -65,16 +65,14 @@ const getTemplate = () => `
         <p class="info-line">
           <span class="info-name parent-name">${GROOM_FATHER}</span>
           <span class="name-dot">·</span>
-          <span class="info-name parent-name">${GROOM_MOTHER}</span>
-          <span class="relation">의</span>
+          <span class="info-name parent-name">${GROOM_MOTHER}의</span>
           <span class="relation-child">아들</span>
           <span class="info-name child-name">${GROOM_FIRST_NAME}</span>
         </p>
         <p class="info-line">
           <span class="info-name parent-name">${BRIDE_FATHER}</span>
           <span class="name-dot">·</span>
-          <span class="info-name parent-name">${BRIDE_MOTHER}</span>
-          <span class="relation">의</span>
+          <span class="info-name parent-name">${BRIDE_MOTHER}의</span>
           <span class="relation-child">딸</span>
           <span class="info-name child-name">${BRIDE_FIRST_NAME}</span>
         </p>
@@ -121,7 +119,8 @@ const getTemplate = () => `
             <li class="account">
               <div class="account-info">
                 <span class="account-label">신랑 측 계좌</span>
-                <span class="account-number">${GROOM_ACCOUNT_BANK} ${GROOM_ACCOUNT_NUMBER}</span>
+                <span class="account-bank">${GROOM_ACCOUNT_BANK}</span>
+                <span class="account-number">${GROOM_ACCOUNT_NUMBER}</span>
               </div>
               <button class="copy-account" data-account="${GROOM_ACCOUNT_NUMBER} ${GROOM_ACCOUNT_BANK}"><img src="https://img.icons8.com/ios-glyphs/16/copy.png" alt="복사" /></button>
             </li>
@@ -162,7 +161,8 @@ const getTemplate = () => `
             <li class="account">
               <div class="account-info">
                 <span class="account-label">신부 측 계좌</span>
-                <span class="account-number">${BRIDE_ACCOUNT_BANK} ${BRIDE_ACCOUNT_NUMBER}</span>
+                <span class="account-bank">${BRIDE_ACCOUNT_BANK}</span>
+                <span class="account-number">${BRIDE_ACCOUNT_NUMBER}</span>
               </div>
               <button class="copy-account" data-account="${BRIDE_ACCOUNT_NUMBER} ${BRIDE_ACCOUNT_BANK}"><img src="https://img.icons8.com/ios-glyphs/16/copy.png" alt="복사" /></button>
             </li>
@@ -211,15 +211,11 @@ const getTemplate = () => `
   </section>
 
   <div id="image-modal" class="image-modal">
-    <button id="modal-prev" class="modal-prev">&#10094;</button>
-    <div class="modal-window">
-      <div id="modal-track" class="modal-track">
-        <img alt="gallery prev" />
-        <img alt="gallery current" />
-        <img alt="gallery next" />
-      </div>
+    <div id="modal-swiper" class="swiper">
+      <div id="modal-swiper-wrapper" class="swiper-wrapper"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
     </div>
-    <button id="modal-next" class="modal-next">&#10095;</button>
     <button id="modal-close" class="modal-close">&times;</button>
   </div>
 
@@ -423,6 +419,9 @@ const init = async () => {
   // 갤러리
   const galleryGrid = document.getElementById("gallery-grid");
   if (galleryGrid) {
+    await loadExternalScript(
+      "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js",
+    );
     const images = Array.from(
       { length: 15 },
       (_, i) => `https://picsum.photos/seed/wed${i}/600/400`,
@@ -433,55 +432,26 @@ const init = async () => {
     });
     const moreBtn = document.getElementById("gallery-more");
     const modal = document.getElementById("image-modal");
-    const modalTrack = document.getElementById("modal-track");
-    const modalWindow = document.querySelector(".modal-window");
-    const trackImgs = modalTrack.querySelectorAll("img");
-    const prevBtn = document.getElementById("modal-prev");
-    const nextBtn = document.getElementById("modal-next");
+    const swiperWrapper = document.getElementById("modal-swiper-wrapper");
     const closeBtn = document.getElementById("modal-close");
-    let currentIndex = 0;
-    let isSliding = false;
+    let swiper;
 
-    const updateSlides = () => {
-      const prevIndex = (currentIndex + images.length - 1) % images.length;
-      const nextIndex = (currentIndex + 1) % images.length;
-      trackImgs[0].src = images[prevIndex];
-      trackImgs[1].src = images[currentIndex];
-      trackImgs[2].src = images[nextIndex];
-      modalTrack.style.transform = `translateX(-${modalWindow.clientWidth}px)`;
+    const initSwiper = () => {
+      if (!swiper) {
+        swiper = new Swiper("#modal-swiper", {
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        });
+      }
     };
 
     const openModal = (idx) => {
       modal.classList.add("open");
       document.body.classList.add("no-scroll");
-      currentIndex = idx;
-      modalTrack.style.transition = "none";
-      updateSlides();
-    };
-
-    const slideTo = (dir) => {
-      if (isSliding) return;
-      isSliding = true;
-      currentIndex =
-        (currentIndex + (dir === "next" ? 1 : -1) + images.length) %
-        images.length;
-      updateSlides();
-      modalTrack.style.transition = "none";
-      modalTrack.style.transform = `translateX(-${
-        dir === "next" ? modalWindow.clientWidth * 2 : 0
-      }px)`;
-      requestAnimationFrame(() => {
-        modalTrack.style.transition = "transform 0.3s ease";
-        modalTrack.style.transform = `translateX(-${modalWindow.clientWidth}px)`;
-      });
-      modalTrack.addEventListener(
-        "transitionend",
-        () => {
-          modalTrack.style.transition = "none";
-          isSliding = false;
-        },
-        { once: true },
-      );
+      initSwiper();
+      swiper.slideTo(idx, 0);
     };
 
     images.forEach((src, idx) => {
@@ -492,7 +462,20 @@ const init = async () => {
       if (idx >= 9) img.classList.add("hidden");
       img.addEventListener("click", () => openModal(idx));
       galleryGrid.appendChild(img);
+
+      const slide = document.createElement("div");
+      slide.className = "swiper-slide";
+      const slideImg = document.createElement("img");
+      slideImg.src = src;
+      slideImg.alt = `gallery slide ${idx + 1}`;
+      slide.appendChild(slideImg);
+      swiperWrapper.appendChild(slide);
     });
+
+    const closeGallery = () => {
+      modal.classList.remove("open");
+      document.body.classList.remove("no-scroll");
+    };
 
     moreBtn.addEventListener("click", () => {
       galleryGrid
@@ -501,34 +484,6 @@ const init = async () => {
       moreBtn.style.display = "none";
     });
 
-    prevBtn.addEventListener("click", () => slideTo("prev"));
-    nextBtn.addEventListener("click", () => slideTo("next"));
-    let startX = 0;
-    modalTrack.addEventListener("touchstart", (e) => {
-      startX = e.touches[0].clientX;
-      modalTrack.style.transition = "none";
-    });
-    modalTrack.addEventListener("touchmove", (e) => {
-      const diff = e.touches[0].clientX - startX;
-      modalTrack.style.transform = `translateX(${-modalWindow.clientWidth + diff}px)`;
-    });
-    modalTrack.addEventListener("touchend", (e) => {
-      const diff = e.changedTouches[0].clientX - startX;
-      if (diff < -50) {
-        slideTo("next");
-      } else if (diff > 50) {
-        slideTo("prev");
-      } else {
-        modalTrack.style.transition = "transform 0.3s";
-        modalTrack.style.transform = `translateX(-${modalWindow.clientWidth}px)`;
-      }
-    });
-    const closeGallery = () => {
-      modal.classList.remove("open");
-      document.body.classList.remove("no-scroll");
-      modalTrack.style.transition = "none";
-      modalTrack.style.transform = `translateX(-${modalWindow.clientWidth}px)`;
-    };
     closeBtn.addEventListener("click", closeGallery);
     modal.addEventListener("click", (e) => {
       if (e.target === modal) closeGallery();
