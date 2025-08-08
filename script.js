@@ -296,14 +296,7 @@ const init = async () => {
   applySequentialAnimation(".family-contact-section");
   const heroSection = document.querySelector(".hero-section");
   if (heroSection && !prefersReducedMotion) {
-    const createPetal = () => {
-      const petal = document.createElement("span");
-      petal.className = "petal";
-      petal.style.left = `${Math.random() * 100}%`;
-      heroSection.appendChild(petal);
-      petal.addEventListener("animationend", () => petal.remove());
-    };
-    setInterval(createPetal, 1000);
+    heroSection.classList.add("hero-zoom");
   }
   const eventDate = new Date(2026, 4, 17, 10, 30);
   const setDirectionInfo = (cls, info) => {
