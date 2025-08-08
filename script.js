@@ -473,12 +473,17 @@ const init = async () => {
       swiper.slideTo(idx, 0);
     };
 
+    const cols = getComputedStyle(galleryGrid)
+      .getPropertyValue("grid-template-columns")
+      .split(" ").length;
+    const initialVisible = cols === 2 ? 8 : 9; // 필요한 경우 다른 규칙 적용
+
     images.forEach((src, idx) => {
       const img = document.createElement("img");
       img.src = src;
       img.alt = `gallery image ${idx + 1}`;
       img.className = "gallery-image";
-      if (idx >= 9) img.classList.add("hidden");
+      if (idx >= initialVisible) img.classList.add("hidden");
       img.addEventListener("click", () => openModal(idx));
       galleryGrid.appendChild(img);
 
