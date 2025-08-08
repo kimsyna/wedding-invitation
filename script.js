@@ -39,37 +39,37 @@ const KAKAO_API_KEY =
 const getTemplate = () => `
   <section class="hero-section">
     <div class="hero-content">
-      <div class="hero-names">
+      <div class="hero-names sequential-item">
         <p class="groom">${GROOM_NAME}</p>
         <div class="name-separator"></div>
         <p class="bride">${BRIDE_NAME}</p>
       </div>
-      <p class="hero-datetime">${EVENT_DATETIME_TEXT}</p>
-      <p class="location">${VENUE_LOCATION}</p>
-      <p class="hall">${VENUE_HALL}</p>
+      <p class="hero-datetime sequential-item">${EVENT_DATETIME_TEXT}</p>
+      <p class="location sequential-item">${VENUE_LOCATION}</p>
+      <p class="hall sequential-item">${VENUE_HALL}</p>
     </div>
   </section>
 
   <section class="invitation-section fade-section">
-    <h2>초대의 글</h2>
-    <p>
+    <h2 class="sequential-item">초대의 글</h2>
+    <p class="sequential-item">
       꽃 향기 가득한 봄날, 서로를 존중하며 걸어온 두 사람이 한 자리에 서려 합니다.
     </p>
-    <p>
+    <p class="sequential-item">
       <strong>${EVENT_DATE_TEXT}</strong> 따뜻한 축복의 발걸음으로 함께해 주시면 큰 기쁨이 되겠습니다.
     </p>
   </section>
   <section class="family-contact-section fade-section">
-    <img src="https://picsum.photos/seed/wed0/600/400" alt="contact photo" class="contact-image" loading="eager" />
+    <img src="https://picsum.photos/seed/wed0/600/400" alt="contact photo" class="contact-image sequential-item" loading="eager" />
     <div class="family-section">
-        <p class="info-line">
+        <p class="info-line sequential-item">
           <span class="info-name parent-name">${GROOM_FATHER}</span>
           <span class="name-dot">·</span>
           <span class="info-name parent-name">${GROOM_MOTHER}</span><span class="relation-particle">의</span>
           <span class="relation-child">아들</span>
           <span class="info-name child-name">${GROOM_FIRST_NAME}</span>
         </p>
-        <p class="info-line">
+        <p class="info-line sequential-item">
           <span class="info-name parent-name">${BRIDE_FATHER}</span>
           <span class="name-dot">·</span>
           <span class="info-name parent-name">${BRIDE_MOTHER}</span><span class="relation-particle">의</span>
@@ -77,7 +77,7 @@ const getTemplate = () => `
           <span class="info-name child-name">${BRIDE_FIRST_NAME}</span>
         </p>
     </div>
-    <button id="contact-btn" class="contact-btn">연락하기</button>
+    <button id="contact-btn" class="contact-btn sequential-item">연락하기</button>
   </section>
 
   <div id="contact-modal" class="contact-modal">
@@ -261,26 +261,49 @@ const loadExternalScript = (src) =>
     document.head.appendChild(s);
   });
 
+const applySequentialAnimation = (containerSelector) => {
+  const container = document.querySelector(containerSelector);
+  if (!container) return;
+  const items = container.querySelectorAll(".sequential-item");
+  items.forEach((el, index) => {
+    el.style.setProperty("--delay", `${index * 0.2}s`);
+  });
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    container.classList.add("loaded");
+    return;
+  }
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("loaded");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.3 },
+  );
+  observer.observe(container);
+};
+
 const init = async () => {
   document.body.innerHTML = getTemplate();
   const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
   ).matches;
+  applySequentialAnimation(".hero-section");
+  applySequentialAnimation(".invitation-section");
+  applySequentialAnimation(".family-contact-section");
   const heroSection = document.querySelector(".hero-section");
-  if (heroSection) {
-    if (prefersReducedMotion) {
-      heroSection.classList.add("loaded");
-    } else {
-      requestAnimationFrame(() => heroSection.classList.add("loaded"));
-      const createPetal = () => {
-        const petal = document.createElement("span");
-        petal.className = "petal";
-        petal.style.left = `${Math.random() * 100}%`;
-        heroSection.appendChild(petal);
-        petal.addEventListener("animationend", () => petal.remove());
-      };
-      setInterval(createPetal, 1000);
-    }
+  if (heroSection && !prefersReducedMotion) {
+    const createPetal = () => {
+      const petal = document.createElement("span");
+      petal.className = "petal";
+      petal.style.left = `${Math.random() * 100}%`;
+      heroSection.appendChild(petal);
+      petal.addEventListener("animationend", () => petal.remove());
+    };
+    setInterval(createPetal, 1000);
   }
   const eventDate = new Date(2026, 4, 17, 10, 30);
   const setDirectionInfo = (cls, info) => {
