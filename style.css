@@ -84,8 +84,6 @@ h6 {
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.2);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
 }
 
 .hero-section.hero-zoom {
@@ -337,6 +335,10 @@ h6 {
   display: block;
 }
 
+.floating {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
 .calendar-container {
   background: #fff;
   padding: 20px;
@@ -528,7 +530,6 @@ h6 {
   background: var(--button-bg-color);
   color: var(--button-text-color);
   font-size: 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   cursor: pointer;
   transition: background 0.2s ease;
   position: relative;
