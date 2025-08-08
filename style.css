@@ -246,6 +246,10 @@ h6 {
   padding: 40px 30px 40px;
 }
 
+.gallery-section {
+  background: var(--secondary-bg-color);
+}
+
 .map-section h3 {
   font-size: 1.5em;
   font-weight: 400;
