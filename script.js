@@ -318,7 +318,7 @@ const init = async () => {
       const marker = new naver.maps.Marker({ position, map });
       const infoWindow = new naver.maps.InfoWindow({
         content:
-          `<div style="padding:5px 10px; word-break:break-all; font-size:12px;"><div>${VENUE_LOCATION}</div><div>${VENUE_HALL}</div></div>`,
+          `<div style="padding:5px 10px; min-width:120px; white-space:nowrap; font-size:12px;"><div>${VENUE_LOCATION}</div><div>${VENUE_HALL}</div></div>`,
       });
       infoWindow.open(map, marker);
     } catch (e) {
