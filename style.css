@@ -753,3 +753,27 @@ h6 {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .hero-names,
+  .hero-datetime,
+  .hero-content .location,
+  .hero-content .hall,
+  .fade-section,
+  .fade-section.visible,
+  .petal,
+  .contact-actions img,
+  .copy-account img {
+    animation: none;
+    transition: none;
+  }
+
+  .hero-names,
+  .hero-datetime,
+  .hero-content .location,
+  .hero-content .hall,
+  .fade-section {
+    opacity: 1;
+    transform: none;
+  }
+}
+
