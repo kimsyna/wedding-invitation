@@ -732,3 +732,24 @@ h6 {
   transform: translateY(0) scale(1);
 }
 
+.petal {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 192, 203, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: petal-fall 5s linear forwards;
+}
+
+@keyframes petal-fall {
+  from {
+    transform: translateY(0) rotate(0deg);
+  }
+  to {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
+
