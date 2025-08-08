@@ -149,6 +149,11 @@ h6 {
   text-align: left;
 }
 
+.info-line .relation-particle {
+  display: inline-block;
+  font-weight: 400;
+}
+
 .family-contact-section {
   padding: 40px 20px;
   text-align: center;
@@ -540,8 +545,9 @@ h6 {
 
 .contact-content .modal-close {
   position: absolute;
-  top: 8px;
+  top: 4px;
   right: 8px;
+  margin-top: 0;
   background: transparent;
   border: none;
   font-size: 1.5rem;
