@@ -204,6 +204,7 @@ const getTemplate = () => `
     <p class="countdown-intro">${GROOM_NAME} & ${BRIDE_NAME}<span class="count-thin">의</span> 결혼식<span class="count-thin">까지</span></p>
     <h3>남은 시간</h3>
     <div id="countdown"></div>
+    <button id="countdown-complete-btn" class="floating">카운트다운 완료</button>
   </section>
 
   <section class="gallery-section fade-section">
@@ -389,11 +390,28 @@ const init = async () => {
     const hoursEl = document.getElementById("cd-hours");
     const minutesEl = document.getElementById("cd-minutes");
     const secondsEl = document.getElementById("cd-seconds");
+    const introEl = document.querySelector(".countdown-intro");
+    const titleEl = countdownEl.previousElementSibling;
 
+    const showThanks = () => {
+      if (introEl) {
+        introEl.textContent = `${GROOM_NAME} & ${BRIDE_NAME}의 결혼식에 참석해주셔서 진심으로 감사드립니다.`;
+      }
+      if (titleEl) titleEl.style.display = "none";
+      countdownEl.style.display = "none";
+      const btn = document.getElementById("countdown-complete-btn");
+      if (btn) btn.style.display = "none";
+    };
+
+    let countdownTimer;
     const updateCountdown = () => {
       const now = new Date();
       let diff = eventDate - now;
-      if (diff < 0) diff = 0;
+      if (diff <= 0) {
+        diff = 0;
+        clearInterval(countdownTimer);
+        showThanks();
+      }
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
@@ -404,7 +422,14 @@ const init = async () => {
       secondsEl.textContent = String(seconds).padStart(2, "0");
     };
     updateCountdown();
-    setInterval(updateCountdown, 1000);
+    countdownTimer = setInterval(updateCountdown, 1000);
+    const completeBtn = document.getElementById("countdown-complete-btn");
+    if (completeBtn) {
+      completeBtn.addEventListener("click", () => {
+        clearInterval(countdownTimer);
+        showThanks();
+      });
+    }
   }
 
   const copyUrlBtn = document.getElementById("copy-url");
