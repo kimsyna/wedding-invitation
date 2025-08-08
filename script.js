@@ -65,16 +65,14 @@ const getTemplate = () => `
         <p class="info-line">
           <span class="info-name parent-name">${GROOM_FATHER}</span>
           <span class="name-dot">·</span>
-          <span class="info-name parent-name">${GROOM_MOTHER}</span>
-          <span class="relation-particle">의</span>
+          <span class="info-name parent-name">${GROOM_MOTHER}</span><span class="relation-particle">의</span>
           <span class="relation-child">아들</span>
           <span class="info-name child-name">${GROOM_FIRST_NAME}</span>
         </p>
         <p class="info-line">
           <span class="info-name parent-name">${BRIDE_FATHER}</span>
           <span class="name-dot">·</span>
-          <span class="info-name parent-name">${BRIDE_MOTHER}</span>
-          <span class="relation-particle">의</span>
+          <span class="info-name parent-name">${BRIDE_MOTHER}</span><span class="relation-particle">의</span>
           <span class="relation-child">딸</span>
           <span class="info-name child-name">${BRIDE_FIRST_NAME}</span>
         </p>
@@ -84,7 +82,6 @@ const getTemplate = () => `
 
   <div id="contact-modal" class="contact-modal">
     <div class="contact-content">
-      <button id="contact-close" class="modal-close">&times;</button>
       <div class="contact-columns">
         <div class="contact-column">
           <ul class="contact-list">
@@ -173,6 +170,7 @@ const getTemplate = () => `
       </div>
       <div id="contact-toast" class="copy-toast"></div>
     </div>
+    <button id="contact-close" class="modal-close">&times;</button>
   </div>
 
   <section class="map-section fade-section">
