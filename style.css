@@ -135,7 +135,7 @@ h6 {
 .info-line .parent-name {
   display: inline-block;
   width: 4em;
-  text-align: center;
+  text-align: left;
 }
 
 .family-section .child-name {
@@ -161,8 +161,7 @@ h6 {
 }
 
 .map-section,
-.calendar-section,
-.countdown-section,
+.schedule-section,
 .gallery-section,
 .share-section {
   padding: 40px 20px;
@@ -186,14 +185,10 @@ h6 {
   margin-top: 10px;
 }
 
-.calendar-section {
-  background: var(--secondary-bg-color);
-  padding: 40px 30px 20px;
-}
 
-.countdown-section {
+.schedule-section {
   background: var(--secondary-bg-color);
-  padding: 20px 20px 40px;
+  padding: 40px 30px 40px;
 }
 
 .map-section h3 {
@@ -201,7 +196,7 @@ h6 {
   font-weight: 400;
 }
 
-.countdown-section h3 {
+.schedule-section h3 {
   font-size: 1.2em;
   font-weight: 300;
 }
@@ -559,7 +554,7 @@ h6 {
 .contact-content {
   position: relative;
   background: #fff;
-  padding: 40px 32px;
+  padding: 60px 32px;
   border-radius: 8px;
   width: 90%;
   max-width: 560px;
@@ -574,7 +569,7 @@ h6 {
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  color: var(--text-color);
+  color: #666;
 }
 
 .contact-image {

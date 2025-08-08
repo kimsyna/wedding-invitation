@@ -176,7 +176,7 @@ const getTemplate = () => `
   <section class="map-section fade-section">
     <h3>오시는 길</h3>
     <p class="map-address">${VENUE_ADDRESS}</p>
-    <p class="map-hall">${VENUE_LOCATION} ${VENUE_HALL}</p>
+    <p class="map-hall">${VENUE_HALL}</p>
     <div id="map" class="map-container"></div>
     <div class="map-buttons">
       <a class="map-btn" href="https://map.naver.com/p/search/%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84%EB%8D%94%ED%94%84%EB%A0%88%EC%8A%A4%ED%8B%B0%EC%A7%80/place/1856237237" target="_blank" rel="noopener noreferrer"><img src="https://play-lh.googleusercontent.com/iqe1hFI03eD6nW3S8fxK_MDvNC8tDtod_gnhF9e8XN-IPmLXJvZVJLm-bQ4U5mKAVK0" alt="네이버맵 아이콘" class="btn-icon" />네이버 지도</a>
@@ -198,11 +198,8 @@ const getTemplate = () => `
     </div>
   </section>
 
-  <section class="calendar-section fade-section">
+  <section class="schedule-section fade-section">
     <div id="calendar" class="calendar-container"></div>
-  </section>
-
-  <section class="countdown-section fade-section">
     <p class="countdown-intro">${GROOM_NAME} & ${BRIDE_NAME}의 결혼식까지</p>
     <h3>남은 시간</h3>
     <div id="countdown"></div>
@@ -430,6 +427,10 @@ const init = async () => {
       { length: 15 },
       (_, i) => `https://picsum.photos/seed/wed${i}/600/400`,
     );
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
     const moreBtn = document.getElementById("gallery-more");
     const modal = document.getElementById("image-modal");
     const modalTrack = document.getElementById("modal-track");
@@ -439,6 +440,7 @@ const init = async () => {
     const nextBtn = document.getElementById("modal-next");
     const closeBtn = document.getElementById("modal-close");
     let currentIndex = 0;
+    let isSliding = false;
 
     const updateSlides = () => {
       const prevIndex = (currentIndex + images.length - 1) % images.length;
@@ -457,6 +459,8 @@ const init = async () => {
     };
 
     const slideTo = (dir) => {
+      if (isSliding) return;
+      isSliding = true;
       modalTrack.style.transition = "transform 0.3s";
       modalTrack.style.transform = `translateX(-${
         dir === "next" ? modalWindow.clientWidth * 2 : 0
@@ -469,6 +473,7 @@ const init = async () => {
             images.length;
           updateSlides();
           modalTrack.style.transition = "none";
+          isSliding = false;
         },
         { once: true },
       );
@@ -572,8 +577,6 @@ const init = async () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
-        } else {
-          entry.target.classList.remove("visible");
         }
       });
     },
