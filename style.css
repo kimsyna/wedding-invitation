@@ -129,8 +129,7 @@ h6 {
 .glass-button::before {
   content: "";
   position: absolute;
-  inset: -5%;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   border-radius: inherit;
