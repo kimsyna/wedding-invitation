@@ -43,7 +43,7 @@ h6 {
 }
 
 .loaded .sequential-item {
-  animation: sequential-fade-in 1.2s forwards;
+  animation: sequential-fade-in 0.8s forwards;
   animation-delay: var(--delay);
 }
 
@@ -68,12 +68,9 @@ h6 {
     center/cover no-repeat;
   background-color: #fff;
   color: #fff;
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   overflow: hidden;
-  z-index: 0;
+  position: relative;
 }
 
 @media screen and (min-aspect-ratio: 3/2) {
@@ -103,9 +100,6 @@ section:not(.hero-section) {
   background: var(--bg-color);
 }
 
-.invitation-section {
-  margin-top: 100vh;
-}
 
 @keyframes hero-zoom {
   from {
@@ -377,6 +371,11 @@ section:not(.hero-section) {
 }
 
 .floating {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -805,7 +804,7 @@ section:not(.hero-section) {
 .fade-section {
   opacity: 0;
   transform: translateY(40px) scale(0.95);
-  transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .fade-section.visible {
