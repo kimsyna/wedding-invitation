@@ -189,7 +189,7 @@ h6 {
 }
 
 .invitation-section {
-  padding: 60px 20px;
+  padding: 60px 24px;
   text-align: center;
   line-height: 1.8;
 }
@@ -244,7 +244,7 @@ h6 {
 }
 
 .family-contact-section {
-  padding: 40px 20px;
+  padding: 40px 24px;
   text-align: center;
 }
 
@@ -256,7 +256,7 @@ h6 {
 .schedule-section,
 .gallery-section,
 .share-section {
-  padding: 40px 20px;
+  padding: 40px 24px;
   text-align: center;
 }
 
@@ -278,7 +278,7 @@ h6 {
 
 
 .schedule-section {
-  padding: 40px 30px 40px;
+  padding: 40px 34px 40px;
 }
 
 .gallery-section {
@@ -825,7 +825,7 @@ h6 {
 
 .footer-section {
   text-align: center;
-  padding: 20px;
+  padding: 20px 24px;
   font-size: 0.9rem;
   color: var(--text-color);
 }
