@@ -671,18 +671,20 @@ const init = async () => {
     fadeSections.forEach((sec) => observer.observe(sec));
   }
 
-  let scrolled = false;
   const invitationSection = document.querySelector(".invitation-section");
   const triggerOffset =
     invitationSection
       ? invitationSection.offsetTop - window.innerHeight + 80
       : 80;
-  window.addEventListener("scroll", () => {
-    if (!scrolled && window.scrollY > triggerOffset) {
+  const updateHeroScroll = () => {
+    if (window.scrollY > triggerOffset) {
       document.body.classList.add("scrolled");
-      scrolled = true;
+    } else {
+      document.body.classList.remove("scrolled");
     }
-  });
+  };
+  window.addEventListener("scroll", updateHeroScroll);
+  updateHeroScroll();
 };
 
 if (document.readyState === "loading") {
