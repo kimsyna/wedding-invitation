@@ -118,6 +118,25 @@ h6 {
   z-index: -2;
 }
 
+.glass-button {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.glass-button::before {
+  content: "";
+  position: absolute;
+  inset: -5%;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: inherit;
+  z-index: -1;
+}
+
 @keyframes hero-zoom {
   from {
     transform: scale(1);
@@ -870,9 +889,11 @@ h6 {
   }
 }
 
-/* White text in glass sections */
+/* White text in glass sections and buttons */
 .glass-section,
-.glass-section * {
+.glass-section *,
+.glass-button,
+.glass-button * {
   color: #fff;
 }
 
