@@ -207,7 +207,7 @@ const getTemplate = () => `
 
   <section class="schedule-section glass-section fade-section">
     <div id="calendar" class="calendar-container floating"></div>
-    <p class="countdown-intro"><strong>${GROOM_NAME} & ${BRIDE_NAME}</strong><span class="count-thin">의</span> <strong>결혼식</strong><span class="count-thin">까지</span></p>
+    <p class="countdown-intro">${GROOM_NAME} & ${BRIDE_NAME}<span class="count-thin">의</span> 결혼식<span class="count-thin">까지</span></p>
     <h3>남은 시간</h3>
     <div id="countdown"></div>
     <button id="countdown-complete-btn" class="floating glass-button">카운트다운 완료</button>
