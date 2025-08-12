@@ -96,7 +96,7 @@ h6 {
 }
 
 .scrolled .hero-section::before {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.85);
 }
 
 .hero-section.hero-zoom {
@@ -112,7 +112,7 @@ h6 {
   content: "";
   position: absolute;
   inset: -5%;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   filter: url("#liquid-glass");
@@ -124,9 +124,9 @@ h6 {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 70%) top left/50% 50% no-repeat,
-    linear-gradient(225deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 70%) top right/50% 50% no-repeat,
-    rgba(255, 255, 255, 0.1);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 70%) top left/50% 50% no-repeat,
+    linear-gradient(225deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 70%) top right/50% 50% no-repeat,
+    rgba(255, 255, 255, 0.05);
   pointer-events: none;
   z-index: -1;
 }
