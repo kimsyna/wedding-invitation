@@ -54,24 +54,6 @@
     </script>
   </head>
   <body>
-    <svg aria-hidden="true" focusable="false" style="display: none">
-      <filter id="liquid-glass">
-        <feTurbulence
-          type="fractalNoise"
-          baseFrequency="0.02"
-          numOctaves="2"
-          result="noise"
-        >
-          <animate
-            attributeName="baseFrequency"
-            dur="20s"
-            values="0.02;0.05;0.02"
-            repeatCount="indefinite"
-          />
-        </feTurbulence>
-        <feDisplacementMap in="SourceGraphic" in2="noise" scale="30" />
-      </filter>
-    </svg>
     <script
       src="https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js"
       crossorigin="anonymous"
