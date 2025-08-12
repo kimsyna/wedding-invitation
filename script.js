@@ -311,6 +311,10 @@ const init = async () => {
   const heroSection = document.querySelector(".hero-section");
   if (heroSection && !prefersReducedMotion) {
     heroSection.classList.add("hero-zoom");
+    const finishHero = () => {
+      heroSection.getAnimations().forEach((anim) => anim.finish());
+    };
+    window.addEventListener("scroll", finishHero, { once: true });
   }
   const eventDate = new Date(2026, 4, 17, 10, 30);
   const setDirectionInfo = (cls, info) => {
