@@ -83,7 +83,7 @@ const getTemplate = () => `
           <span class="info-name child-name">${BRIDE_FIRST_NAME}</span>
         </p>
     </div>
-      <button id="contact-btn" class="contact-btn floating sequential-item">연락하기</button>
+      <button id="contact-btn" class="contact-btn floating sequential-item glass-button">연락하기</button>
   </section>
 
   <div id="contact-modal" class="contact-modal">
@@ -127,7 +127,7 @@ const getTemplate = () => `
                 <span class="account-bank">${GROOM_ACCOUNT_BANK}</span>
                 <span class="account-number">${GROOM_ACCOUNT_NUMBER}</span>
               </div>
-              <button class="copy-account" data-account="${GROOM_ACCOUNT_NUMBER} ${GROOM_ACCOUNT_BANK}"><img src="https://img.icons8.com/ios-glyphs/16/copy.png" alt="복사" /></button>
+              <button class="copy-account glass-button" data-account="${GROOM_ACCOUNT_NUMBER} ${GROOM_ACCOUNT_BANK}"><img src="https://img.icons8.com/ios-glyphs/16/copy.png" alt="복사" /></button>
             </li>
           </ul>
         </div>
@@ -169,14 +169,14 @@ const getTemplate = () => `
                 <span class="account-bank">${BRIDE_ACCOUNT_BANK}</span>
                 <span class="account-number">${BRIDE_ACCOUNT_NUMBER}</span>
               </div>
-              <button class="copy-account" data-account="${BRIDE_ACCOUNT_NUMBER} ${BRIDE_ACCOUNT_BANK}"><img src="https://img.icons8.com/ios-glyphs/16/copy.png" alt="복사" /></button>
+              <button class="copy-account glass-button" data-account="${BRIDE_ACCOUNT_NUMBER} ${BRIDE_ACCOUNT_BANK}"><img src="https://img.icons8.com/ios-glyphs/16/copy.png" alt="복사" /></button>
             </li>
           </ul>
         </div>
       </div>
       <div id="contact-toast" class="copy-toast"></div>
     </div>
-    <button id="contact-close" class="modal-close">&times;</button>
+    <button id="contact-close" class="modal-close glass-button">&times;</button>
   </div>
 
   <section class="map-section glass-section fade-section">
@@ -210,12 +210,12 @@ const getTemplate = () => `
     <p class="countdown-intro"><strong>${GROOM_NAME} & ${BRIDE_NAME}</strong><span class="count-thin">의</span> <strong>결혼식</strong><span class="count-thin">까지</span></p>
     <h3>남은 시간</h3>
     <div id="countdown"></div>
-    <button id="countdown-complete-btn" class="floating">카운트다운 완료</button>
+    <button id="countdown-complete-btn" class="floating glass-button">카운트다운 완료</button>
   </section>
 
   <section class="gallery-section glass-section fade-section">
     <div id="gallery-grid" class="gallery-grid"></div>
-    <button id="gallery-more" class="floating">더보기</button>
+    <button id="gallery-more" class="floating glass-button">더보기</button>
   </section>
 
   <div id="image-modal" class="image-modal">
@@ -224,19 +224,19 @@ const getTemplate = () => `
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
     </div>
-    <button id="modal-close" class="modal-close">&times;</button>
+    <button id="modal-close" class="modal-close glass-button">&times;</button>
   </div>
 
   <section class="share-section glass-section fade-section">
     <div class="share-row">
-        <button id="copy-url" class="floating">
+        <button id="copy-url" class="floating glass-button">
         <img
           src="https://img.icons8.com/ios-glyphs/30/copy.png"
           alt="복사 아이콘"
           class="btn-icon"
         />URL 복사
       </button>
-        <button id="share-url" class="floating">
+        <button id="share-url" class="floating glass-button">
         <img
           src="https://img.icons8.com/ios-glyphs/30/share.png"
           alt="공유 아이콘"
@@ -245,7 +245,7 @@ const getTemplate = () => `
       </button>
     </div>
     <div class="share-row">
-        <button id="share-kakao" class="floating">
+        <button id="share-kakao" class="floating glass-button">
         <img
           src="https://play-lh.googleusercontent.com/Ob9Ys8yKMeyKzZvl3cB9JNSTui1lJwjSKD60IVYnlvU2DsahysGENJE-txiRIW9_72Vd"
           alt="카카오톡 아이콘"
