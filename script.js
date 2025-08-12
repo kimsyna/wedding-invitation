@@ -626,15 +626,39 @@ const init = async () => {
   const accountCopyBtns = document.querySelectorAll(".copy-account");
   accountCopyBtns.forEach((btn) => {
     btn.addEventListener("click", async () => {
-      try {
-        await navigator.clipboard.writeText(btn.dataset.account);
-        if (contactToast) {
-          contactToast.textContent = "복사되었습니다";
-          contactToast.classList.add("show");
-          setTimeout(() => contactToast.classList.remove("show"), 2000);
+      const account = btn.dataset.account;
+      let success = false;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        try {
+          await navigator.clipboard.writeText(account);
+          success = true;
+        } catch (e) {
+          // will attempt fallback below
         }
-      } catch (e) {
-        console.log(e);
+      }
+      if (!success) {
+        const textarea = document.createElement("textarea");
+        textarea.value = account;
+        textarea.style.position = "fixed";
+        textarea.style.top = "-1000px";
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        try {
+          success = document.execCommand("copy");
+        } catch (e) {
+          success = false;
+        }
+        document.body.removeChild(textarea);
+      }
+      if (contactToast) {
+        contactToast.textContent = success
+          ? "복사되었습니다"
+          : "복사에 실패했습니다. 직접 복사해주세요.";
+        contactToast.classList.add("show");
+        setTimeout(() => contactToast.classList.remove("show"), 2000);
+      } else if (!success) {
+        alert("복사에 실패했습니다. 직접 복사해주세요.");
       }
     });
   });
