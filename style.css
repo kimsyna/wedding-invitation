@@ -898,15 +898,18 @@ h6 {
   }
 }
 
-/* White text in glass sections and buttons */
+/* Text colors for glass sections and buttons */
 .glass-section,
-.glass-section *,
+.glass-section * {
+  color: #fff;
+}
+
 .glass-button,
 .glass-button * {
   color: #000;
 }
 
-/* Exclude calendar and map markers from glass-button text color */
+/* Exclude calendar and map markers from glass-section text color */
 .glass-section #calendar,
 .glass-section #calendar *,
 .glass-section #map,
