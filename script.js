@@ -568,8 +568,6 @@ const init = async () => {
       img.className = "gallery-image floating";
       img.loading = idx < initialVisible ? "eager" : "lazy";
       img.decoding = "async";
-      img.width = 600;
-      img.height = 400;
       if (idx >= initialVisible) img.classList.add("hidden");
       img.addEventListener("click", () => openModal(idx));
       galleryGrid.appendChild(img);
@@ -581,8 +579,6 @@ const init = async () => {
       slideImg.alt = `gallery slide ${idx + 1}`;
       slideImg.loading = "lazy";
       slideImg.decoding = "async";
-      slideImg.width = 600;
-      slideImg.height = 400;
       slide.appendChild(slideImg);
       swiperWrapper.appendChild(slide);
     });
