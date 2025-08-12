@@ -567,8 +567,15 @@ const init = async () => {
       img.className = "gallery-image floating";
       img.loading = idx < initialVisible ? "eager" : "lazy";
       img.decoding = "async";
+      img.tabIndex = 0;
       if (idx >= initialVisible) img.classList.add("hidden");
       img.addEventListener("click", () => openModal(idx));
+      img.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openModal(idx);
+        }
+      });
       galleryGrid.appendChild(img);
 
       const slide = document.createElement("div");
@@ -599,8 +606,14 @@ const init = async () => {
     });
 
     closeBtn.addEventListener("click", closeGallery);
+    closeBtn.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeGallery();
+    });
     modal.addEventListener("click", (e) => {
       if (e.target === modal) closeGallery();
+    });
+    modal.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeGallery();
     });
   }
 
