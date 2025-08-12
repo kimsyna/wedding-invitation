@@ -414,7 +414,7 @@ const init = async () => {
     const showThanks = () => {
       if (introEl) {
         introEl.innerHTML =
-          `${GROOM_NAME} & ${BRIDE_NAME}<span class="count-thin">의</span><br />결혼식<span class="count-thin">에</span> 참석해주셔서<br />진심으로 감사드립니다.`;
+          `${GROOM_NAME} & ${BRIDE_NAME}<span class="count-thin">의</span><br />결혼식<span class="count-thin">에</span> <span class="count-thin">참석해주셔서</span><br /><span class="count-thin">진심으로 감사드립니다.</span>`;
       }
       if (titleEl) titleEl.style.display = "none";
       countdownEl.style.display = "none";
