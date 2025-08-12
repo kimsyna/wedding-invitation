@@ -679,7 +679,7 @@ const init = async () => {
     }
   };
   window.addEventListener("scroll", updateHeroScroll);
-  window.scrollTo(0, 50);
+  window.scrollTo(0, 90);
   updateHeroScroll();
 };
 
