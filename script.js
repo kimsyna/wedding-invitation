@@ -672,8 +672,13 @@ const init = async () => {
   }
 
   let scrolled = false;
+  const invitationSection = document.querySelector(".invitation-section");
+  const triggerOffset =
+    invitationSection
+      ? invitationSection.offsetTop - window.innerHeight + 80
+      : 80;
   window.addEventListener("scroll", () => {
-    if (!scrolled && window.scrollY > 0) {
+    if (!scrolled && window.scrollY > triggerOffset) {
       document.body.classList.add("scrolled");
       scrolled = true;
     }
