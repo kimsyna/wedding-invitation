@@ -112,9 +112,10 @@ h6 {
   content: "";
   position: absolute;
   inset: -5%;
-  background: var(--hero-image) center/cover fixed;
-  transform: scale(1.05);
-  filter: blur(10px);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  filter: url("#liquid-glass");
   z-index: -2;
 }
 
