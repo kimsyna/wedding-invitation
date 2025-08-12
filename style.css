@@ -579,21 +579,25 @@ h6 {
 }
 
 .image-modal {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 
 .image-modal.open {
-  display: flex;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .image-modal .swiper {
@@ -601,6 +605,13 @@ h6 {
   max-width: 600px;
   padding: 0 16px;
   box-sizing: border-box;
+  transform: scale(0);
+  transform-origin: var(--origin-x) var(--origin-y);
+  transition: transform 0.3s ease;
+}
+
+.image-modal.open .swiper {
+  transform: scale(1);
 }
 
 .image-modal .swiper-slide {
