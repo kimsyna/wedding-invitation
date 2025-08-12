@@ -512,7 +512,7 @@ const init = async () => {
       console.error("Failed to load Swiper", e);
     }
     const images = Array.from(
-      { length: 18 },
+      { length: 12 },
       (_, i) => `images/wedding${i + 1}.jpg`,
     );
     const moreBtn = document.getElementById("gallery-more");
