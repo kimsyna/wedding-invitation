@@ -122,7 +122,7 @@ h6 {
   position: relative;
   z-index: 1;
   overflow: hidden;
-  background: transparent !important;
+  background: rgba(255, 255, 255, 0.75) !important;
   border: 1px solid rgba(255, 255, 255, 0.9) !important;
 }
 
@@ -903,10 +903,10 @@ h6 {
 .glass-section *,
 .glass-button,
 .glass-button * {
-  color: #fff;
+  color: #000;
 }
 
-/* Exclude calendar and map markers from white text */
+/* Exclude calendar and map markers from glass-button text color */
 .glass-section #calendar,
 .glass-section #calendar *,
 .glass-section #map,
