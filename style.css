@@ -104,6 +104,15 @@ h6 {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
+
+.scrolled .glass-section {
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  --text-color: #fff;
+  --button-bg-color: rgba(255, 255, 255, 0.2);
+  --button-text-color: #fff;
+  --button-hover-bg-color: rgba(255, 255, 255, 0.3);
+}
 @keyframes hero-zoom {
   from {
     transform: scale(1);

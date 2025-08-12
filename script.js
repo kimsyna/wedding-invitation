@@ -670,6 +670,14 @@ const init = async () => {
     );
     fadeSections.forEach((sec) => observer.observe(sec));
   }
+
+  let scrolled = false;
+  window.addEventListener("scroll", () => {
+    if (!scrolled && window.scrollY > 0) {
+      document.body.classList.add("scrolled");
+      scrolled = true;
+    }
+  });
 };
 
 if (document.readyState === "loading") {
