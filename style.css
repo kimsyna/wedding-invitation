@@ -361,6 +361,11 @@ h6 {
   font-weight: 400;
 }
 
+.direction-item.walk .method,
+.direction-item.parking .method {
+  font-size: 1.2rem;
+}
+
 .map-section .directions {
   margin-top: 20px;
 }
