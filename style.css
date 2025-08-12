@@ -343,6 +343,10 @@ h6 {
   color: #666;
 }
 
+.countdown-intro strong {
+  font-weight: 400;
+}
+
 .count-thin {
   font-weight: 300;
 }
