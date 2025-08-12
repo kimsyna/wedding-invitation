@@ -408,8 +408,14 @@ h6 {
   transition: background 0.2s ease;
 }
 
-.map-btn:hover {
+.map-btn:hover,
+.map-btn:focus-visible {
   background: var(--button-hover-bg-color);
+}
+
+.map-btn:focus-visible {
+  outline: 2px solid var(--highlight-color);
+  outline-offset: 2px;
 }
 
 .btn-icon {
@@ -562,8 +568,14 @@ h6 {
   transition: background 0.2s ease;
 }
 
-#gallery-more:hover {
+#gallery-more:hover,
+#gallery-more:focus-visible {
   background: var(--button-hover-bg-color);
+}
+
+#gallery-more:focus-visible {
+  outline: 2px solid var(--highlight-color);
+  outline-offset: 2px;
 }
 
 .image-modal {
@@ -649,9 +661,14 @@ h6 {
   position: relative;
 }
 
-
-.share-section button:hover {
+.share-section button:hover,
+.share-section button:focus-visible {
   background: var(--button-hover-bg-color);
+}
+
+.share-section button:focus-visible {
+  outline: 2px solid var(--highlight-color);
+  outline-offset: 2px;
 }
 
 .contact-btn {
@@ -666,8 +683,14 @@ h6 {
   transition: background 0.2s ease;
 }
 
-.contact-btn:hover {
+.contact-btn:hover,
+.contact-btn:focus-visible {
   background: var(--button-hover-bg-color);
+}
+
+.contact-btn:focus-visible {
+  outline: 2px solid var(--highlight-color);
+  outline-offset: 2px;
 }
 
 .copy-toast {
@@ -803,6 +826,13 @@ h6 {
 .contact-actions img:hover,
 .copy-account img:hover {
   opacity: 1;
+}
+
+.contact-actions img:focus-visible,
+.copy-account img:focus-visible {
+  opacity: 1;
+  outline: 2px solid var(--highlight-color);
+  outline-offset: 2px;
 }
 
 .contact-list .account {
