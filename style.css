@@ -534,6 +534,8 @@ h6 {
 .image-modal .swiper {
   width: 90%;
   max-width: 600px;
+  padding: 0 16px;
+  box-sizing: border-box;
 }
 
 .image-modal .swiper-slide {
