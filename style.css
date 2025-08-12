@@ -851,3 +851,16 @@ h6 {
   }
 }
 
+/* White text in glass sections */
+.glass-section,
+.glass-section * {
+  color: #fff;
+}
+
+/* Exclude calendar and map markers from white text */
+.glass-section #calendar,
+.glass-section #calendar *,
+.glass-section #map,
+.glass-section #map * {
+  color: initial;
+}
