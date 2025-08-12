@@ -39,14 +39,14 @@ const KAKAO_API_KEY =
 const getTemplate = () => `
   <section class="hero-section">
     <div class="hero-content">
-      <div class="hero-names sequential-item">
+      <div class="hero-names">
         <p class="groom">${GROOM_NAME}</p>
         <div class="name-separator"></div>
         <p class="bride">${BRIDE_NAME}</p>
       </div>
-      <p class="hero-datetime sequential-item">${EVENT_DATETIME_TEXT}</p>
-      <p class="location sequential-item">${VENUE_LOCATION}</p>
-      <p class="hall sequential-item">${VENUE_HALL}</p>
+      <p class="hero-datetime">${EVENT_DATETIME_TEXT}</p>
+      <p class="location">${VENUE_LOCATION}</p>
+      <p class="hall">${VENUE_HALL}</p>
     </div>
   </section>
 
@@ -305,19 +305,8 @@ const init = async () => {
   const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
   ).matches;
-  applySequentialAnimation(".hero-section");
   applySequentialAnimation(".invitation-section");
   applySequentialAnimation(".family-contact-section");
-  const heroSection = document.querySelector(".hero-section");
-  if (heroSection && !prefersReducedMotion) {
-    heroSection.classList.add("hero-zoom");
-    const finishHero = () => {
-      heroSection.getAnimations().forEach((anim) => anim.cancel());
-      heroSection.classList.remove("hero-zoom");
-      heroSection.style.removeProperty("transform");
-    };
-    window.addEventListener("scroll", finishHero, { once: true });
-  }
   const eventDate = new Date(2026, 4, 17, 10, 30);
   const setDirectionInfo = (cls, info) => {
     const item = document.querySelector(`.map-section .${cls}`);
