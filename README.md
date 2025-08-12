@@ -1,6 +1,6 @@
 # Wedding Invitation
 
-This project uses API keys for Naver Map and Kakao services. Example keys are provided in the repository.
+This project uses API keys for Naver Map and Kakao services and includes a T Map link. Example keys are provided in the repository.
 
 ## API keys
 
