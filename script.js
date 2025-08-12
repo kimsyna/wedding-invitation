@@ -548,6 +548,7 @@ const init = async () => {
       document.body.classList.add("no-scroll");
       initSwiper();
       if (swiper) {
+        swiper.update();
         swiper.slideTo(idx, 0);
       }
     };
