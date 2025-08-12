@@ -62,7 +62,7 @@ const getTemplate = () => `
   </section>
   <section class="family-contact-section fade-section">
     <img
-      src="images/wedding1.jpg"
+      src="images/wedding1.png"
       alt="contact photo"
       class="contact-image floating sequential-item"
       loading="eager"
