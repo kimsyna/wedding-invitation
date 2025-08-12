@@ -289,7 +289,7 @@ const applySequentialAnimation = (containerSelector) => {
         }
       });
     },
-    { threshold: 0.3 },
+    { threshold: 0.1 },
   );
   observer.observe(container);
 };
@@ -670,7 +670,7 @@ const init = async () => {
           }
         });
       },
-      { threshold: 0.5 },
+      { threshold: 0.2 },
     );
     fadeSections.forEach((sec) => observer.observe(sec));
   }
