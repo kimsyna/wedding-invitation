@@ -217,7 +217,7 @@ h6 {
 }
 
 .info-name {
-  font-weight: 500;
+  font-weight: 400;
   font-size: 1.1em;
 }
 
@@ -335,7 +335,7 @@ h6 {
 
 .direction-item .method {
   margin: 0;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .map-section .directions {
@@ -471,7 +471,7 @@ h6 {
   height: 32px;
   margin: 0 auto;
   color: #fff;
-  font-weight: 700;
+  font-weight: 400;
   z-index: 0;
 }
 
@@ -761,7 +761,7 @@ h6 {
 }
 
 .contact-info .role {
-  font-weight: 500;
+  font-weight: 400;
   width: 2em;
   text-align: center;
 }
@@ -806,7 +806,7 @@ h6 {
 }
 
 .account-label {
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .account-number {
@@ -832,7 +832,7 @@ h6 {
 
 .highlight {
   color: var(--highlight-color);
-  font-weight: 700;
+  font-weight: 400;
 }
 
 
