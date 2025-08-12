@@ -23,6 +23,7 @@ body {
   word-break: keep-all;
   letter-spacing: -0.02em;
   line-height: 1.8;
+  padding-top: 100vh;
 }
 
 body.no-scroll {
@@ -70,7 +71,10 @@ h6 {
   color: #fff;
   width: 100%;
   overflow: hidden;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
 }
 
 @media screen and (min-aspect-ratio: 3/2) {
@@ -93,14 +97,13 @@ h6 {
 .hero-section.hero-zoom {
   animation: hero-zoom 3s ease-out forwards;
 }
-
-section:not(.hero-section) {
+.glass-section {
   position: relative;
   z-index: 1;
-  background: var(--bg-color);
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
-
-
 @keyframes hero-zoom {
   from {
     transform: scale(1);

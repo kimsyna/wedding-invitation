@@ -50,7 +50,7 @@ const getTemplate = () => `
     </div>
   </section>
 
-  <section class="invitation-section fade-section">
+  <section class="invitation-section glass-section fade-section">
     <h2 class="sequential-item">초대의 글</h2>
     <p class="sequential-item">
       꽃 향기 가득한 봄날, 서로를 존중하며 걸어온 두 사람이 한 자리에 서려 합니다.
@@ -60,7 +60,7 @@ const getTemplate = () => `
       따뜻한 축복의 발걸음으로 함께해 주시면 큰 기쁨이 되겠습니다.
     </p>
   </section>
-  <section class="family-contact-section fade-section">
+  <section class="family-contact-section glass-section fade-section">
     <img
       src="images/wedding1.png"
       alt="contact photo"
@@ -179,7 +179,7 @@ const getTemplate = () => `
     <button id="contact-close" class="modal-close">&times;</button>
   </div>
 
-  <section class="map-section fade-section">
+  <section class="map-section glass-section fade-section">
     <h3>오시는 길</h3>
     <p class="map-address">${VENUE_ADDRESS}</p>
     <p class="map-hall">${VENUE_HALL}</p>
@@ -205,7 +205,7 @@ const getTemplate = () => `
     </div>
   </section>
 
-  <section class="schedule-section fade-section">
+  <section class="schedule-section glass-section fade-section">
     <div id="calendar" class="calendar-container floating"></div>
     <p class="countdown-intro"><strong>${GROOM_NAME} & ${BRIDE_NAME}</strong><span class="count-thin">의</span> <strong>결혼식</strong><span class="count-thin">까지</span></p>
     <h3>남은 시간</h3>
@@ -213,7 +213,7 @@ const getTemplate = () => `
     <button id="countdown-complete-btn" class="floating">카운트다운 완료</button>
   </section>
 
-  <section class="gallery-section fade-section">
+  <section class="gallery-section glass-section fade-section">
     <div id="gallery-grid" class="gallery-grid"></div>
     <button id="gallery-more" class="floating">더보기</button>
   </section>
@@ -227,7 +227,7 @@ const getTemplate = () => `
     <button id="modal-close" class="modal-close">&times;</button>
   </div>
 
-  <section class="share-section fade-section">
+  <section class="share-section glass-section fade-section">
     <div class="share-row">
         <button id="copy-url" class="floating">
         <img
@@ -257,7 +257,7 @@ const getTemplate = () => `
 
   <div id="copy-toast" class="copy-toast"></div>
 
-  <footer class="footer-section fade-section">© 2024 Wedding Invitation</footer>
+  <footer class="footer-section glass-section fade-section">© 2024 Wedding Invitation</footer>
 `;
 
 const loadExternalScript = (src) =>
