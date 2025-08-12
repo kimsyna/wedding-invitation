@@ -261,7 +261,8 @@ section:not(.hero-section) {
 .map-section,
 .schedule-section,
 .gallery-section,
-.share-section {
+.share-section,
+.footer-section {
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -787,12 +788,11 @@ section:not(.hero-section) {
   align-items: center;
 }
 
-.footer {
+.footer-section {
   text-align: center;
   padding: 20px;
   font-size: 0.9rem;
   color: var(--text-color);
-  background: var(--secondary-bg-color);
 }
 
 .highlight {
