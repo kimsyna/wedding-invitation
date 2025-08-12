@@ -206,7 +206,7 @@ const getTemplate = () => `
 
   <section class="schedule-section fade-section">
     <div id="calendar" class="calendar-container floating"></div>
-    <p class="countdown-intro">${GROOM_NAME} & ${BRIDE_NAME}<span class="count-thin">의</span> 결혼식<span class="count-thin">까지</span></p>
+    <p class="countdown-intro"><strong>${GROOM_NAME} & ${BRIDE_NAME}</strong><span class="count-thin">의</span> <strong>결혼식</strong><span class="count-thin">까지</span></p>
     <h3>남은 시간</h3>
     <div id="countdown"></div>
     <button id="countdown-complete-btn" class="floating">카운트다운 완료</button>
@@ -406,8 +406,8 @@ const init = async () => {
 
     const showThanks = () => {
       if (introEl) {
-        introEl.textContent = `${GROOM_NAME} & ${BRIDE_NAME}의 결혼식에 참석해주셔서\n진심으로 감사드립니다.`;
-        introEl.classList.add("thanks-section");
+        introEl.innerHTML =
+          `<strong>${GROOM_NAME} & ${BRIDE_NAME}</strong>의<br /><strong>결혼식</strong>에 참석해주셔서<br />진심으로 감사드립니다.`;
       }
       if (titleEl) titleEl.style.display = "none";
       countdownEl.style.display = "none";
