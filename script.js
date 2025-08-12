@@ -511,10 +511,21 @@ const init = async () => {
     } catch (e) {
       console.error("Failed to load Swiper", e);
     }
-    const images = Array.from(
-      { length: 12 },
-      (_, i) => `images/wedding${i + 1}.jpg`,
-    );
+    const getGalleryImages = async () => {
+      const list = [];
+      for (let i = 1; ; i++) {
+        const src = `images/wedding${i}.jpg`;
+        try {
+          const res = await fetch(src, { method: "HEAD" });
+          if (!res.ok) break;
+          list.push(src);
+        } catch (e) {
+          break;
+        }
+      }
+      return list;
+    };
+    const images = await getGalleryImages();
     const moreBtn = document.getElementById("gallery-more");
     const modal = document.getElementById("image-modal");
     const swiperWrapper = document.getElementById("modal-swiper-wrapper");
