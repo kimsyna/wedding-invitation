@@ -514,7 +514,7 @@ const init = async () => {
     const getGalleryImages = async () => {
       const list = [];
       for (let i = 1; ; i++) {
-        const src = `images/wedding${i}.jpg`;
+        const src = `images/wedding${i}.png`;
         try {
           const res = await fetch(src, { method: "HEAD" });
           if (!res.ok) break;
