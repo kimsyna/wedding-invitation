@@ -96,7 +96,7 @@ h6 {
 }
 
 .scrolled .hero-section::before {
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .hero-section.hero-zoom {
@@ -116,18 +116,6 @@ h6 {
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   z-index: -2;
-}
-
-.glass-section::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 70%) top left/50% 50% no-repeat,
-    linear-gradient(225deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 70%) top right/50% 50% no-repeat,
-    rgba(255, 255, 255, 0.05);
-  pointer-events: none;
-  z-index: -1;
 }
 
 @keyframes hero-zoom {
@@ -310,10 +298,10 @@ h6 {
 .gallery-section,
 .share-section,
 .footer-section {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.9);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   border-radius: 16px;
   margin: 20px 0;
