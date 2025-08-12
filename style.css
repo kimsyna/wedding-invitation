@@ -7,7 +7,7 @@
   --text-color: #333333;
   --secondary-bg-color: #f9f9f9;
   --button-bg-color: #ffffff;
-  --button-text-color: #333333;
+  --button-text-color: #ffffff;
   --button-hover-bg-color: #f5f5f5;
   --highlight-color: #b22222;
   --hero-image: url("https://www.iwedding.co.kr/center/iweddingb/product/800_17588_1730685980_90793400_3232256098.jpg");
@@ -307,7 +307,7 @@ h6 {
 .schedule-section {
   color: #000;
   --text-color: #000;
-  --button-text-color: #000;
+  --button-text-color: #fff;
 }
 
 .invitation-section,
