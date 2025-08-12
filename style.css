@@ -712,17 +712,20 @@ h6 {
 }
 
 .contact-modal {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 
 .contact-content .copy-toast {
@@ -733,7 +736,8 @@ h6 {
 }
 
 .contact-modal.open {
-  display: flex;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .contact-content {
@@ -745,6 +749,13 @@ h6 {
   max-width: 560px;
   margin: 0 16px;
   text-align: left;
+  transform: scale(0);
+  transform-origin: var(--origin-x) var(--origin-y);
+  transition: transform 0.3s ease;
+}
+
+.contact-modal.open .contact-content {
+  transform: scale(1);
 }
 
 .contact-image {

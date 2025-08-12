@@ -620,8 +620,18 @@ const init = async () => {
   const contactBtn = document.getElementById("contact-btn");
   const contactModal = document.getElementById("contact-modal");
   const contactClose = document.getElementById("contact-close");
-  if (contactBtn && contactModal && contactClose) {
+  const contactContent = document.querySelector(".contact-content");
+  if (contactBtn && contactModal && contactClose && contactContent) {
     const openContact = () => {
+      const rect = contactBtn.getBoundingClientRect();
+      const modalWidth = contactContent.offsetWidth;
+      const modalHeight = contactContent.offsetHeight;
+      const originX =
+        rect.left + rect.width / 2 - (window.innerWidth - modalWidth) / 2;
+      const originY =
+        rect.top + rect.height / 2 - (window.innerHeight - modalHeight) / 2;
+      contactContent.style.setProperty("--origin-x", `${originX}px`);
+      contactContent.style.setProperty("--origin-y", `${originY}px`);
       contactModal.classList.add("open");
       document.body.classList.add("no-scroll");
     };
