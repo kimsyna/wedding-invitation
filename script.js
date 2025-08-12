@@ -668,11 +668,9 @@ const init = async () => {
   }
 
   const invitationSection = document.querySelector(".invitation-section");
-  const heroSection = document.querySelector(".hero-section");
-  const heroHeight = heroSection ? heroSection.offsetHeight : window.innerHeight;
   const triggerOffset =
     invitationSection
-      ? invitationSection.offsetTop - heroHeight + 80
+      ? invitationSection.offsetTop - window.innerHeight + 80
       : 80;
   const updateHeroScroll = () => {
     if (window.scrollY > triggerOffset) {
