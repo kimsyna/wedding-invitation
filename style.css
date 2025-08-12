@@ -91,12 +91,12 @@ h6 {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.3);
   transition: background 0.3s;
 }
 
 .scrolled .hero-section::before {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .hero-section.hero-zoom {
@@ -124,6 +124,12 @@ h6 {
 .hero-content {
   position: relative;
   z-index: 1;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+.scrolled .hero-content {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .hero-names {
@@ -151,6 +157,11 @@ h6 {
   border-radius: 3px;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+  transition: background 0.3s;
+}
+
+.scrolled .hero-names .name-separator {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .hero-content .location {
@@ -862,5 +873,15 @@ h6 {
 .glass-section #calendar *,
 .glass-section #map,
 .glass-section #map * {
-  color: initial;
+  color: #333;
+}
+
+.glass-section #calendar th:first-child,
+.glass-section #calendar td:first-child {
+  color: #d9534f;
+}
+
+.glass-section #calendar th:nth-child(7),
+.glass-section #calendar td:nth-child(7) {
+  color: #337ab7;
 }
