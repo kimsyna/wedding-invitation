@@ -410,6 +410,8 @@ const init = async () => {
     const secondsEl = document.getElementById("cd-seconds");
     const introEl = document.querySelector(".countdown-intro");
     const titleEl = countdownEl.previousElementSibling;
+    const completeBtn = document.getElementById("countdown-complete-btn");
+    if (completeBtn) completeBtn.style.display = "none";
 
     const showThanks = () => {
       if (introEl) {
@@ -429,7 +431,7 @@ const init = async () => {
       if (diff <= 0) {
         diff = 0;
         clearInterval(countdownTimer);
-        showThanks();
+        if (completeBtn) completeBtn.style.display = "inline-block";
       }
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
@@ -442,7 +444,6 @@ const init = async () => {
     };
     updateCountdown();
     countdownTimer = setInterval(updateCountdown, 1000);
-    const completeBtn = document.getElementById("countdown-complete-btn");
     if (completeBtn) {
       completeBtn.addEventListener("click", () => {
         clearInterval(countdownTimer);
