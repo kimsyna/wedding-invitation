@@ -571,7 +571,6 @@ h6 {
   border: 1px solid #ddd;
   border-radius: 20px;
   background: var(--button-bg-color);
-  color: var(--button-text-color);
   cursor: pointer;
   transition: background 0.2s ease;
 }
@@ -657,7 +656,6 @@ h6 {
   border: 1px solid #ddd;
   border-radius: 20px;
   background: var(--button-bg-color);
-  color: var(--button-text-color);
   font-size: 1rem;
   cursor: pointer;
   transition: background 0.2s ease;

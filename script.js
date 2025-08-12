@@ -231,14 +231,14 @@ const getTemplate = () => `
     <div class="share-row">
         <button id="copy-url" class="floating glass-button">
         <img
-          src="https://img.icons8.com/ios-glyphs/30/FFFFFF/copy.png"
+          src="https://img.icons8.com/ios-glyphs/30/000000/copy.png"
           alt="복사 아이콘"
           class="btn-icon"
         />URL 복사
       </button>
         <button id="share-url" class="floating glass-button">
         <img
-          src="https://img.icons8.com/ios-glyphs/30/FFFFFF/share.png"
+          src="https://img.icons8.com/ios-glyphs/30/000000/share.png"
           alt="공유 아이콘"
           class="btn-icon"
         />URL 공유
