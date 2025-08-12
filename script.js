@@ -257,7 +257,7 @@ const getTemplate = () => `
 
   <div id="copy-toast" class="copy-toast"></div>
 
-  <footer class="footer">© 2024 Wedding Invitation</footer>
+  <footer class="footer-section fade-section">© 2024 Wedding Invitation</footer>
 `;
 
 const loadExternalScript = (src) =>
