@@ -50,12 +50,12 @@ const getTemplate = () => `
     </div>
   </section>
 
-  <section class="invitation-section glass-section fade-section">
-    <h2 class="sequential-item">초대의 글</h2>
-    <p class="sequential-item">
+  <section class="invitation-section glass-section">
+    <h2>초대의 글</h2>
+    <p>
       꽃 향기 가득한 봄날, 서로를 존중하며 걸어온 두 사람이 한 자리에 서려 합니다.
     </p>
-    <p class="sequential-item">
+    <p>
       <strong>${EVENT_DATE_TEXT}</strong>
       따뜻한 축복의 발걸음으로 함께해 주시면 큰 기쁨이 되겠습니다.
     </p>
@@ -305,7 +305,6 @@ const init = async () => {
   const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
   ).matches;
-  applySequentialAnimation(".invitation-section");
   applySequentialAnimation(".family-contact-section");
   const eventDate = new Date(2026, 4, 17, 10, 30);
   const setDirectionInfo = (cls, info) => {
