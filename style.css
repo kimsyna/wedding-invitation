@@ -100,7 +100,7 @@ h6 {
 }
 
 .hero-section.hero-zoom {
-  animation: hero-zoom 3s ease-out forwards;
+  animation: hero-zoom 2s ease-out forwards;
 }
 .glass-section {
   position: relative;
