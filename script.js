@@ -185,9 +185,9 @@ const getTemplate = () => `
     <p class="map-hall">${VENUE_HALL}</p>
       <div id="map" class="map-container floating"></div>
     <div class="map-buttons">
-      <a aria-label="네이버 지도" class="map-btn floating" href="https://map.naver.com/p/search/%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84%EB%8D%94%ED%94%84%EB%A0%88%EC%8A%A4%ED%8B%B0%EC%A7%80/place/1856237237" target="_blank" rel="noopener noreferrer"><img src="https://play-lh.googleusercontent.com/iqe1hFI03eD6nW3S8fxK_MDvNC8tDtod_gnhF9e8XN-IPmLXJvZVJLm-bQ4U5mKAVK0" alt="네이버맵 아이콘" class="btn-icon" />네이버 지도</a>
-      <a aria-label="카카오 지도" class="map-btn floating" href="https://map.kakao.com/link/map/%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84%EB%8D%94%ED%94%84%EB%A0%88%EC%8A%A4%ED%8B%B0%EC%A7%80,37.2627302,126.9966484" target="_blank" rel="noopener noreferrer"><img src="https://play-lh.googleusercontent.com/pPTTNz433EYFurg2j__bFU5ONdMoU_bs_-yS2JLZriua3iHrksGP6XBPF5VtDPlpGcW4" alt="카카오맵 아이콘" class="btn-icon" />카카오 지도</a>
-      <a aria-label="티맵" class="map-btn floating" href="tmap://route?goalx=126.9966484&goaly=37.2627302&goalname=%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84%EB%8D%94%ED%94%84%EB%A0%88%EC%8A%A4%ED%8B%B0%EC%A7%80" target="_blank" rel="noopener noreferrer"><img src="https://play-lh.googleusercontent.com/WcrqQ9atNdC7dp4vG4fWue0kRdMxiDSTKu9E1Zj7EmGcgdQ8j3u9_2Tt8vw-zPvKCkg" alt="티맵 아이콘" class="btn-icon" />티맵 지도</a>
+      <a aria-label="네이버" class="map-btn floating glass-button" href="https://map.naver.com/p/search/%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84%EB%8D%94%ED%94%84%EB%A0%88%EC%8A%A4%ED%8B%B0%EC%A7%80/place/1856237237" target="_blank" rel="noopener noreferrer"><img src="https://play-lh.googleusercontent.com/iqe1hFI03eD6nW3S8fxK_MDvNC8tDtod_gnhF9e8XN-IPmLXJvZVJLm-bQ4U5mKAVK0" alt="네이버맵 아이콘" class="btn-icon" />네이버</a>
+      <a aria-label="카카오" class="map-btn floating glass-button" href="https://map.kakao.com/link/map/%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84%EB%8D%94%ED%94%84%EB%A0%88%EC%8A%A4%ED%8B%B0%EC%A7%80,37.2627302,126.9966484" target="_blank" rel="noopener noreferrer"><img src="https://play-lh.googleusercontent.com/pPTTNz433EYFurg2j__bFU5ONdMoU_bs_-yS2JLZriua3iHrksGP6XBPF5VtDPlpGcW4" alt="카카오맵 아이콘" class="btn-icon" />카카오</a>
+      <a aria-label="티맵" class="map-btn floating glass-button" href="tmap://route?goalx=126.9966484&goaly=37.2627302&goalname=%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84%EB%8D%94%ED%94%84%EB%A0%88%EC%8A%A4%ED%8B%B0%EC%A7%80" target="_blank" rel="noopener noreferrer"><img src="https://play-lh.googleusercontent.com/WcrqQ9atNdC7dp4vG4fWue0kRdMxiDSTKu9E1Zj7EmGcgdQ8j3u9_2Tt8vw-zPvKCkg" alt="티맵 아이콘" class="btn-icon" />티맵</a>
     </div>
     <div class="directions">
       <div class="direction-item walk">
@@ -231,14 +231,14 @@ const getTemplate = () => `
     <div class="share-row">
         <button id="copy-url" class="floating glass-button">
         <img
-          src="https://img.icons8.com/ios-glyphs/30/copy.png"
+          src="https://img.icons8.com/ios-glyphs/30/FFFFFF/copy.png"
           alt="복사 아이콘"
           class="btn-icon"
         />URL 복사
       </button>
         <button id="share-url" class="floating glass-button">
         <img
-          src="https://img.icons8.com/ios-glyphs/30/share.png"
+          src="https://img.icons8.com/ios-glyphs/30/FFFFFF/share.png"
           alt="공유 아이콘"
           class="btn-icon"
         />URL 공유
@@ -412,7 +412,7 @@ const init = async () => {
     const showThanks = () => {
       if (introEl) {
         introEl.innerHTML =
-          `<strong>${GROOM_NAME} & ${BRIDE_NAME}</strong>의<br /><strong>결혼식</strong>에 참석해주셔서<br />진심으로 감사드립니다.`;
+          `${GROOM_NAME} & ${BRIDE_NAME}<span class="count-thin">의</span><br />결혼식<span class="count-thin">에</span> 참석해주셔서<br />진심으로 감사드립니다.`;
       }
       if (titleEl) titleEl.style.display = "none";
       countdownEl.style.display = "none";
