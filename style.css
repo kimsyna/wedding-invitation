@@ -500,10 +500,15 @@ h6 {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
   font-size: 32px;
   color: #f0e6f6;
   z-index: -1;
+  transition: transform 0.2s;
+}
+
+.calendar-container .event-day.heart-active::before {
+  transform: translate(-50%, -50%) scale(1.2);
 }
 
 #countdown {

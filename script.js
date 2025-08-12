@@ -382,6 +382,17 @@ const init = async () => {
     }
     html += "</tr></tbody></table>";
     calendarEl.innerHTML = html;
+    const eventDayEl = calendarEl.querySelector(".event-day");
+    if (eventDayEl) {
+      const activate = () => eventDayEl.classList.add("heart-active");
+      const deactivate = () => eventDayEl.classList.remove("heart-active");
+      calendarEl.addEventListener("mousedown", activate);
+      calendarEl.addEventListener("touchstart", activate);
+      calendarEl.addEventListener("mouseup", deactivate);
+      calendarEl.addEventListener("mouseleave", deactivate);
+      calendarEl.addEventListener("touchend", deactivate);
+      calendarEl.addEventListener("touchcancel", deactivate);
+    }
   }
 
   const countdownEl = document.getElementById("countdown");
