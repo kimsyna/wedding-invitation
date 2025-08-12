@@ -92,6 +92,11 @@ h6 {
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.2);
+  transition: background 0.3s;
+}
+
+.scrolled .hero-section::before {
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .hero-section.hero-zoom {
@@ -105,14 +110,6 @@ h6 {
   -webkit-backdrop-filter: blur(10px);
 }
 
-.scrolled .glass-section {
-  background: rgba(0, 0, 0, 0.4);
-  color: #fff;
-  --text-color: #fff;
-  --button-bg-color: rgba(255, 255, 255, 0.2);
-  --button-text-color: #fff;
-  --button-hover-bg-color: rgba(255, 255, 255, 0.3);
-}
 @keyframes hero-zoom {
   from {
     transform: scale(1);
@@ -266,6 +263,13 @@ h6 {
 }
 
 .gallery-section {
+}
+
+.map-section,
+.schedule-section {
+  color: #000;
+  --text-color: #000;
+  --button-text-color: #000;
 }
 
 .invitation-section,
