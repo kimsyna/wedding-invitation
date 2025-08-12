@@ -271,6 +271,32 @@ h6 {
   font-weight: 300;
 }
 
+.thanks-section {
+  margin: 20px 0;
+  padding: 16px;
+  background: #fff0f6;
+  border-radius: 12px;
+  color: #d63384;
+  text-align: center;
+  line-height: 1.5;
+  white-space: pre-line;
+}
+
+.thanks-section::before,
+.thanks-section::after {
+  content: "\uD83D\uDC96";
+  display: block;
+  font-size: 1.5rem;
+}
+
+.thanks-section::before {
+  margin-bottom: 8px;
+}
+
+.thanks-section::after {
+  margin-top: 8px;
+}
+
 .direction-item {
   margin-bottom: 12px;
 }

@@ -406,7 +406,8 @@ const init = async () => {
 
     const showThanks = () => {
       if (introEl) {
-        introEl.textContent = `${GROOM_NAME} & ${BRIDE_NAME}의 결혼식에 참석해주셔서 진심으로 감사드립니다.`;
+        introEl.textContent = `${GROOM_NAME} & ${BRIDE_NAME}의 결혼식에 참석해주셔서\n진심으로 감사드립니다.`;
+        introEl.classList.add("thanks-section");
       }
       if (titleEl) titleEl.style.display = "none";
       countdownEl.style.display = "none";
