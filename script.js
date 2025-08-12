@@ -312,7 +312,9 @@ const init = async () => {
   if (heroSection && !prefersReducedMotion) {
     heroSection.classList.add("hero-zoom");
     const finishHero = () => {
-      heroSection.getAnimations().forEach((anim) => anim.finish());
+      heroSection.getAnimations().forEach((anim) => anim.cancel());
+      heroSection.classList.remove("hero-zoom");
+      heroSection.style.removeProperty("transform");
     };
     window.addEventListener("scroll", finishHero, { once: true });
   }
