@@ -30,6 +30,39 @@ body.no-scroll {
   overflow: hidden;
 }
 
+.loading-section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--hero-image) center/cover no-repeat;
+  background-color: #fff;
+  z-index: 1000;
+}
+
+.loading-section .spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.5);
+  border-top-color: var(--highlight-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+body.loaded .loading-section {
+  display: none;
+}
+
 h2,
 h3,
 h4,
@@ -879,6 +912,10 @@ h6 {
   .copy-account img {
     animation: none;
     transition: none;
+  }
+
+  .loading-section .spinner {
+    animation: none;
   }
 
   .hero-names,
