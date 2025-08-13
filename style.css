@@ -8,7 +8,6 @@
   --secondary-bg-color: #f9f9f9;
   --button-bg-color: #ffffff;
   --button-text-color: #ffffff;
-  --button-hover-bg-color: #f5f5f5;
   --highlight-color: #b22222;
   --hero-image: url("https://www.iwedding.co.kr/center/iweddingb/product/800_17588_1730685980_90793400_3232256098.jpg");
 }
@@ -408,15 +407,6 @@ h6 {
   transition: background 0.2s ease;
 }
 
-.map-btn:hover,
-.map-btn:focus-visible {
-  background: var(--button-hover-bg-color);
-}
-
-.map-btn:focus-visible {
-  outline: 2px solid var(--highlight-color);
-  outline-offset: 2px;
-}
 
 .btn-icon {
   width: 16px;
@@ -508,7 +498,7 @@ h6 {
 }
 
 .calendar-container .event-day.heart-active::before {
-  transform: translate(-50%, -50%) scale(1.2);
+  transform: translate(-50%, -50%) scale(2);
 }
 
 #countdown {
@@ -573,15 +563,6 @@ h6 {
   transition: background 0.2s ease;
 }
 
-#gallery-more:hover,
-#gallery-more:focus-visible {
-  background: var(--button-hover-bg-color);
-}
-
-#gallery-more:focus-visible {
-  outline: 2px solid var(--highlight-color);
-  outline-offset: 2px;
-}
 
 .image-modal {
   position: fixed;
@@ -677,15 +658,6 @@ h6 {
   position: relative;
 }
 
-.share-section button:hover,
-.share-section button:focus-visible {
-  background: var(--button-hover-bg-color);
-}
-
-.share-section button:focus-visible {
-  outline: 2px solid var(--highlight-color);
-  outline-offset: 2px;
-}
 
 .contact-btn {
   margin-top: 0;
@@ -699,15 +671,6 @@ h6 {
   transition: background 0.2s ease;
 }
 
-.contact-btn:hover,
-.contact-btn:focus-visible {
-  background: var(--button-hover-bg-color);
-}
-
-.contact-btn:focus-visible {
-  outline: 2px solid var(--highlight-color);
-  outline-offset: 2px;
-}
 
 .copy-toast {
   position: fixed;
@@ -850,17 +813,6 @@ h6 {
   transition: opacity 0.2s;
 }
 
-.contact-actions img:hover,
-.copy-account img:hover {
-  opacity: 1;
-}
-
-.contact-actions img:focus-visible,
-.copy-account img:focus-visible {
-  opacity: 1;
-  outline: 2px solid var(--highlight-color);
-  outline-offset: 2px;
-}
 
 .contact-list .account {
   margin-top: 16px;
