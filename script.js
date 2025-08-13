@@ -306,16 +306,10 @@ const applySequentialAnimation = (containerSelector) => {
 
 const init = async () => {
   document.body.innerHTML = getTemplate();
-  const pressables = document.querySelectorAll(
-    "section:not(.hero-section), button",
-  );
+  const pressables = document.querySelectorAll("button, img");
   pressables.forEach((el) => {
-    const target =
-      el.matches("section") && el.querySelector(".section-content")
-        ? el.querySelector(".section-content")
-        : el;
-    const add = () => target.classList.add("press-scale");
-    const remove = () => target.classList.remove("press-scale");
+    const add = () => el.classList.add("press-scale");
+    const remove = () => el.classList.remove("press-scale");
     el.addEventListener("mousedown", add);
     el.addEventListener("touchstart", add);
     el.addEventListener("mouseup", remove);
