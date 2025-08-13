@@ -387,7 +387,10 @@ const init = async () => {
       const activate = () => eventDayEl.classList.add("heart-active");
       const deactivate = () => eventDayEl.classList.remove("heart-active");
       calendarEl.addEventListener("mousedown", activate);
-      calendarEl.addEventListener("touchstart", activate);
+      calendarEl.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        activate();
+      });
       calendarEl.addEventListener("mouseup", deactivate);
       calendarEl.addEventListener("mouseleave", deactivate);
       calendarEl.addEventListener("touchend", deactivate);
