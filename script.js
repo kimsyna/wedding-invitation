@@ -749,7 +749,6 @@ const init = async () => {
     }
   };
   window.addEventListener("scroll", updateHeroScroll);
-  window.scrollTo(0, 90);
   updateHeroScroll();
 };
 
@@ -767,13 +766,13 @@ const enableInteraction = () => {
   window.removeEventListener("keydown", blockEvent, true);
 };
 
+window.scrollTo(0, 90);
 disableInteraction();
 
 const finishLoading = () => {
   enableInteraction();
   document.body.classList.add("loaded");
   document.body.classList.remove("loading");
-  window.scrollTo(0, 90);
 };
 
 const MIN_LOADING_TIME = 1500;
