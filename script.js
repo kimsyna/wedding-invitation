@@ -600,7 +600,6 @@ const init = async () => {
     const images = await getGalleryImages();
     const moreBtn = document.getElementById("gallery-more");
     const modal = document.getElementById("image-modal");
-    const modalContent = document.getElementById("modal-swiper");
     const swiperWrapper = document.getElementById("modal-swiper-wrapper");
     const closeBtn = document.getElementById("modal-close");
     let swiper;
@@ -617,18 +616,7 @@ const init = async () => {
       }
     };
 
-    const openModal = (idx, trigger) => {
-      if (trigger && modalContent) {
-        const rect = trigger.getBoundingClientRect();
-        const modalWidth = modalContent.offsetWidth;
-        const modalHeight = modalContent.offsetHeight;
-        const originX =
-          rect.left + rect.width / 2 - (window.innerWidth - modalWidth) / 2;
-        const originY =
-          rect.top + rect.height / 2 - (window.innerHeight - modalHeight) / 2;
-        modalContent.style.setProperty("--origin-x", `${originX}px`);
-        modalContent.style.setProperty("--origin-y", `${originY}px`);
-      }
+    const openModal = (idx) => {
       modal.classList.add("open");
       document.body.classList.add("no-scroll");
       initSwiper();
@@ -656,11 +644,11 @@ const init = async () => {
       img.decoding = "async";
       img.tabIndex = 0;
       if (idx >= initialVisible) img.classList.add("hidden");
-      img.addEventListener("click", (e) => openModal(idx, e.currentTarget));
+      img.addEventListener("click", () => openModal(idx));
       img.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
-          openModal(idx, img);
+          openModal(idx);
         }
       });
       galleryGrid.appendChild(img);
