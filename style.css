@@ -42,11 +42,11 @@ body.loading * {
 }
 
 body.loading .hero-content {
-  display: none;
+  opacity: 0;
 }
 
 body.loaded .hero-content {
-  display: block;
+  opacity: 1;
 }
 
 .loading-section {
@@ -192,7 +192,7 @@ h6 {
   position: relative;
   z-index: 1;
   color: #fff;
-  transition: color 0.3s;
+  transition: color 0.3s, opacity 0.5s;
 }
 
 .scrolled .hero-content {
