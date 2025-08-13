@@ -561,6 +561,16 @@ h6 {
   transform: translate(-50%, -50%) scale(2);
 }
 
+section:not(.hero-section),
+section:not(.hero-section) .section-content,
+button {
+  transition: transform 0.2s;
+}
+
+.press-scale {
+  transform: scale(1.2);
+}
+
 #countdown {
   display: flex;
   justify-content: center;
