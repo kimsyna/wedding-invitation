@@ -305,14 +305,23 @@ const applySequentialAnimation = (containerSelector) => {
 };
 
 const makePressable = (el) => {
-  const add = () => el.classList.add("press-brighten");
-  const remove = () => el.classList.remove("press-brighten");
+  let pressTimer;
+  const add = () => {
+    el.classList.add("press-brighten");
+    clearTimeout(pressTimer);
+    pressTimer = setTimeout(() => el.classList.remove("press-brighten"), 200);
+  };
+  const remove = () => {
+    clearTimeout(pressTimer);
+    el.classList.remove("press-brighten");
+  };
   el.addEventListener("mousedown", add);
   el.addEventListener("touchstart", add);
   el.addEventListener("mouseup", remove);
   el.addEventListener("mouseleave", remove);
   el.addEventListener("touchend", remove);
   el.addEventListener("touchcancel", remove);
+  el.addEventListener("contextmenu", remove);
   const delay = (e) => {
     e.preventDefault();
     e.stopImmediatePropagation();
