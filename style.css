@@ -567,8 +567,8 @@ a {
   transition: filter 0.2s, transform 0.2s;
 }
 
-.press-scale {
-  filter: brightness(1.1);
+.press-brighten {
+  filter: brightness(1.3);
 }
 
 #countdown {
