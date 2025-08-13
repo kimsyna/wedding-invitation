@@ -753,12 +753,18 @@ const init = async () => {
   updateHeroScroll();
 };
 
+const finishLoading = () => {
+  document.body.classList.add("loaded");
+  document.body.classList.remove("loading");
+  window.scrollTo(0, 90);
+};
+
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", () => {
     init();
-    document.body.classList.add("loaded");
+    setTimeout(finishLoading, 1500);
   });
 } else {
   init();
-  document.body.classList.add("loaded");
+  setTimeout(finishLoading, 1500);
 }

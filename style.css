@@ -30,6 +30,15 @@ body.no-scroll {
   overflow: hidden;
 }
 
+body.loading {
+  overflow: hidden;
+  pointer-events: none;
+}
+
+body.loading * {
+  pointer-events: none;
+}
+
 .loading-section {
   position: fixed;
   top: 0;
