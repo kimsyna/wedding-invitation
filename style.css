@@ -41,6 +41,14 @@ body.loading * {
   pointer-events: none;
 }
 
+body.loading .hero-content {
+  display: none;
+}
+
+body.loaded .hero-content {
+  display: block;
+}
+
 .loading-section {
   position: fixed;
   top: 0;
