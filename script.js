@@ -759,12 +759,23 @@ const finishLoading = () => {
   window.scrollTo(0, 90);
 };
 
+const MIN_LOADING_TIME = 1500;
+const loadStart = performance.now();
+
+const onWindowLoad = () => {
+  const elapsed = performance.now() - loadStart;
+  const delay = Math.max(MIN_LOADING_TIME - elapsed, 0);
+  setTimeout(finishLoading, delay);
+};
+
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", init);
 } else {
   init();
 }
 
-window.addEventListener("load", () => {
-  setTimeout(finishLoading, 1500);
-});
+if (document.readyState === "complete") {
+  onWindowLoad();
+} else {
+  window.addEventListener("load", onWindowLoad);
+}
