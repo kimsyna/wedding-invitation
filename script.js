@@ -814,6 +814,7 @@ const finishLoading = () => {
   enableInteraction();
   document.body.classList.add("loaded");
   document.body.classList.remove("loading");
+  window.scrollTo(0, 90);
 };
 
 const MIN_LOADING_TIME = 1500;
