@@ -662,7 +662,7 @@ const init = async () => {
       slideImg.loading = "lazy";
       slideImg.decoding = "async";
       slide.appendChild(slideImg);
-      makePressable(slideImg);
+      // gallery modal images should not scale on press
       swiperWrapper.appendChild(slide);
     });
 
