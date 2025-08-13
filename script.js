@@ -304,28 +304,33 @@ const applySequentialAnimation = (containerSelector) => {
   observer.observe(container);
 };
 
+const makePressable = (el) => {
+  const add = () => el.classList.add("press-scale");
+  const remove = () => el.classList.remove("press-scale");
+  el.addEventListener("mousedown", add);
+  el.addEventListener("touchstart", add);
+  el.addEventListener("mouseup", remove);
+  el.addEventListener("mouseleave", remove);
+  el.addEventListener("touchend", remove);
+  el.addEventListener("touchcancel", remove);
+  const delay = (e) => {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    el.removeEventListener("click", delay, true);
+    setTimeout(() => {
+      el.click();
+      el.addEventListener("click", delay, true);
+    }, 200);
+  };
+  el.addEventListener("click", delay, true);
+};
+
 const init = async () => {
   document.body.innerHTML = getTemplate();
-  const pressables = document.querySelectorAll("button, img");
+  const pressables = document.querySelectorAll("button, a, img");
   pressables.forEach((el) => {
-    const add = () => el.classList.add("press-scale");
-    const remove = () => el.classList.remove("press-scale");
-    el.addEventListener("mousedown", add);
-    el.addEventListener("touchstart", add);
-    el.addEventListener("mouseup", remove);
-    el.addEventListener("mouseleave", remove);
-    el.addEventListener("touchend", remove);
-    el.addEventListener("touchcancel", remove);
-    const delay = (e) => {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      el.removeEventListener("click", delay, true);
-      setTimeout(() => {
-        el.click();
-        el.addEventListener("click", delay, true);
-      }, 200);
-    };
-    el.addEventListener("click", delay, true);
+    if (el.tagName === "IMG" && el.closest("a")) return;
+    makePressable(el);
   });
   document.querySelectorAll("img").forEach((img) => {
     if (!img.hasAttribute("loading")) {
@@ -634,6 +639,7 @@ const init = async () => {
         }
       });
       galleryGrid.appendChild(img);
+      makePressable(img);
 
       const slide = document.createElement("div");
       slide.className = "swiper-slide";
@@ -643,6 +649,7 @@ const init = async () => {
       slideImg.loading = "lazy";
       slideImg.decoding = "async";
       slide.appendChild(slideImg);
+      makePressable(slideImg);
       swiperWrapper.appendChild(slide);
     });
 
