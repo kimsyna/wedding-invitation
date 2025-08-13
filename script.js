@@ -61,13 +61,14 @@ const getTemplate = () => `
     </p>
   </section>
   <section class="family-contact-section glass-section fade-section">
-    <img
-      src="images/wedding1.png"
-      alt="contact photo"
-      class="contact-image floating sequential-item"
-      loading="eager"
-    />
-    <div class="family-section">
+    <div class="section-content">
+      <img
+        src="images/wedding1.png"
+        alt="contact photo"
+        class="contact-image floating sequential-item"
+        loading="eager"
+      />
+      <div class="family-section">
         <p class="info-line sequential-item">
           <span class="info-name parent-name">${GROOM_FATHER}</span>
           <span class="name-dot">·</span>
@@ -82,8 +83,9 @@ const getTemplate = () => `
           <span class="relation-child">딸</span>
           <span class="info-name child-name">${BRIDE_FIRST_NAME}</span>
         </p>
-    </div>
+      </div>
       <button id="contact-btn" class="contact-btn floating sequential-item glass-button">연락하기</button>
+    </div>
   </section>
 
   <div id="contact-modal" class="contact-modal">
@@ -180,42 +182,48 @@ const getTemplate = () => `
   </div>
 
   <section class="map-section glass-section fade-section">
-    <h3>오시는 길</h3>
-    <p class="map-address">${VENUE_ADDRESS}</p>
-    <p class="map-hall">${VENUE_HALL}</p>
+    <div class="section-content">
+      <h3>오시는 길</h3>
+      <p class="map-address">${VENUE_ADDRESS}</p>
+      <p class="map-hall">${VENUE_HALL}</p>
       <div id="map" class="map-container floating"></div>
-    <div class="map-buttons">
-      <a aria-label="네이버" class="map-btn floating glass-button" href="https://map.naver.com/p/search/%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84%EB%8D%94%ED%94%84%EB%A0%88%EC%8A%A4%ED%8B%B0%EC%A7%80/place/1856237237" target="_blank" rel="noopener noreferrer"><img src="https://play-lh.googleusercontent.com/iqe1hFI03eD6nW3S8fxK_MDvNC8tDtod_gnhF9e8XN-IPmLXJvZVJLm-bQ4U5mKAVK0" alt="네이버맵 아이콘" class="btn-icon" />네이버</a>
-      <a aria-label="카카오" class="map-btn floating glass-button" href="https://map.kakao.com/link/map/%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84%EB%8D%94%ED%94%84%EB%A0%88%EC%8A%A4%ED%8B%B0%EC%A7%80,37.2627302,126.9966484" target="_blank" rel="noopener noreferrer"><img src="https://play-lh.googleusercontent.com/pPTTNz433EYFurg2j__bFU5ONdMoU_bs_-yS2JLZriua3iHrksGP6XBPF5VtDPlpGcW4" alt="카카오맵 아이콘" class="btn-icon" />카카오</a>
-      <a aria-label="티맵" class="map-btn floating glass-button" href="https://tmap.life/1b2851ce" target="_blank" rel="noopener noreferrer"><img src="https://play-lh.googleusercontent.com/WcrqQ9atNdC7dp4vG4fWue0kRdMxiDSTKu9E1Zj7EmGcgdQ8j3u9_2Tt8vw-zPvKCkg" alt="티맵 아이콘" class="btn-icon" />티맵</a>
-    </div>
-    <div class="directions">
-      <div class="direction-item walk">
-        <h4 class="method">도보</h4>
-        <p class="detail">${WALK_INFO}</p>
+      <div class="map-buttons">
+        <a aria-label="네이버" class="map-btn floating glass-button" href="https://map.naver.com/p/search/%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84%EB%8D%94%ED%94%84%EB%A0%88%EC%8A%A4%ED%8B%B0%EC%A7%80/place/1856237237" target="_blank" rel="noopener noreferrer"><img src="https://play-lh.googleusercontent.com/iqe1hFI03eD6nW3S8fxK_MDvNC8tDtod_gnhF9e8XN-IPmLXJvZVJLm-bQ4U5mKAVK0" alt="네이버맵 아이콘" class="btn-icon" />네이버</a>
+        <a aria-label="카카오" class="map-btn floating glass-button" href="https://map.kakao.com/link/map/%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84%EB%8D%94%ED%94%84%EB%A0%88%EC%8A%A4%ED%8B%B0%EC%A7%80,37.2627302,126.9966484" target="_blank" rel="noopener noreferrer"><img src="https://play-lh.googleusercontent.com/pPTTNz433EYFurg2j__bFU5ONdMoU_bs_-yS2JLZriua3iHrksGP6XBPF5VtDPlpGcW4" alt="카카오맵 아이콘" class="btn-icon" />카카오</a>
+        <a aria-label="티맵" class="map-btn floating glass-button" href="https://tmap.life/1b2851ce" target="_blank" rel="noopener noreferrer"><img src="https://play-lh.googleusercontent.com/WcrqQ9atNdC7dp4vG4fWue0kRdMxiDSTKu9E1Zj7EmGcgdQ8j3u9_2Tt8vw-zPvKCkg" alt="티맵 아이콘" class="btn-icon" />티맵</a>
       </div>
-      <div class="direction-item transit">
-        <h4 class="method">대중교통</h4>
-        <p class="detail">${TRANSIT_INFO}</p>
-      </div>
-      <div class="direction-item parking">
-        <h4 class="method">주차</h4>
-        <p class="detail">${PARKING_INFO}</p>
+      <div class="directions">
+        <div class="direction-item walk">
+          <h4 class="method">도보</h4>
+          <p class="detail">${WALK_INFO}</p>
+        </div>
+        <div class="direction-item transit">
+          <h4 class="method">대중교통</h4>
+          <p class="detail">${TRANSIT_INFO}</p>
+        </div>
+        <div class="direction-item parking">
+          <h4 class="method">주차</h4>
+          <p class="detail">${PARKING_INFO}</p>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="schedule-section glass-section fade-section">
-    <div id="calendar" class="calendar-container floating"></div>
-    <p class="countdown-intro">${GROOM_NAME} & ${BRIDE_NAME}<span class="count-thin">의</span> 결혼식<span class="count-thin">까지</span></p>
-    <h3>남은 시간</h3>
-    <div id="countdown"></div>
-    <button id="countdown-complete-btn" class="floating glass-button">카운트다운 완료</button>
+    <div class="section-content">
+      <div id="calendar" class="calendar-container floating"></div>
+      <p class="countdown-intro">${GROOM_NAME} & ${BRIDE_NAME}<span class="count-thin">의</span> 결혼식<span class="count-thin">까지</span></p>
+      <h3>남은 시간</h3>
+      <div id="countdown"></div>
+      <button id="countdown-complete-btn" class="floating glass-button">카운트다운 완료</button>
+    </div>
   </section>
 
   <section class="gallery-section glass-section fade-section">
-    <div id="gallery-grid" class="gallery-grid"></div>
-    <button id="gallery-more" class="floating glass-button">더보기</button>
+    <div class="section-content">
+      <div id="gallery-grid" class="gallery-grid"></div>
+      <button id="gallery-more" class="floating glass-button">더보기</button>
+    </div>
   </section>
 
   <div id="image-modal" class="image-modal">
@@ -228,7 +236,8 @@ const getTemplate = () => `
   </div>
 
   <section class="share-section glass-section fade-section">
-    <div class="share-row">
+    <div class="section-content">
+      <div class="share-row">
         <button id="copy-url" class="floating glass-button">
         <img
           src="https://img.icons8.com/ios-glyphs/30/000000/copy.png"
@@ -243,8 +252,8 @@ const getTemplate = () => `
           class="btn-icon"
         />URL 공유
       </button>
-    </div>
-    <div class="share-row">
+      </div>
+      <div class="share-row">
         <button id="share-kakao" class="floating glass-button">
         <img
           src="https://play-lh.googleusercontent.com/Ob9Ys8yKMeyKzZvl3cB9JNSTui1lJwjSKD60IVYnlvU2DsahysGENJE-txiRIW9_72Vd"
@@ -252,6 +261,7 @@ const getTemplate = () => `
           class="btn-icon"
         />카카오톡 공유
       </button>
+      </div>
     </div>
   </section>
 
@@ -296,6 +306,23 @@ const applySequentialAnimation = (containerSelector) => {
 
 const init = async () => {
   document.body.innerHTML = getTemplate();
+  const pressables = document.querySelectorAll(
+    "section:not(.hero-section), button",
+  );
+  pressables.forEach((el) => {
+    const target =
+      el.matches("section") && el.querySelector(".section-content")
+        ? el.querySelector(".section-content")
+        : el;
+    const add = () => target.classList.add("press-scale");
+    const remove = () => target.classList.remove("press-scale");
+    el.addEventListener("mousedown", add);
+    el.addEventListener("touchstart", add);
+    el.addEventListener("mouseup", remove);
+    el.addEventListener("mouseleave", remove);
+    el.addEventListener("touchend", remove);
+    el.addEventListener("touchcancel", remove);
+  });
   document.querySelectorAll("img").forEach((img) => {
     if (!img.hasAttribute("loading")) {
       img.loading = "lazy";
