@@ -495,14 +495,24 @@ const init = async () => {
   const contactToast = document.getElementById("contact-toast");
   const showToast = (btn, toast, message, container) => {
     const rect = btn.getBoundingClientRect();
+    const containerRect = container
+      ? container.getBoundingClientRect()
+      : null;
     let left = rect.left + rect.width / 2;
     let top = rect.top - 8;
-    if (container) {
-      const containerRect = container.getBoundingClientRect();
+    if (containerRect) {
       left -= containerRect.left;
       top -= containerRect.top;
     }
     toast.textContent = message;
+    const toastWidth = toast.offsetWidth;
+    const maxWidth = containerRect
+      ? containerRect.width
+      : window.innerWidth;
+    const margin = 10;
+    const maxLeft = maxWidth - toastWidth / 2 - margin;
+    const minLeft = toastWidth / 2 + margin;
+    left = Math.min(Math.max(left, minLeft), maxLeft);
     toast.style.left = `${left}px`;
     toast.style.top = `${top}px`;
     toast.style.bottom = "auto";
