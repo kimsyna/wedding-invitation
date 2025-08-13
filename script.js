@@ -316,6 +316,16 @@ const init = async () => {
     el.addEventListener("mouseleave", remove);
     el.addEventListener("touchend", remove);
     el.addEventListener("touchcancel", remove);
+    const delay = (e) => {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      el.removeEventListener("click", delay, true);
+      setTimeout(() => {
+        el.click();
+        el.addEventListener("click", delay, true);
+      }, 200);
+    };
+    el.addEventListener("click", delay, true);
   });
   document.querySelectorAll("img").forEach((img) => {
     if (!img.hasAttribute("loading")) {
