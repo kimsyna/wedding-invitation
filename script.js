@@ -493,13 +493,21 @@ const init = async () => {
   const copyUrlBtn = document.getElementById("copy-url");
   const copyToast = document.getElementById("copy-toast");
   const contactToast = document.getElementById("contact-toast");
+  const showToast = (btn, toast, message) => {
+    const rect = btn.getBoundingClientRect();
+    toast.textContent = message;
+    toast.style.left = `${rect.left + rect.width / 2}px`;
+    toast.style.top = `${rect.top - 8}px`;
+    toast.style.bottom = "auto";
+    toast.style.transform = "translate(-50%, -100%)";
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 2000);
+  };
   if (copyUrlBtn && copyToast) {
     copyUrlBtn.addEventListener("click", async () => {
       try {
         await navigator.clipboard.writeText(window.location.href);
-        copyToast.textContent = "URL이 복사되었습니다";
-        copyToast.classList.add("show");
-        setTimeout(() => copyToast.classList.remove("show"), 2000);
+        showToast(copyUrlBtn, copyToast, "URL이 복사되었습니다");
       } catch (e) {
         alert("URL 복사에 실패했습니다. 다시 시도해주세요.");
       }
