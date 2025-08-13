@@ -33,6 +33,8 @@ body.no-scroll {
 body.loading {
   overflow: hidden;
   pointer-events: none;
+  touch-action: none;
+  overscroll-behavior: none;
 }
 
 body.loading * {

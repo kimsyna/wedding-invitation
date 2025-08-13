@@ -753,7 +753,24 @@ const init = async () => {
   updateHeroScroll();
 };
 
+const blockEvent = (e) => e.preventDefault();
+
+const disableInteraction = () => {
+  window.addEventListener("wheel", blockEvent, { passive: false });
+  window.addEventListener("touchmove", blockEvent, { passive: false });
+  window.addEventListener("keydown", blockEvent, true);
+};
+
+const enableInteraction = () => {
+  window.removeEventListener("wheel", blockEvent, { passive: false });
+  window.removeEventListener("touchmove", blockEvent, { passive: false });
+  window.removeEventListener("keydown", blockEvent, true);
+};
+
+disableInteraction();
+
 const finishLoading = () => {
+  enableInteraction();
   document.body.classList.add("loaded");
   document.body.classList.remove("loading");
   window.scrollTo(0, 90);
