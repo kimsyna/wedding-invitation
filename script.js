@@ -305,8 +305,8 @@ const applySequentialAnimation = (containerSelector) => {
 };
 
 const makePressable = (el) => {
-  const add = () => el.classList.add("press-scale");
-  const remove = () => el.classList.remove("press-scale");
+  const add = () => el.classList.add("press-brighten");
+  const remove = () => el.classList.remove("press-brighten");
   el.addEventListener("mousedown", add);
   el.addEventListener("touchstart", add);
   el.addEventListener("mouseup", remove);
