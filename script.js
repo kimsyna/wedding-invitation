@@ -731,7 +731,7 @@ const init = async () => {
           }
         });
       },
-      { threshold: 0.2 },
+      { threshold: 0.1 },
     );
     fadeSections.forEach((sec) => observer.observe(sec));
   }
@@ -760,11 +760,11 @@ const finishLoading = () => {
 };
 
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", () => {
-    init();
-    setTimeout(finishLoading, 1500);
-  });
+  document.addEventListener("DOMContentLoaded", init);
 } else {
   init();
-  setTimeout(finishLoading, 1500);
 }
+
+window.addEventListener("load", () => {
+  setTimeout(finishLoading, 1500);
+});
