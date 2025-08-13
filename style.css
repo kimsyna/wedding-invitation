@@ -662,6 +662,13 @@ a {
   max-width: 600px;
   padding: 0 16px;
   box-sizing: border-box;
+  transform: scale(0);
+  transform-origin: var(--origin-x) var(--origin-y);
+  transition: transform 0.3s ease;
+}
+
+.image-modal.open .swiper {
+  transform: scale(1);
 }
 
 .image-modal .swiper-slide {
