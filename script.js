@@ -754,7 +754,11 @@ const init = async () => {
 };
 
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", init);
+  document.addEventListener("DOMContentLoaded", () => {
+    init();
+    document.body.classList.add("loaded");
+  });
 } else {
   init();
+  document.body.classList.add("loaded");
 }
