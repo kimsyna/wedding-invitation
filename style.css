@@ -564,12 +564,11 @@ h6 {
 button,
 img,
 a {
-  transition: transform 0.2s, scale 0.2s;
+  transition: filter 0.2s, transform 0.2s;
 }
 
 .press-scale {
-  transform: scale(1.2);
-  scale: 1.2;
+  filter: brightness(1.1);
 }
 
 #countdown {
