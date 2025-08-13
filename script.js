@@ -493,11 +493,18 @@ const init = async () => {
   const copyUrlBtn = document.getElementById("copy-url");
   const copyToast = document.getElementById("copy-toast");
   const contactToast = document.getElementById("contact-toast");
-  const showToast = (btn, toast, message) => {
+  const showToast = (btn, toast, message, container) => {
     const rect = btn.getBoundingClientRect();
+    let left = rect.left + rect.width / 2;
+    let top = rect.top - 8;
+    if (container) {
+      const containerRect = container.getBoundingClientRect();
+      left -= containerRect.left;
+      top -= containerRect.top;
+    }
     toast.textContent = message;
-    toast.style.left = `${rect.left + rect.width / 2}px`;
-    toast.style.top = `${rect.top - 8}px`;
+    toast.style.left = `${left}px`;
+    toast.style.top = `${top}px`;
     toast.style.bottom = "auto";
     toast.style.transform = "translate(-50%, -100%)";
     toast.classList.add("show");
@@ -746,12 +753,15 @@ const init = async () => {
         }
         document.body.removeChild(textarea);
       }
-      if (contactToast) {
-        contactToast.textContent = success
-          ? "복사되었습니다"
-          : "복사에 실패했습니다. 직접 복사해주세요.";
-        contactToast.classList.add("show");
-        setTimeout(() => contactToast.classList.remove("show"), 2000);
+      if (contactToast && contactContent) {
+        showToast(
+          btn,
+          contactToast,
+          success
+            ? "복사되었습니다"
+            : "복사에 실패했습니다. 직접 복사해주세요.",
+          contactContent,
+        );
       } else if (!success) {
         alert("복사에 실패했습니다. 직접 복사해주세요.");
       }

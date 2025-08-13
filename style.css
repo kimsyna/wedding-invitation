@@ -781,9 +781,6 @@ a {
 
 .contact-content .copy-toast {
   position: absolute;
-  bottom: 16px;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .contact-modal.open {
