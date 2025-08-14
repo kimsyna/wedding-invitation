@@ -43,6 +43,7 @@ export function initHero3D() {
     renderer.setSize(container.clientWidth, container.clientHeight);
   };
   window.addEventListener("resize", resize);
+  resize();
 
   let frameId;
   const animate = () => {
