@@ -9,17 +9,14 @@ export function initHero3D() {
   }
 
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(
-    60,
-    container.clientWidth / container.clientHeight,
-    0.1,
-    1000,
-  );
+  const width = container.clientWidth || window.innerWidth;
+  const height = container.clientHeight || window.innerHeight;
+  const camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 1000);
   camera.position.z = 5;
 
   const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
   renderer.setPixelRatio(window.devicePixelRatio);
-  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.setSize(width, height);
   container.appendChild(renderer.domElement);
 
   const geometry = new THREE.BufferGeometry();
@@ -39,9 +36,11 @@ export function initHero3D() {
   scene.add(particles);
 
   const resize = () => {
-    camera.aspect = container.clientWidth / container.clientHeight;
+    const w = container.clientWidth || window.innerWidth;
+    const h = container.clientHeight || window.innerHeight;
+    camera.aspect = w / h;
     camera.updateProjectionMatrix();
-    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setSize(w, h);
   };
   window.addEventListener("resize", resize);
   resize();
