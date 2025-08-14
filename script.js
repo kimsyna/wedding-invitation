@@ -617,6 +617,11 @@ const init = async () => {
     const initSwiper = () => {
       if (typeof Swiper !== "undefined" && !swiper) {
         swiper = new Swiper("#modal-swiper", {
+          effect: "coverflow",
+          coverflowEffect: {
+            rotate: 30,
+            slideShadows: false,
+          },
           navigation: {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
