@@ -34,7 +34,7 @@ export function initHero3D() {
     "position",
     new THREE.Float32BufferAttribute(vertices, 3),
   );
-  const material = new THREE.PointsMaterial({ color: 0xff6699, size: 0.05 });
+  const material = new THREE.PointsMaterial({ color: 0xff6699, size: 0.1 });
   const particles = new THREE.Points(geometry, material);
   scene.add(particles);
 
