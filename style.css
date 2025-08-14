@@ -49,6 +49,24 @@ body.loaded .hero-content {
   opacity: 1;
 }
 
+.text-3d,
+.text-3d * {
+  text-shadow:
+    1px 1px 0 rgba(0, 0, 0, 0.2),
+    2px 2px 0 rgba(0, 0, 0, 0.15),
+    3px 3px 0 rgba(0, 0, 0, 0.1);
+  background: repeating-linear-gradient(
+    45deg,
+    #fff,
+    #fff 10px,
+    #f0f0f0 10px,
+    #f0f0f0 20px
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 .loading-section {
   position: fixed;
   top: 0;
