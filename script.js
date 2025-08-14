@@ -337,6 +337,7 @@ const makePressable = (el) => {
 
 const init = async () => {
   document.body.innerHTML = getTemplate();
+  document.body.classList.add("text-3d");
   const pressables = document.querySelectorAll("button, a, img");
   pressables.forEach((el) => {
     if (el.tagName === "IMG" && el.closest("a")) return;
