@@ -38,6 +38,7 @@ const KAKAO_API_KEY =
 
 const getTemplate = () => `
   <section class="hero-section">
+    <div id="hero-3d"></div>
     <div class="hero-content">
       <div class="hero-names">
         <p class="groom">${GROOM_NAME}</p>
@@ -852,11 +853,14 @@ const enableInteraction = () => {
 window.scrollTo(0, 90);
 disableInteraction();
 
+let hero3D;
+
 const finishLoading = () => {
   enableInteraction();
   document.body.classList.add("loaded");
   document.body.classList.remove("loading");
   window.scrollTo(0, 90);
+  if (hero3D && hero3D.start) hero3D.start();
 };
 
 const MIN_LOADING_TIME = 1500;
@@ -864,6 +868,10 @@ const loadStart = performance.now();
 
 const onDomContentLoaded = async () => {
   await init();
+  const { initHero3D } = await import(
+    `./hero-3d.js${window.CACHE_BUSTER || ""}`,
+  );
+  hero3D = initHero3D();
   const elapsed = performance.now() - loadStart;
   const delay = Math.max(MIN_LOADING_TIME - elapsed, 0);
   setTimeout(finishLoading, delay);
