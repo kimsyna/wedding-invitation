@@ -1,6 +1,7 @@
 export function initHero3D() {
   const container = document.getElementById("hero-3d");
   if (!container || typeof THREE === "undefined") {
+    console.warn("THREE is not loaded");
     return {
       start() {},
       stop() {},
