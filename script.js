@@ -588,6 +588,7 @@ const init = async () => {
   const galleryGrid = document.getElementById("gallery-grid");
   if (galleryGrid) {
     const getGalleryImages = async () => {
+      // 404 오류 방지 및 성능 최적화를 위해 이미지 개수를 고정함
       return Array.from({ length: 12 }, (_, i) => `images/wedding${i + 1}.png`);
     };
     const images = await getGalleryImages();
