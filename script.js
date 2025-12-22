@@ -64,7 +64,7 @@ const getTemplate = () => `
   <section class="family-contact-section glass-section fade-section">
     <div class="section-content">
       <img
-        src="images/wedding1.png"
+        src="images/image_DSC06713 0.png"
         alt="contact photo"
         class="contact-image floating sequential-item"
         loading="eager"
@@ -601,7 +601,6 @@ const init = async () => {
       "DSC06634 0.png",
       "DSC06668 0.png",
       "DSC06696 0.png",
-      "DSC06713 0.png",
       "DSC06757 0.png",
       "DSC06764 0.png",
       "DSC06769 0.png",
@@ -640,7 +639,6 @@ const init = async () => {
       "DSC08052 0.png",
       "DSC08076 0.png",
       "DSC08127 0.png",
-      "DSC08192 0.png",
       "DSC08222 0.png",
       "DSC08247 0.png",
       "DSC08253 0.png",
