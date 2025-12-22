@@ -587,10 +587,73 @@ const init = async () => {
   // 갤러리
   const galleryGrid = document.getElementById("gallery-grid");
   if (galleryGrid) {
-    const getGalleryImages = async () => {
-      return Array.from({ length: 12 }, (_, i) => `images/wedding${i + 1}.png`);
-    };
-    const images = await getGalleryImages();
+    const imageKeys = [
+      "DSC06338 0.png",
+      "DSC06364 0.png",
+      "DSC06385 0.png",
+      "DSC06407 0.png",
+      "DSC06524 0.png",
+      "DSC06550 0.png",
+      "DSC06576 0.png",
+      "DSC06589 0.png",
+      "DSC06596 0.png",
+      "DSC06610 0.png",
+      "DSC06634 0.png",
+      "DSC06668 0.png",
+      "DSC06696 0.png",
+      "DSC06713 0.png",
+      "DSC06757 0.png",
+      "DSC06764 0.png",
+      "DSC06769 0.png",
+      "DSC06799 0.png",
+      "DSC06857 0.png",
+      "DSC06890.png",
+      "DSC06920 0.png",
+      "DSC06945 0.png",
+      "DSC06968 0.png",
+      "DSC07007 0.png",
+      "DSC07034.png",
+      "DSC07062 0.png",
+      "DSC07064 0.png",
+      "DSC07098 0.png",
+      "DSC07181.png",
+      "DSC07207 0.png",
+      "DSC07262 0.png",
+      "DSC07294 0.png",
+      "DSC07306 0.png",
+      "DSC07397 0.png",
+      "DSC07409 0.png",
+      "DSC07422 0.png",
+      "DSC07423 0.png",
+      "DSC07435 0.png",
+      "DSC07470 0.png",
+      "DSC07516 0.png",
+      "DSC07559 0.png",
+      "DSC07585 0.png",
+      "DSC07666 0.png",
+      "DSC07675 0.png",
+      "DSC07826 0.png",
+      "DSC07880.png",
+      "DSC07931 0.png",
+      "DSC07976 0.png",
+      "DSC08028 0.png",
+      "DSC08052 0.png",
+      "DSC08076 0.png",
+      "DSC08127 0.png",
+      "DSC08192 0.png",
+      "DSC08222 0.png",
+      "DSC08247 0.png",
+      "DSC08253 0.png",
+      "DSC08298 0.png",
+      "DSC08478.png",
+      "DSC08493.png",
+      "DSC08522 0.png",
+    ];
+
+    const images = imageKeys.map((key) => ({
+      full: `images/image_${key}`,
+      preview: `images/preview/preview_${key}`,
+    }));
     const moreBtn = document.getElementById("gallery-more");
     const modal = document.getElementById("image-modal");
     const modalContent = document.getElementById("modal-swiper");
@@ -645,9 +708,9 @@ const init = async () => {
       images.length
     );
 
-    images.forEach((src, idx) => {
+    images.forEach((item, idx) => {
       const img = document.createElement("img");
-      img.src = src;
+      img.src = item.preview;
       img.alt = `gallery image ${idx + 1}`;
       img.className = "gallery-image floating";
       img.loading = idx < initialVisible ? "eager" : "lazy";
@@ -667,7 +730,7 @@ const init = async () => {
       const slide = document.createElement("div");
       slide.className = "swiper-slide";
       const slideImg = document.createElement("img");
-      slideImg.src = src;
+      slideImg.src = item.full;
       slideImg.alt = `gallery slide ${idx + 1}`;
       slideImg.loading = "lazy";
       slideImg.decoding = "async";
