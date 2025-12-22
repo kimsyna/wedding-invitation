@@ -336,7 +336,8 @@ const makePressable = (el) => {
 };
 
 const init = async () => {
-  document.body.innerHTML = getTemplate();
+  const app = document.getElementById("app");
+  if (app) app.innerHTML = getTemplate();
   const pressables = document.querySelectorAll("button, a, img");
   pressables.forEach((el) => {
     if (el.tagName === "IMG" && el.closest("a")) return;
@@ -586,26 +587,8 @@ const init = async () => {
   // 갤러리
   const galleryGrid = document.getElementById("gallery-grid");
   if (galleryGrid) {
-    try {
-      await loadExternalScript(
-        "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js",
-      );
-    } catch (e) {
-      console.error("Failed to load Swiper", e);
-    }
     const getGalleryImages = async () => {
-      const list = [];
-      for (let i = 1; ; i++) {
-        const src = `images/wedding${i}.png`;
-        try {
-          const res = await fetch(src, { method: "HEAD" });
-          if (!res.ok) break;
-          list.push(src);
-        } catch (e) {
-          break;
-        }
-      }
-      return list;
+      return Array.from({ length: 12 }, (_, i) => `images/wedding${i + 1}.png`);
     };
     const images = await getGalleryImages();
     const moreBtn = document.getElementById("gallery-more");
@@ -863,18 +846,13 @@ const finishLoading = () => {
   if (hero3D && hero3D.start) hero3D.start();
 };
 
-const MIN_LOADING_TIME = 1500;
-const loadStart = performance.now();
-
 const onDomContentLoaded = async () => {
   await init();
   const { initHero3D } = await import(
     `./hero-3d.js${window.CACHE_BUSTER || ""}`,
   );
   hero3D = initHero3D();
-  const elapsed = performance.now() - loadStart;
-  const delay = Math.max(MIN_LOADING_TIME - elapsed, 0);
-  setTimeout(finishLoading, delay);
+  finishLoading();
 };
 
 if (document.readyState === "loading") {
