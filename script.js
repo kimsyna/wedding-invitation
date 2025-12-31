@@ -334,6 +334,17 @@ const makePressable = (el) => {
   el.addEventListener("click", delay, true);
 };
 
+const makeSectionPressable = (el) => {
+  const add = () => el.classList.add("section-active");
+  const remove = () => el.classList.remove("section-active");
+  el.addEventListener("mousedown", add);
+  el.addEventListener("touchstart", add, { passive: true });
+  el.addEventListener("mouseup", remove);
+  el.addEventListener("mouseleave", remove);
+  el.addEventListener("touchend", remove, { passive: true });
+  el.addEventListener("touchcancel", remove, { passive: true });
+};
+
 const init = async () => {
   const app = document.getElementById("app");
   if (app) app.innerHTML = getTemplate();
@@ -342,6 +353,8 @@ const init = async () => {
     if (el.tagName === "IMG" && el.closest("a")) return;
     makePressable(el);
   });
+  const glassSections = document.querySelectorAll(".glass-section");
+  glassSections.forEach(makeSectionPressable);
   document.querySelectorAll("img").forEach((img) => {
     if (!img.hasAttribute("loading")) {
       img.loading = "lazy";
