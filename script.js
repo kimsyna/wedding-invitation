@@ -63,7 +63,7 @@ const getTemplate = () => `
   <section class="family-contact-section glass-section fade-section">
     <div class="section-content">
       <img
-        src="images/image_DSC06713 0.png"
+        src="images/middle_DSC06713 0.png"
         alt="contact photo"
         class="contact-image floating sequential-item"
         loading="eager"
@@ -610,8 +610,8 @@ const init = async () => {
     ];
 
     const images = imageKeys.map((key) => ({
-      full: `images/image_${key}`,
-      preview: `images/preview/preview_${key}`,
+      full: `images/${key}`,
+      preview: `images/${key}`,
     }));
     const moreBtn = document.getElementById("gallery-more");
     const modal = document.getElementById("image-modal");
