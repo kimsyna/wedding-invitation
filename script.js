@@ -267,7 +267,7 @@ const getTemplate = () => `
 
   <div id="copy-toast" class="copy-toast"></div>
 
-  <footer class="footer-section glass-section fade-section">© 2024 Wedding Invitation</footer>
+  <footer class="footer-section glass-section fade-section">© 2026 Made by Seongwoo</footer>
 `;
 
 const loadExternalScript = (src) =>
