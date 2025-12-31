@@ -316,11 +316,11 @@ const makePressable = (el) => {
     el.classList.remove("press-brighten");
   };
   el.addEventListener("mousedown", add);
-  el.addEventListener("touchstart", add);
+  el.addEventListener("touchstart", add, { passive: true });
   el.addEventListener("mouseup", remove);
   el.addEventListener("mouseleave", remove);
-  el.addEventListener("touchend", remove);
-  el.addEventListener("touchcancel", remove);
+  el.addEventListener("touchend", remove, { passive: true });
+  el.addEventListener("touchcancel", remove, { passive: true });
   el.addEventListener("contextmenu", remove);
   const delay = (e) => {
     e.preventDefault();
@@ -433,14 +433,11 @@ const init = async () => {
       const activate = () => eventDayEl.classList.add("heart-active");
       const deactivate = () => eventDayEl.classList.remove("heart-active");
       calendarEl.addEventListener("mousedown", activate);
-      calendarEl.addEventListener("touchstart", (e) => {
-        e.preventDefault();
-        activate();
-      });
+      calendarEl.addEventListener("touchstart", activate, { passive: true });
       calendarEl.addEventListener("mouseup", deactivate);
       calendarEl.addEventListener("mouseleave", deactivate);
-      calendarEl.addEventListener("touchend", deactivate);
-      calendarEl.addEventListener("touchcancel", deactivate);
+      calendarEl.addEventListener("touchend", deactivate, { passive: true });
+      calendarEl.addEventListener("touchcancel", deactivate, { passive: true });
     }
   }
 
