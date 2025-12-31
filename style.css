@@ -9,7 +9,7 @@
   --button-bg-color: #ffffff;
   --button-text-color: #ffffff;
   --highlight-color: #b22222;
-  --hero-image: url("images/bg_DSC06945 0.png");
+  --hero-image: url("images/bg_DSC06945_0.webp");
 }
 
 body {
@@ -118,7 +118,8 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100vh; /* Fallback */
+  height: 100dvh;
   text-align: center;
   background: var(--hero-image) center/cover no-repeat;
   background-color: #fff;
@@ -196,7 +197,7 @@ h6 {
   transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.glass-section.section-active::before {
+.glass-section:active::before {
   transform: scale(1.02);
 }
 
@@ -608,8 +609,11 @@ a {
   transition: filter 0.2s, transform 0.2s;
 }
 
-.press-brighten {
+button:active,
+a:active,
+.gallery-grid img:active {
   filter: brightness(1.3);
+  transition: filter 0.1s;
 }
 
 #countdown {

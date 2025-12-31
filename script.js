@@ -1,34 +1,14 @@
-// 추가 기능: 달력, 남은 시간, 공유 버튼
-const GROOM_NAME = "이성우";
-const BRIDE_NAME = "임상영";
-const GROOM_FIRST_NAME = GROOM_NAME.slice(1);
-const BRIDE_FIRST_NAME = BRIDE_NAME.slice(1);
-const EVENT_DATE_TEXT = "2026년 5월 17일 일요일";
-const EVENT_TIME_TEXT = "오전 10시 30분";
-const EVENT_DATETIME_TEXT = `${EVENT_DATE_TEXT} ${EVENT_TIME_TEXT}`;
-const VENUE_LOCATION = "메리빌리아더프레스티지";
-const VENUE_HALL = "2층 가든홀";
-const VENUE_ADDRESS =
-  "경기도 수원시 권선구 세화로 116 메리빌리아더프레스티지 웨딩홀 (서둔동 389)";
-const VENUE_LAT = 37.2627302;
-const VENUE_LNG = 126.9966484;
-const WALK_INFO = "수원역 9번 출구에서 도보 10분";
-const TRANSIT_INFO = "";
-const PARKING_INFO = "예식장 내 주차장 이용 가능 (2시간 무료)";
-const GROOM_FATHER = "이강호";
-const GROOM_MOTHER = "박지연";
-const BRIDE_FATHER = "김성훈";
-const BRIDE_MOTHER = "최은지";
-const GROOM_PHONE = "010-1234-5678";
-const BRIDE_PHONE = "010-8765-4321";
-const GROOM_FATHER_PHONE = "010-1111-2222";
-const GROOM_MOTHER_PHONE = "010-3333-4444";
-const BRIDE_FATHER_PHONE = "010-5555-6666";
-const BRIDE_MOTHER_PHONE = "010-7777-8888";
-const GROOM_ACCOUNT_BANK = "국민은행";
-const GROOM_ACCOUNT_NUMBER = "123456-78-901234";
-const BRIDE_ACCOUNT_BANK = "신한은행";
-const BRIDE_ACCOUNT_NUMBER = "987654-32-109876";
+const {
+  GROOM_NAME, BRIDE_NAME, GROOM_FIRST_NAME, BRIDE_FIRST_NAME,
+  EVENT_DATE_TEXT, EVENT_TIME_TEXT, EVENT_DATETIME_TEXT,
+  VENUE_LOCATION, VENUE_HALL, VENUE_ADDRESS, VENUE_LAT, VENUE_LNG,
+  WALK_INFO, TRANSIT_INFO, PARKING_INFO,
+  GROOM_FATHER, GROOM_MOTHER, BRIDE_FATHER, BRIDE_MOTHER,
+  GROOM_PHONE, BRIDE_PHONE, GROOM_FATHER_PHONE, GROOM_MOTHER_PHONE, BRIDE_FATHER_PHONE, BRIDE_MOTHER_PHONE,
+  GROOM_ACCOUNT_BANK, GROOM_ACCOUNT_NUMBER, BRIDE_ACCOUNT_BANK, BRIDE_ACCOUNT_NUMBER,
+  images: IMAGE_KEYS
+} = window.DATA;
+
 const NAVER_MAP_API_KEY =
   (typeof process !== "undefined" && process.env.NAVER_MAP_API_KEY) ||
   (window.env && window.env.NAVER_MAP_API_KEY);
@@ -36,7 +16,7 @@ const KAKAO_API_KEY =
   (typeof process !== "undefined" && process.env.KAKAO_API_KEY) ||
   (window.env && window.env.KAKAO_API_KEY);
 
-const getTemplate = () => `
+const renderHero = () => `
   <section class="hero-section">
     <div class="hero-content">
       <div class="hero-names">
@@ -49,7 +29,9 @@ const getTemplate = () => `
       <p class="hall">${VENUE_HALL}</p>
     </div>
   </section>
+`;
 
+const renderInvitation = () => `
   <section class="invitation-section glass-section">
     <h2>초대의 글</h2>
     <p>
@@ -60,10 +42,13 @@ const getTemplate = () => `
       따뜻한 축복의 발걸음으로 함께해 주시면 큰 기쁨이 되겠습니다.
     </p>
   </section>
+`;
+
+const renderFamilyContact = () => `
   <section class="family-contact-section glass-section fade-section">
     <div class="section-content">
       <img
-        src="images/middle_DSC06713 0.png"
+        src="images/middle_DSC06713_0.webp"
         alt="contact photo"
         class="contact-image floating sequential-item"
         loading="eager"
@@ -87,7 +72,9 @@ const getTemplate = () => `
       <button id="contact-btn" class="contact-btn floating sequential-item glass-button">연락하기</button>
     </div>
   </section>
+`;
 
+const renderContactModal = () => `
   <div id="contact-modal" class="contact-modal">
     <div class="contact-content">
       <div class="contact-columns">
@@ -180,7 +167,9 @@ const getTemplate = () => `
     </div>
     <button id="contact-close" class="modal-close glass-button">&times;</button>
   </div>
+`;
 
+const renderMap = () => `
   <section class="map-section glass-section fade-section">
     <div class="section-content">
       <h3>오시는 길</h3>
@@ -208,7 +197,9 @@ const getTemplate = () => `
       </div>
     </div>
   </section>
+`;
 
+const renderSchedule = () => `
   <section class="schedule-section glass-section fade-section">
     <div class="section-content">
       <div id="calendar" class="calendar-container floating"></div>
@@ -218,7 +209,9 @@ const getTemplate = () => `
       <button id="countdown-complete-btn" class="floating glass-button">카운트다운 완료</button>
     </div>
   </section>
+`;
 
+const renderGallery = () => `
   <section class="gallery-section glass-section fade-section">
     <div class="section-content">
       <div id="gallery-grid" class="gallery-grid"></div>
@@ -234,7 +227,9 @@ const getTemplate = () => `
     </div>
     <button id="modal-close" class="modal-close glass-button">&times;</button>
   </div>
+`;
 
+const renderShare = () => `
   <section class="share-section glass-section fade-section">
     <div class="section-content">
       <div class="share-row">
@@ -270,6 +265,19 @@ const getTemplate = () => `
   <footer class="footer-section glass-section fade-section">© 2026 Made by Seongwoo</footer>
 `;
 
+const getAppContent = () => {
+  return [
+    renderHero(),
+    renderInvitation(),
+    renderFamilyContact(),
+    renderContactModal(),
+    renderMap(),
+    renderSchedule(),
+    renderGallery(),
+    renderShare()
+  ].join('');
+};
+
 const loadExternalScript = (src) =>
   new Promise((resolve, reject) => {
     const s = document.createElement("script");
@@ -304,63 +312,17 @@ const applySequentialAnimation = (containerSelector) => {
   observer.observe(container);
 };
 
-const makePressable = (el) => {
-  let pressTimer;
-  const add = () => {
-    el.classList.add("press-brighten");
-    clearTimeout(pressTimer);
-    pressTimer = setTimeout(() => el.classList.remove("press-brighten"), 200);
-  };
-  const remove = () => {
-    clearTimeout(pressTimer);
-    el.classList.remove("press-brighten");
-  };
-  el.addEventListener("mousedown", add);
-  el.addEventListener("touchstart", add, { passive: true });
-  el.addEventListener("mouseup", remove);
-  el.addEventListener("mouseleave", remove);
-  el.addEventListener("touchend", remove, { passive: true });
-  el.addEventListener("touchcancel", remove, { passive: true });
-  el.addEventListener("contextmenu", remove);
-  const delay = (e) => {
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    el.removeEventListener("click", delay, true);
-    setTimeout(() => {
-      el.click();
-      el.addEventListener("click", delay, true);
-    }, 200);
-  };
-  el.addEventListener("click", delay, true);
-};
-
-const makeSectionPressable = (el) => {
-  const add = () => el.classList.add("section-active");
-  const remove = () => el.classList.remove("section-active");
-  el.addEventListener("mousedown", add);
-  el.addEventListener("touchstart", add, { passive: true });
-  el.addEventListener("mouseup", remove);
-  el.addEventListener("mouseleave", remove);
-  el.addEventListener("touchend", remove, { passive: true });
-  el.addEventListener("touchcancel", remove, { passive: true });
-};
-
 const init = async () => {
   const app = document.getElementById("app");
-  if (app) app.innerHTML = getTemplate();
-  const pressables = document.querySelectorAll("button, a, img");
-  pressables.forEach((el) => {
-    if (el.tagName === "IMG" && el.closest("a")) return;
-    makePressable(el);
-  });
-  const glassSections = document.querySelectorAll(".glass-section");
-  glassSections.forEach(makeSectionPressable);
+  if (app) app.innerHTML = getAppContent();
+
   document.querySelectorAll("img").forEach((img) => {
     if (!img.hasAttribute("loading")) {
       img.loading = "lazy";
       img.decoding = "async";
     }
   });
+
   const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
   ).matches;
@@ -447,7 +409,7 @@ const init = async () => {
       const deactivate = () => eventDayEl.classList.remove("heart-active");
       calendarEl.addEventListener("mousedown", activate);
       calendarEl.addEventListener("touchstart", (e) => {
-        e.preventDefault();
+        // e.preventDefault(); // allow scrolling
         activate();
       });
       calendarEl.addEventListener("mouseup", deactivate);
@@ -599,32 +561,9 @@ const init = async () => {
   // 갤러리
   const galleryGrid = document.getElementById("gallery-grid");
   if (galleryGrid) {
-    const imageKeys = [
-      "001_DSC07666 0.png",
-      "002_DSC07423 0.png",
-      "003_DSC06364 0.png",
-      "004_DSC06407 0.png",
-      "005_DSC06576 0.png",
-      "006_DSC06596 0.png",
-      "007_DSC06634 0.png",
-      "008_DSC06668 0.png",
-      "009_DSC07826 0.png",
-      "010_DSC06757 0.png",
-      "011_DSC08028 0.png",
-      "012_DSC08222 0.png",
-      "013_DSC08253 0.png",
-      "014_DSC06769 0.png",
-      "015_DSC07034.png",
-      "016_DSC07294 0.png",
-      "017_DSC07306 0.png",
-      "018_DSC07422 0.png",
-      "019_DSC07976 0.png",
-      "020_DSC08493.png"
-    ];
-
-    const images = imageKeys.map((key) => ({
-      full: `images/${key}`,
-      preview: `images/${key}`,
+    const images = IMAGE_KEYS.map((key) => ({
+      full: `images/${key}.webp`,
+      preview: `images/${key}_thumb.webp`,
     }));
     const moreBtn = document.getElementById("gallery-more");
     const modal = document.getElementById("image-modal");
@@ -853,28 +792,10 @@ const init = async () => {
   updateHeroScroll();
 };
 
-const blockEvent = (e) => e.preventDefault();
-
-const disableInteraction = () => {
-  window.addEventListener("wheel", blockEvent, { passive: false });
-  window.addEventListener("touchmove", blockEvent, { passive: false });
-  window.addEventListener("keydown", blockEvent, true);
-};
-
-const enableInteraction = () => {
-  window.removeEventListener("wheel", blockEvent, { passive: false });
-  window.removeEventListener("touchmove", blockEvent, { passive: false });
-  window.removeEventListener("keydown", blockEvent, true);
-};
-
-window.scrollTo(0, 90);
-disableInteraction();
-
 const finishLoading = () => {
-  enableInteraction();
   document.body.classList.add("loaded");
   document.body.classList.remove("loading");
-  window.scrollTo(0, 90);
+  // Removed scrollTo(0, 90) and interaction blocking
 };
 
 const onDomContentLoaded = async () => {
