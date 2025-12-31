@@ -316,11 +316,11 @@ const makePressable = (el) => {
     el.classList.remove("press-brighten");
   };
   el.addEventListener("mousedown", add);
-  el.addEventListener("touchstart", add);
+  el.addEventListener("touchstart", add, { passive: true });
   el.addEventListener("mouseup", remove);
   el.addEventListener("mouseleave", remove);
-  el.addEventListener("touchend", remove);
-  el.addEventListener("touchcancel", remove);
+  el.addEventListener("touchend", remove, { passive: true });
+  el.addEventListener("touchcancel", remove, { passive: true });
   el.addEventListener("contextmenu", remove);
   const delay = (e) => {
     e.preventDefault();
