@@ -66,8 +66,15 @@
     ></script>
     <script>
       const cacheBuster = window.CACHE_BUSTER || "";
-      document.write(`<script src="config.js${cacheBuster}" defer><\/script>`);
-      document.write(`<script src="script.js${cacheBuster}" defer><\/script>`);
+      const loadScript = (src) => {
+        const script = document.createElement("script");
+        script.src = src;
+        script.defer = true;
+        script.async = false;
+        document.body.appendChild(script);
+      };
+      loadScript(`config.js${cacheBuster}`);
+      loadScript(`script.js${cacheBuster}`);
     </script>
   </body>
 </html>
