@@ -181,18 +181,18 @@ h6 {
   /* Apple Liquid Glass: High Saturation + Blur + Thick Glass feel */
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.05) 0%,
-    rgba(255, 255, 255, 0) 100%
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 100%
   );
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
 
   /* Border and Shadows for thickness/depth */
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   box-shadow:
-    0 8px 32px 0 rgba(31, 38, 135, 0.15),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.2),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.5); /* Top rim highlight */
+    0 8px 32px 0 rgba(0, 0, 0, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.15),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.3); /* Top rim highlight */
 
   transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -207,14 +207,14 @@ h6 {
   /* Glossier, brighter background for buttons */
   background: linear-gradient(
     145deg,
-    rgba(255, 255, 255, 0.6) 0%,
-    rgba(255, 255, 255, 0.8) 100%
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 0.9) 100%
   ) !important;
 
   backdrop-filter: blur(12px) saturate(150%);
   -webkit-backdrop-filter: blur(12px) saturate(150%);
 
-  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
   box-shadow:
     0 4px 10px rgba(0, 0, 0, 0.1),
     inset 0 1px 0 0 rgba(255, 255, 255, 0.8); /* Strong top highlight */
@@ -222,12 +222,24 @@ h6 {
   transition: all 0.2s ease;
 }
 
-.glass-button:active {
-  transform: scale(0.96);
+.glass-button:hover {
   background: linear-gradient(
     145deg,
-    rgba(255, 255, 255, 0.4) 0%,
-    rgba(255, 255, 255, 0.2) 100%
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0.95) 100%
+  ) !important;
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
+  transform: translateY(-1px);
+}
+
+.glass-button:active {
+  transform: scale(0.96) translateY(0);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.3) 100%
   ) !important;
   box-shadow:
     0 2px 4px rgba(0, 0, 0, 0.1),
