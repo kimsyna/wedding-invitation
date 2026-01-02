@@ -177,13 +177,6 @@ h6 {
   height: 100%;
   z-index: -1;
   border-radius: 20px; /* Matched to section border-radius */
-
-  /* Apple Liquid Glass: High Saturation + Blur + Thick Glass feel */
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.05) 100%
-  );
   backdrop-filter: blur(9px) saturate(160%);
   -webkit-backdrop-filter: blur(9px) saturate(160%);
 
