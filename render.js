@@ -230,7 +230,9 @@
 
     const swiperSlidesHTML = images.map((item, idx) => `
       <div class="swiper-slide">
-        <img src="${item.full}" alt="gallery slide ${idx + 1}" loading="lazy" decoding="async" />
+        <div class="swiper-zoom-container">
+          <img src="${item.full}" alt="gallery slide ${idx + 1}" loading="lazy" decoding="async" />
+        </div>
       </div>
     `).join('');
 

@@ -13,6 +13,7 @@ const initGallery = () => {
     const initSwiper = () => {
       if (typeof Swiper !== "undefined" && !swiper) {
         swiper = new Swiper("#modal-swiper", {
+          zoom: true,
           effect: "coverflow",
           coverflowEffect: {
             rotate: 30,
