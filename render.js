@@ -16,11 +16,11 @@
 
   const getBankIcon = (bankName) => {
     const bankMap = {
-      "신한은행": "bank_shinhan.svg",
-      "국민은행": "bank_kb.svg",
-      "IBK기업은행": "bank_ibk.svg",
-      "SC제일은행": "bank_sc.svg",
-      "케이뱅크": "bank_kbank.svg"
+      "신한은행": "bank_shinhan.png",
+      "국민은행": "bank_kb.png",
+      "IBK기업은행": "bank_ibk.png",
+      "SC제일은행": "bank_sc.png",
+      "케이뱅크": "bank_kbank.png"
     };
     const filename = bankMap[bankName] || "bank_default.png"; // Fallback if no matching bank
     return `<img src="images/icons/${filename}" alt="${bankName} 로고" class="bank-icon" />`;
