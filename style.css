@@ -945,6 +945,18 @@ a:active,
   gap: 2px;
 }
 
+.account-bank {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.bank-icon {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
 .account-label {
   font-weight: 400;
 }
