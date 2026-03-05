@@ -879,7 +879,7 @@ a:active,
 }
 
 .contact-column:first-child {
-  border-right: 1px solid rgba(255, 255, 255, 0.4);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
@@ -936,6 +936,14 @@ a:active,
 .contact-list .account {
   margin-top: 16px;
   align-items: center;
+}
+
+.contact-list .account:first-of-type {
+  margin-top: 32px;
+}
+
+.contact-list .account + .account {
+  margin-top: 24px;
 }
 
 .account-info {
