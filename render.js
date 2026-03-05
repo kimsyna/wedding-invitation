@@ -9,8 +9,22 @@
     GROOM_FATHER, GROOM_MOTHER, BRIDE_FATHER, BRIDE_MOTHER,
     GROOM_PHONE, BRIDE_PHONE, GROOM_FATHER_PHONE, GROOM_MOTHER_PHONE, BRIDE_FATHER_PHONE, BRIDE_MOTHER_PHONE,
     GROOM_ACCOUNT_BANK, GROOM_ACCOUNT_NUMBER, BRIDE_ACCOUNT_BANK, BRIDE_ACCOUNT_NUMBER,
+    GROOM_FATHER_ACCOUNT_BANK, GROOM_FATHER_ACCOUNT_NUMBER, GROOM_MOTHER_ACCOUNT_BANK, GROOM_MOTHER_ACCOUNT_NUMBER,
+    BRIDE_FATHER_ACCOUNT_BANK, BRIDE_FATHER_ACCOUNT_NUMBER, BRIDE_MOTHER_ACCOUNT_BANK, BRIDE_MOTHER_ACCOUNT_NUMBER,
     images: IMAGE_KEYS
   } = window.DATA;
+
+  const getBankIcon = (bankName) => {
+    const bankMap = {
+      "신한은행": "bank_shinhan.svg",
+      "국민은행": "bank_kb.svg",
+      "IBK기업은행": "bank_ibk.svg",
+      "SC제일은행": "bank_sc.svg",
+      "케이뱅크": "bank_kbank.svg"
+    };
+    const filename = bankMap[bankName] || "bank_default.png"; // Fallback if no matching bank
+    return `<img src="images/icons/${filename}" alt="${bankName} 로고" class="bank-icon" />`;
+  };
 
   const renderHero = () => `
     <section class="hero-section">
@@ -109,10 +123,26 @@
               <li class="account">
                 <div class="account-info">
                   <span class="account-label">신랑 측 계좌</span>
-                  <span class="account-bank">${GROOM_ACCOUNT_BANK}</span>
+                  <span class="account-bank">${getBankIcon(GROOM_ACCOUNT_BANK)}${GROOM_ACCOUNT_BANK}</span>
                   <span class="account-number">${GROOM_ACCOUNT_NUMBER}</span>
                 </div>
                 <button class="copy-account glass-button" data-account="${GROOM_ACCOUNT_NUMBER} ${GROOM_ACCOUNT_BANK}"><img src="images/icons/copy_small.png" alt="복사" /></button>
+              </li>
+              <li class="account">
+                <div class="account-info">
+                  <span class="account-label">신랑 아버지 계좌</span>
+                  <span class="account-bank">${getBankIcon(GROOM_FATHER_ACCOUNT_BANK)}${GROOM_FATHER_ACCOUNT_BANK}</span>
+                  <span class="account-number">${GROOM_FATHER_ACCOUNT_NUMBER}</span>
+                </div>
+                <button class="copy-account glass-button" data-account="${GROOM_FATHER_ACCOUNT_NUMBER} ${GROOM_FATHER_ACCOUNT_BANK}"><img src="images/icons/copy_small.png" alt="복사" /></button>
+              </li>
+              <li class="account">
+                <div class="account-info">
+                  <span class="account-label">신랑 어머니 계좌</span>
+                  <span class="account-bank">${getBankIcon(GROOM_MOTHER_ACCOUNT_BANK)}${GROOM_MOTHER_ACCOUNT_BANK}</span>
+                  <span class="account-number">${GROOM_MOTHER_ACCOUNT_NUMBER}</span>
+                </div>
+                <button class="copy-account glass-button" data-account="${GROOM_MOTHER_ACCOUNT_NUMBER} ${GROOM_MOTHER_ACCOUNT_BANK}"><img src="images/icons/copy_small.png" alt="복사" /></button>
               </li>
             </ul>
           </div>
@@ -151,10 +181,26 @@
               <li class="account">
                 <div class="account-info">
                   <span class="account-label">신부 측 계좌</span>
-                  <span class="account-bank">${BRIDE_ACCOUNT_BANK}</span>
+                  <span class="account-bank">${getBankIcon(BRIDE_ACCOUNT_BANK)}${BRIDE_ACCOUNT_BANK}</span>
                   <span class="account-number">${BRIDE_ACCOUNT_NUMBER}</span>
                 </div>
                 <button class="copy-account glass-button" data-account="${BRIDE_ACCOUNT_NUMBER} ${BRIDE_ACCOUNT_BANK}"><img src="images/icons/copy_small.png" alt="복사" /></button>
+              </li>
+              <li class="account">
+                <div class="account-info">
+                  <span class="account-label">신부 아버지 계좌</span>
+                  <span class="account-bank">${getBankIcon(BRIDE_FATHER_ACCOUNT_BANK)}${BRIDE_FATHER_ACCOUNT_BANK}</span>
+                  <span class="account-number">${BRIDE_FATHER_ACCOUNT_NUMBER}</span>
+                </div>
+                <button class="copy-account glass-button" data-account="${BRIDE_FATHER_ACCOUNT_NUMBER} ${BRIDE_FATHER_ACCOUNT_BANK}"><img src="images/icons/copy_small.png" alt="복사" /></button>
+              </li>
+              <li class="account">
+                <div class="account-info">
+                  <span class="account-label">신부 어머니 계좌</span>
+                  <span class="account-bank">${getBankIcon(BRIDE_MOTHER_ACCOUNT_BANK)}${BRIDE_MOTHER_ACCOUNT_BANK}</span>
+                  <span class="account-number">${BRIDE_MOTHER_ACCOUNT_NUMBER}</span>
+                </div>
+                <button class="copy-account glass-button" data-account="${BRIDE_MOTHER_ACCOUNT_NUMBER} ${BRIDE_MOTHER_ACCOUNT_BANK}"><img src="images/icons/copy_small.png" alt="복사" /></button>
               </li>
             </ul>
           </div>
